@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<meta name="robots" content="noindex,nofollow">
+
+	<meta charset='utf-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Harekaze</title>
+
+	<link rel=stylesheet type="text/css" href="css/main.css">
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!--<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">-->
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!--<script src="/jquery/jquery-3.5.1.min.js"></script>-->
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!--<script src="/bootstrap/js/bootstrap.min.js"></script>-->
+
+
+	<!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">-->
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body>
+	<div class="container">
+
+		<header>
+			<div class="row">
+				<div class="col-sm-3"><a href="index.html"><img src="logo/harekaze~9.png" class="img-responsive"></a>
+				</div>
+				<div class="col-sm-9">
+					<blockquote style="word-break: break-all;">換電腦的理由：<br />初期規劃不善，中期管理不善，晚期補救不善，最終換機。</blockquote>
+				</div>
+			</div>
+		</header>
+
+		<noscript>Caution: You must enable Javascript to use this site.</noscript>
+
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="index.html">Harekaze</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown"
+							href="daily-tools/index.php.html">Daily-Tools<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="daily-tools/3rd-party-wan-speedtest.php.html"
+									style="margin: 2px;">3rd-party-wan-speedtest</a></li>
+							<li><a href="daily-tools/aes-crypto.php.html" style="margin: 2px;">aes-crypto</a></li>
+							<li><a href="daily-tools/bmi-calculator.php.html" style="margin: 2px;">bmi-calculator</a>
+							</li>
+							<li><a href="daily-tools/mass-unit-conversion.php.html"
+									style="margin: 2px;">mass-unit-conversion</a></li>
+							<li><a href="daily-tools/random-mark-six.php.html" style="margin: 2px;">random-mark-six</a>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown"
+							href="my_learning_memory/index.php.html">My_Learning_Memory<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="my_learning_memory/my_learning_memory.php.html"
+									style="margin: 2px;">my_learning_memory</a></li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+				</ul>
+			</div>
+		</nav><!-- end of nav -->
+
+
+
+		<div class="panel-group">
+			<div class="panel panel-primary">
+				<div class="panel-heading">本站歷史</div>
+				<div class="panel-body">
+
+					本站成立初期，只是為了在使用網頁來匯報的時候有網頁伺服器可用才架設的，內容可說是用完即棄。到了2015年中，開始研究各種小工具，供瀏覽者使用。
+					到了現在，本站將改良成適合各種不同裝置的瀏覽的網站，務求在能力範圍以內做足100分。
+
+				</div>
+			</div>
+		</div>
+
+		<footer>
+
+			<div class="panel-group">
+				<div class="panel panel-primary">
+					<div class="panel-heading">Donate</div>
+					<div class="panel-body">
+
+						<div class="row">
+
+							<div class="col-md-6">
+								Bitcoin (XBT)<div class="input-group">
+									<span class="input-group-addon" onclick="copyFunction('xbt_addr')"><i
+											class="glyphicon glyphicon-copy"></i></span>
+									<input id="xbt_addr" type="text" class="form-control" name="xbt_addr"
+										value="3MSNhVbXQeqBgoT5HngSDLuynNyMkMB2JN" readonly />
+								</div>
+
+							</div>
+							<div class="col-md-6">
+								Ethereum (ETH)<div class="input-group">
+									<span class="input-group-addon" onclick="copyFunction('eth_addr')"><i
+											class="glyphicon glyphicon-copy"></i></span>
+									<input id="eth_addr" type="text" class="form-control" name="eth_addr"
+										value="0xD36C146e5038831B59392AE00d5352Cf716A5ee8" readonly />
+								</div>
+							</div>
+
+
+							<div class="col-md-12">
+								Monero (XMR)<div class="input-group">
+									<span class="input-group-addon" onclick="copyFunction('xmr_addr')"><i
+											class="glyphicon glyphicon-copy"></i></span>
+									<input id="xmr_addr" type="text" class="form-control" name="xmr_addr"
+										value="8B6W2YUHrrE4q59uuYiUDVaZR3SiLvgqdB8zUakH8DMnH4Uks34SuhYBahqeHnyeQPSV93euXqSWscjhiakZMjjG7TiWSza"
+										readonly />
+								</div>
+							</div>
+
+
+						</div><!-- close .row-->
+
+					</div>
+				</div>
+			</div>
+
+		</footer>
+
+		<script>
+			function copyFunction(addr) {
+				/* Get the text field */
+				var copyText = document.getElementById(addr);
+
+				/* Select the text field */
+				copyText.select();
+				copyText.setSelectionRange(0, 99999);//For mobile devices
+
+				/* Copy the text inside the text field */
+				document.execCommand("copy");
+				/* Alert the copied text */
+				//alert("Copied the text: " + copyText.value);
+			}
+		</script>
+	</div><!-- close .container -->
+
+</body>
+
+</html>

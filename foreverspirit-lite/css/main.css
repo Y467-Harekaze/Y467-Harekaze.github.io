@@ -1,0 +1,16 @@
+/*@import url("/font/Noto_Sans_HK/NotoSansHK-Regular.otf") format('opentype');*/
+/*@font-face {
+	font-family: 'Noto Sans HK';
+	font-weight: 400;
+	src: url("/font/Noto_Sans_HK/NotoSansHK-Regular.otf") format("opentype");
+	font-display: swap;
+}*/
+.container {
+	/*font-family: 'Noto Sans TC', sans-serif;*/
+	font-family: 'Noto Sans HK', sans-serif;
+	/*margin-bottom: 120px;*/
+}
+
+footer {
+	/*position: fixed; bottom: 0; margin-left: auto; margin-right: auto; height: 70px; width: 100%;*/
+}
