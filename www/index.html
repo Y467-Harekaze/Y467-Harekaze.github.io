@@ -79,19 +79,70 @@
 			</div>
 		</nav><!-- end of nav -->
 
+		<div class="row">
 
+			<div class="panel-group col-md-8">
+				<div class="panel panel-primary">
+					<div class="panel-heading">本站歷史</div>
+					<div class="panel-body">
 
-		<div class="panel-group">
-			<div class="panel panel-primary">
-				<div class="panel-heading">本站歷史</div>
-				<div class="panel-body">
+						本站成立初期，只是為了在使用網頁來匯報的時候有網頁伺服器可用才架設的，內容可說是用完即棄。到了2015年中，開始研究各種小工具，供瀏覽者使用。
+						到了現在，本站將改良成適合各種不同裝置的瀏覽的網站，務求在能力範圍以內做足100分。
 
-					本站成立初期，只是為了在使用網頁來匯報的時候有網頁伺服器可用才架設的，內容可說是用完即棄。到了2015年中，開始研究各種小工具，供瀏覽者使用。
-					到了現在，本站將改良成適合各種不同裝置的瀏覽的網站，務求在能力範圍以內做足100分。
-
+					</div>
 				</div>
 			</div>
-		</div>
+
+			<!-- javascript exchange-rate start -->
+			<div class="panel-group col-md-4">
+				<div class="panel panel-primary">
+					<div class="panel-heading">CryptoCurrency Exchange Rate</div>
+					<div class="panel-body">
+
+						<div id="btc-usd">Loading</div>
+						<div id="eth-usd">Loading</div>
+						<div id="matic-usd">Loading</div>
+						<div id="etc-usd">Loading</div>
+						<div id="xmr-usd">Loading</div>
+						<div id="qrl-usd">Loading</div>
+
+						<div id="doge-usd">Loading</div>
+
+						<div id="rvn-usd">Loading</div>
+
+						<div id="beam-usd">Loading</div>
+
+						<div id="xch-usd">Loading</div>
+
+						<div id="bch-usd">Loading</div>
+
+					</div>
+				</div>
+			</div>
+			<script>
+				var pair = [["btc", "usd"], ["eth", "usd"], ["matic", "usd"], ["etc", "usd"], ["xmr", "usd"], ["qrl", "usd"], ["doge", "usd"], ["rvn", "usd"], ["beam", "usd"], ["xch", "usd"], ["bch", "usd"]];
+				for (var count_pair = 0; count_pair < pair.length; count_pair++) {
+
+					var target = pair[count_pair][0].toLowerCase();
+					var base = pair[count_pair][1].toLowerCase();
+
+					var api_link = "https://api.cryptonator.com/api/ticker/" + target + "-" + base;
+					var return_text = "";
+					$.get(api_link, function (data) {
+						return_text = data.ticker.base.toUpperCase() + ' 1 = ' + data.ticker.target.toUpperCase() + ' ' + data.ticker.price + '\t' + '<a href="' + api_link + '" target="_blank">source</a>';
+
+						$("#" + data.ticker.base.toLowerCase() + "-" + data.ticker.target.toLowerCase()).html(return_text);
+					}).fail(function () {
+						return_text = "Error: cannot get price information: " + target.toUpperCase() + " / " + base.toUpperCase();
+						$("#exchenge_rate").append("<div id='" + target.toLowerCase() + "-" + base.toLowerCase() + "'>" + return_text + "</div>");
+					});
+
+				}
+
+			</script>
+			<!-- javascript exchange-rate end -->
+
+		</div><!-- end of .row -->
 
 		<footer>
 
