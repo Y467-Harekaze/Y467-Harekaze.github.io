@@ -1,16 +1,16 @@
 {
-  "short_name": "harekaze",
-  "name": "Harekaze",
-  "icons": [
-    {
-      "src": "logo/harekaze~9_square.png",
-      "type": "image/png",
-      "sizes": "910x910"
-    }
-  ],
-  "start_url": "/www/",
-  "background_color": "#ffffff",
-  "display": "standalone",
-  "scope": "/www/",
-  "theme_color": "#000000"
+	"short_name": "harekaze",
+	"name": "Harekaze",
+	"icons": [
+		{
+			"src": "logo/harekaze~9_square.png",
+			"type": "image/png",
+			"sizes": "910x910"
+		}
+	],
+	"start_url": "/",
+	"background_color": "#ffffff",
+	"display": "standalone",
+	"scope": "/",
+	"theme_color": "#000000"
 }
