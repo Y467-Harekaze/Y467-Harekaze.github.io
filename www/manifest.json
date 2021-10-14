@@ -3,7 +3,7 @@
   "name": "Harekaze",
   "icons": [
     {
-      "src": "/logo/harekaze~9_square.png",
+      "src": "logo/harekaze~9_square.png",
       "type": "image/png",
       "sizes": "910x910"
     }
