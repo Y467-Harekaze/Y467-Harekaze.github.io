@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta name="robots" content="noindex,nofollow">
+
+	<base href="/www/">
+	</base><!-- need check -->
+	<script src="universal/setting.js"></script>
+	<!-- <script src="jquery/jquery-3.5.1.min.js"></script> -->
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!--<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">-->
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!--<script src="jquery/jquery-3.5.1.min.js"></script>-->
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!--<script src="bootstrap/js/bootstrap.min.js"></script>-->
+
+
+	<meta charset='utf-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title></title>
+
+	<link rel=stylesheet type="text/css" href="/css/main.css">
+
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK&display=swap" rel="stylesheet" />
+
+	<!--<link rel="manifest" href="/manifest.php" />
+<script src="/register_service_worker.js"></script>
+<script src="/service_worker_for_pwa.js"></script>-->
+	<link rel="manifest" href="manifest.json" />
+	<script src="service-worker_register.js"></script>
+	<script src="service-worker.js"></script>
+
+
+</head>
+
+<body>
+	<div class="container">
+		<div id="prepend_to_body"></div>
+
+		<div class="panel-group">
+			<div class="panel panel-primary">
+				<div class="panel-heading">BMI計算器</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<label for="weight">體重（以公斤表示）</label>
+						<input type="number" class="form-control" name="weight" id="weight" min="0" />
+					</div>
+					<div class="form-group">
+						<label for="height">身高（以米表示）</label>
+						<input type="number" class="form-control" name="height" id="height" min="0" />
+					</div>
+					<div>
+						<input name="submit" id="submit" class="btn btn-md btn-primary" type="button"
+							value="Calculate" />
+					</div>
+					<div id="message"></div>
+
+					<!--<h3>Your input:</h3>1KG<br>1M<br><br>你的BMI指數是 1<br>You are too slim.Please input a possible number, thank you.<br><br>-->
+
+
+					<br />
+					資料來源:
+					<br />
+					<a href="http://www3.ha.org.hk/bmi/b5_method.aspx"
+						target="_blank">http://www3.ha.org.hk/bmi/b5_method.aspx</a>
+					<br />
+					<a href="http://www3.ha.org.hk/bmi/b5_standard.aspx"
+						target="_blank">http://www3.ha.org.hk/bmi/b5_standard.aspx</a>
+				</div>
+			</div>
+		</div>
+		<script>
+			$("#submit").click(function () {
+				var weight = $("#weight").val();
+				var height = $("#height").val();
+
+				var bmi_index = weight / height / height;
+
+				var extra_result;
+				if (bmi_index > 0 && bmi_index < 18.5) {
+					extra_result = 'You are too slim.';
+				} else if (bmi_index >= 18.5 && bmi_index <= 22.9) {
+					extra_result = 'You are healthy.';
+				} else if (bmi_index > 22.9) {
+					extra_result = 'You are too fat.';
+				}
+
+				$("#message").html("你的BMI指數是 " + bmi_index + "<br />" + extra_result + "");
+			});
+		</script>
+
+		<div id="append_to_body"></div>
+
+	</div><!-- close .container -->
+
+	<script>
+		$('title').html(setting['title']);
+
+		$('#prepend_to_body').append($('<div>').load('universal/header.html'));
+		$('#prepend_to_body').append($('<div>').load('universal/nav.html'));
+
+		$('#append_to_body').append($('<div>').load('universal/footer.html'));
+
+//$('#navbar-brand').html(setting['service_code']);
+	</script>
+
+</body>
+
+</html>
