@@ -2,7 +2,7 @@
 //service-worker.js must put in root directory
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js', { scope: '/' })
+    navigator.serviceWorker.register('service-worker.js', { scope: '/www/' })
         .then((reg) => {
           console.log('Service worker registered.', reg);
         });
