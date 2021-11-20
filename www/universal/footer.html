@@ -1,62 +1,65 @@
 <footer>
 
-<div class="panel-group">
-<div class="panel panel-primary">
-<div class="panel-heading">捐款</div>
-<div class="panel-body">
+	<div class="panel-group">
+		<div class="panel panel-primary">
+			<div class="panel-heading">捐款</div>
+			<div class="panel-body">
 
-<div class="row">
+				<div class="row">
 
-<div class="col-md-6">
-Bitcoin (XBT)
-<div class="input-group">
-  <span class="input-group-addon" onclick="copyFunction('xbt_addr')"><i class="glyphicon glyphicon-copy"></i></span>
-  <input id="xbt_addr" type="text" class="form-control" name="xbt_addr" value="" readonly />
-</div>
+					<div class="col-md-6">
+						Bitcoin (XBT)
+						<div class="input-group">
+							<span class="input-group-addon" onclick="copyFunction('xbt_addr')"><i
+									class="glyphicon glyphicon-copy"></i></span>
+							<input id="xbt_addr" type="text" class="form-control" name="xbt_addr" value="" readonly />
+						</div>
 
-</div>
-<div class="col-md-6">
-Ethereum (ETH)
-<div class="input-group">
-  <span class="input-group-addon" onclick="copyFunction('eth_addr')"><i class="glyphicon glyphicon-copy"></i></span>
-  <input id="eth_addr" type="text" class="form-control" name="eth_addr" value="" readonly />
-</div>
-</div>
-
-
-<div class="col-md-12">
-Monero (XMR)
-<div class="input-group">
-  <span class="input-group-addon" onclick="copyFunction('xmr_addr')"><i class="glyphicon glyphicon-copy"></i></span>
-  <input id="xmr_addr" type="text" class="form-control" name="xmr_addr" value="" readonly />
-</div>
-</div>
+					</div>
+					<div class="col-md-6">
+						Ethereum (ETH)
+						<div class="input-group">
+							<span class="input-group-addon" onclick="copyFunction('eth_addr')"><i
+									class="glyphicon glyphicon-copy"></i></span>
+							<input id="eth_addr" type="text" class="form-control" name="eth_addr" value="" readonly />
+						</div>
+					</div>
 
 
-</div><!-- close .row-->
+					<div class="col-md-12">
+						Monero (XMR)
+						<div class="input-group">
+							<span class="input-group-addon" onclick="copyFunction('xmr_addr')"><i
+									class="glyphicon glyphicon-copy"></i></span>
+							<input id="xmr_addr" type="text" class="form-control" name="xmr_addr" value="" readonly />
+						</div>
+					</div>
 
-</div>
-</div>
-</div>
+
+				</div><!-- close .row-->
+
+			</div>
+		</div>
+	</div>
 
 </footer>
 
 <script>
-$('#xbt_addr').val('3MSNhVbXQeqBgoT5HngSDLuynNyMkMB2JN');
-$('#eth_addr').val('0xD36C146e5038831B59392AE00d5352Cf716A5ee8');
-$('#xmr_addr').val('8B6W2YUHrrE4q59uuYiUDVaZR3SiLvgqdB8zUakH8DMnH4Uks34SuhYBahqeHnyeQPSV93euXqSWscjhiakZMjjG7TiWSza');
+	$('#xbt_addr').val('3MSNhVbXQeqBgoT5HngSDLuynNyMkMB2JN');
+	$('#eth_addr').val('0xD36C146e5038831B59392AE00d5352Cf716A5ee8');
+	$('#xmr_addr').val('8B6W2YUHrrE4q59uuYiUDVaZR3SiLvgqdB8zUakH8DMnH4Uks34SuhYBahqeHnyeQPSV93euXqSWscjhiakZMjjG7TiWSza');
 
-function copyFunction(addr) {
-	/* Get the text field */
-	var copyText = document.getElementById(addr);
+	function copyFunction(addr) {
+		/* Get the text field */
+		var copyText = document.getElementById(addr);
 
-	/* Select the text field */
-	copyText.select();
-	copyText.setSelectionRange(0, 99999);//For mobile devices
+		/* Select the text field */
+		copyText.select();
+		copyText.setSelectionRange(0, 99999);//For mobile devices
 
-	/* Copy the text inside the text field */
-	document.execCommand("copy");
-	/* Alert the copied text */
-	//alert("Copied the text: " + copyText.value);
-}
+		/* Copy the text inside the text field */
+		document.execCommand("copy");
+		/* Alert the copied text */
+		//alert("Copied the text: " + copyText.value);
+	}
 </script>
