@@ -66,7 +66,7 @@ self.addEventListener('fetch', (evt) => {
 	// CODELAB: Add fetch event handler here.
 
 	// CODELAB: Add fetch event handler here.
-	if (evt.request.url.includes('/mayday_mayday_mayday/')) {
+	/*if (evt.request.url.includes('/mayday_mayday_mayday/')) {
 		console.log('[Service Worker] Fetch (data)', evt.request.url);
 		evt.respondWith(
 			caches.open(DATA_CACHE_NAME).then((cache) => {
@@ -91,6 +91,6 @@ self.addEventListener('fetch', (evt) => {
 					return response || fetch(evt.request);
 				});
 		})
-	);
+	);*/
 
 });
