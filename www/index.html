@@ -10,22 +10,19 @@
 	<!-- <script src="jquery/jquery-3.5.1.min.js"></script> -->
 
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<!--<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<!--<script src="jquery/jquery-3.5.1.min.js"></script>-->
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<!--<script src="bootstrap/js/bootstrap.min.js"></script>-->
 
 
-	<meta charset='utf-8'>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset='utf-8' />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<title></title>
 
-	<link rel=stylesheet type="text/css" href="css/main.css">
+	<link rel=stylesheet type="text/css" href="css/main.css" />
 
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK&display=swap" rel="stylesheet" />
 
@@ -46,45 +43,42 @@
 				<div class="panel panel-primary">
 					<div class="panel-heading">本站歷史</div>
 					<div class="panel-body">
-						<!--<div style="font-size: larger;">本站歷史</div>-->
-
 						本站成立初期，只是為了在使用網頁來匯報的時候有網頁伺服器可用才架設的，內容可說是用完即棄。到了2015年中，開始研究各種小工具，供瀏覽者使用。
 						到了現在，本站將改良成適合各種不同裝置的瀏覽的網站，務求在能力範圍以內做足100分。
-
 					</div>
 				</div>
 			</div>
 
 			<!-- javascript exchange-rate start -->
-			<div class="panel-group col-md-4">
+			<!--<div class="panel-group col-md-4">
 				<div class="panel panel-primary">
 					<div class="panel-heading">CryptoCurrency Exchange Rate</div>
 					<div class="panel-body">
 
-						<div id="btc-usd">Loading</div>
-						<div id="eth-usd">Loading</div>
-						<div id="ens-usd">Loading</div>
-						<div id="matic-usd">Loading</div>
-						<div id="etc-usd">Loading</div>
-						<div id="xmr-usd">Loading</div>
-						<div id="qrl-usd">Loading</div>
-						<div id="doge-usd">Loading</div>
-						<div id="rvn-usd">Loading</div>
-						<div id="beam-usd">Loading</div>
-						<div id="xch-usd">Loading</div>
-						<div id="bch-usd">Loading</div>
+						<div id="btc-usdt">Loading</div>
+						<div id="eth-usdt">Loading</div>
+						<div id="ens-usdt">Loading</div>
+						<div id="matic-usdt">Loading</div>
+						<div id="etc-usdt">Loading</div>
+						<div id="xmr-usdt">Loading</div>
+						<div id="qrl-usdt">Loading</div>
+						<div id="doge-usdt">Loading</div>
+						<div id="rvn-usdt">Loading</div>
+						<div id="beam-usdt">Loading</div>
+						<div id="xch-usdt">Loading</div>
+						<div id="bch-usdt">Loading</div>
 
 					</div>
 				</div>
-			</div>
+			</div>-->
 			<script>
-				var pair = [["btc", "usd"], ["eth", "usd"], ["ens", "usd"], ["matic", "usd"], ["etc", "usd"], ["xmr", "usd"], ["qrl", "usd"], ["doge", "usd"], ["rvn", "usd"], ["beam", "usd"], ["xch", "usd"], ["bch", "usd"]];
+				/*var pair = [["btc", "usdt"], ["eth", "usdt"], ["ens", "usdt"], ["matic", "usdt"], ["etc", "usdt"], ["xmr", "usdt"], ["qrl", "usdt"], ["doge", "usdt"], ["rvn", "usdt"], ["beam", "usdt"], ["xch", "usdt"], ["bch", "usdt"]];
 				$.each(pair, function (index) {
+
 					var target = pair[index][0].toLowerCase();
 					var base = pair[index][1].toLowerCase();
-
 					var api_link = "https://api.cryptonator.com/api/ticker/" + target + "-" + base;
-					var return_text = "";
+
 					$.get(api_link, function (data) {
 						return_text = data.ticker.base.toUpperCase() + ' 1 = ' + data.ticker.target.toUpperCase() + ' ' + data.ticker.price + '\t' + '<a href="' + api_link + '" target="_blank">source</a>';
 
@@ -94,11 +88,11 @@
 
 						$("#" + target + "-" + base).html("<div id='" + target.toLowerCase() + "-" + base.toLowerCase() + "'>" + return_text + "</div>");
 					});
-				});
+				});*/
 			</script>
 			<!-- javascript exchange-rate end -->
 
-			<div class="panel-group col-md-12">
+			<div class="panel-group col-md-4">
 				<div class="panel panel-primary">
 					<div class="panel-heading">你知道嗎...</div>
 					<div class="panel-body">
