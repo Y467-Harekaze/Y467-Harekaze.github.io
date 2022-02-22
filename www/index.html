@@ -48,12 +48,12 @@
 			</div>
 
 			<!-- javascript exchange-rate start -->
-			<!--<div class="panel-group col-md-4">
+			<div class="panel-group col-md-4">
 				<div class="panel panel-primary">
 					<div class="panel-heading">CryptoCurrency Exchange Rate</div>
-					<div class="panel-body">
+					<div class="panel-body" id="cryptocurrency_exchange_rate">
 
-						<div id="btc-usdt">Loading</div>
+						<!--<div id="btc-usdt">Loading</div>
 						<div id="eth-usdt">Loading</div>
 						<div id="ens-usdt">Loading</div>
 						<div id="matic-usdt">Loading</div>
@@ -64,12 +64,29 @@
 						<div id="rvn-usdt">Loading</div>
 						<div id="beam-usdt">Loading</div>
 						<div id="xch-usdt">Loading</div>
-						<div id="bch-usdt">Loading</div>
+						<div id="bch-usdt">Loading</div>-->
 
 					</div>
 				</div>
-			</div>-->
+			</div>
 			<script>
+				var api_link = 'https://ggbrcsnwqc.execute-api.ap-southeast-1.amazonaws.com/quote';
+
+				$.get(api_link, function (data) {
+					console.log(data);//test
+					data = JSON.parse(data);
+					return_text = '';
+					for (var id = 0; id < data.result.length; id++) {
+						return_text += data['base'].toUpperCase() + ' 1 = ' + data['result'][id]['coin'].toUpperCase() + ' ' + data['result'][id]['price'] + '<br />';
+					}
+
+					$("#cryptocurrency_exchange_rate").html(return_text);
+				}).fail(function () {
+					return_text = "Error: cannot get price information";
+
+					$("#cryptocurrency_exchange_rate").html(return_text);
+				});
+
 				/*var pair = [["btc", "usdt"], ["eth", "usdt"], ["ens", "usdt"], ["matic", "usdt"], ["etc", "usdt"], ["xmr", "usdt"], ["qrl", "usdt"], ["doge", "usdt"], ["rvn", "usdt"], ["beam", "usdt"], ["xch", "usdt"], ["bch", "usdt"]];
 				$.each(pair, function (index) {
 
@@ -90,7 +107,7 @@
 			</script>
 			<!-- javascript exchange-rate end -->
 
-			<div class="panel-group col-md-4">
+			<div class="panel-group col-md-12">
 				<div class="panel panel-primary">
 					<div class="panel-heading">你知道嗎...</div>
 					<div class="panel-body">
