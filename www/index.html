@@ -77,7 +77,7 @@
 					data = JSON.parse(data);
 					return_text = '';
 					for (var id = 0; id < data.result.length; id++) {
-						return_text += data['base'].toUpperCase() + ' 1 = ' + data['result'][id]['coin'].toUpperCase() + ' ' + data['result'][id]['price'] + '<br />';
+						return_text += data['result'][id]['coin'].toUpperCase() + ' 1 = ' + data['base'].toUpperCase() + ' ' + data['result'][id]['price'] + '<br />';
 					}
 
 					$("#cryptocurrency_exchange_rate").html(return_text);
