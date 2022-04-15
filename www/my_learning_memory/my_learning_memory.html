@@ -51,6 +51,45 @@
 					<div id="show_area">
 						<div class="panel-group">
 							<div class="panel panel-primary">
+								<div class="panel-heading">日期: 2019-10-03</div>
+								<div class="panel-body">
+									<div class="panel-group">
+										<div class="panel panel-primary">
+											<div class="panel-heading">標題: 非對稱的加密 / 最後更新: 2019-12-30 00:25:00<br />TAG:
+												encrypt, encryption</div>
+											<div class="panel-body">對於加密（encryption）來說，主要可分為對稱加密（symmetric
+												encryption，例如AES）和非對稱加密（asymmetric
+												encryption，例如RSA）。對稱加密，即是用同1個密碼即可完成加解密這2個步驟。<br><br><br>"如果要將已加密的信息（密文），傳送給其他人解密，豈不是要共享我的密碼？"<br><br><br>如果你用的是對稱加密，你除了需要共享你的密碼之外，每人更需要貯存n*(n-1)/2個密碼才能跟你的通訊對像通訊（假設總通訊人數是n）。<br><br>但如果所有人都用非對稱加密，除了加密信息之外，大家更可以在不需共享密碼的情況下享有以下福利：<br>確保只有收信者能解密（機密性）、<br>證明信息真的由發信者發出（真確性）、及<br>減少涉及的密碼數量（只需涉及2*n條密碼，同樣n是總通訊人數）。<br><br>對非對稱加密來說，每人都必定有2個密碼（或稱密鑰，key），其中1條key是必須只由自己持有的private
+												key，另1條是須要公開的public
+												key。<br><br>在非對稱加密，如果用1組key裏面的其中1條key加密，就只能由另1條key解密。而且這2條key需要以指定方式產生，不能自選，但你可以換。<br><br>例子1：<br>如果要確保機密性，發信者需要用收信者的public
+												key加密，然後傳送信息給對方以自己的private
+												key解密。<br><br>例子2：<br>如果要確保真確性，發信者需要用自己的private
+												key加密，然後傳送信息給對方以發信者的public
+												key解密。<br><br>在資訊安全領域，我們通常用CIA來描述資訊安全的3個目的。<br>Confidentiality（機密性）<br>Integrity（真確性）<br>Availability（可用性）<br><br>在例子1，因為要確保只有收信者能解密，但任何人的private
+												key都不能（且不應）外洩，所以按上述方法做，確保能解密的只有收信者自己。<br><br>在例子2，因為要證明信息真的由發信者發出，所以要用只有發信者自己持有的private
+												key加密，收信者再以發送者的public
+												key解密。如果能成功解密，就代表信息真的由發送方發出。警告：即使用這方法，都不能證明發送者是否安全，有沒有被要脅。<br><br>---<br><br><b>題外話</b><br>至於登入戶口這行為，屬於（好像）較不安全的對稱加密嗎？<br>不，登入戶口只是認證，跟加密無關。<br>至於建立網上服務的密碼是否安全，跟服務提供者有沒有以hash
+												value貯存用戶密碼有關。</div>
+										</div>
+									</div>
+
+									<div class="panel-group">
+										<div class="panel panel-primary">
+											<div class="panel-heading">標題: IT的十條盟約 / 最後更新: 2020-02-18 12:53:05<br />TAG:
+												programming</div>
+											<div class="panel-body">
+												<b>IT的十條盟約</b><br><br>前言<br>為了增強編程新手們的技巧，並讓老手們能較有根據地指導新手，特此發佈這份（沒有約束力的）IT的十條盟約，以作分享。<br><br>1<br>科技應以人為本，並為各方取得平衡。<br><br>2<br>對於任何程式，都應該讓相關人士知道對程式所作的任何行為會造成什麼效果、後果，和結果。<br><br>3<br>對於使用者介面上的任何項目，必需讓用戶清楚識別那個/那些是什麼。<br><br>4<br>對於例外控制（開發者未必能預見並處理的例外情況），開發者需要令程式能處理所有的情況。<br><br>5<br>基於傷健共融的原則，任何介面都應該考慮殘疾人士使用時的需要。介面包括軟件介面、網頁介面，及硬件介面等；而殘疾人士包括肢體殘疾和心智殘疾。<br><br>6<br>對於認證，系統不應該以明文貯存使用者的密碼。<br><br>7<br>對於需要經由網絡傳送的內容，應積極考慮採用加密連線，特別是個人資料、密碼和機密資料等任何不應外洩的資料。<br><br>8<br>除非是公認無其他方案，否則絕不能使用goto。<br><br>9<br>以神之名宣佈，以上各條皆為絕對不減的原則。（幾乎完全抄自No
+												Game No Life十條盟約第9條）<br><br>10<br>大家1起愉快地寫程式吧。（幾乎完全抄自No Game No
+												Life十條盟約第10條）<br><br>EOF
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel-group">
+							<div class="panel panel-primary">
 								<div class="panel-heading">日期: 2020-05-20</div>
 								<div class="panel-body">
 									<div class="panel-group">
