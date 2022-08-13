@@ -12,16 +12,18 @@
 						<div class="input-group">
 							<span class="input-group-addon" onclick="copyFunction('xbt_addr')"><i
 									class="glyphicon glyphicon-copy"></i></span>
-							<input id="xbt_addr" type="text" class="form-control" name="xbt_addr" value="" readonly />
+							<input id="xbt_addr" type="text" class="form-control" name="xbt_addr"
+								value="bc1qvl0zmcc2ayrjt5t48slh2hcshu6gkd4ehkcz6h" readonly />
 						</div>
 
 					</div>
 					<div class="col-md-6">
-						Ethereum (ETH)
+						Ether (ETH) or ERC-20 token
 						<div class="input-group">
 							<span class="input-group-addon" onclick="copyFunction('eth_addr')"><i
 									class="glyphicon glyphicon-copy"></i></span>
-							<input id="eth_addr" type="text" class="form-control" name="eth_addr" value="" readonly />
+							<input id="eth_addr" type="text" class="form-control" name="eth_addr"
+								value="0x72183156b4F427eFdA8b3ddED1939374e18Da77d" readonly />
 						</div>
 					</div>
 
@@ -31,7 +33,9 @@
 						<div class="input-group">
 							<span class="input-group-addon" onclick="copyFunction('xmr_addr')"><i
 									class="glyphicon glyphicon-copy"></i></span>
-							<input id="xmr_addr" type="text" class="form-control" name="xmr_addr" value="" readonly />
+							<input id="xmr_addr" type="text" class="form-control" name="xmr_addr"
+								value="42mm8uEv9aPLwGz2cSXwCzRao4XBJFoBGNFYpkBsE8K1amWVEbNmjHfTjtBPVfvgp3KEzrK9T16KxiU8LKYjyvKrSSnsWEg"
+								readonly />
 						</div>
 					</div>
 
@@ -45,10 +49,6 @@
 </footer>
 
 <script>
-	$('#xbt_addr').val('3MSNhVbXQeqBgoT5HngSDLuynNyMkMB2JN');
-	$('#eth_addr').val('0xD36C146e5038831B59392AE00d5352Cf716A5ee8');
-	$('#xmr_addr').val('8B6W2YUHrrE4q59uuYiUDVaZR3SiLvgqdB8zUakH8DMnH4Uks34SuhYBahqeHnyeQPSV93euXqSWscjhiakZMjjG7TiWSza');
-
 	function copyFunction(addr) {
 		/* Get the text field */
 		var copyText = document.getElementById(addr);
