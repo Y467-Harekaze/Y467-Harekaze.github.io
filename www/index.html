@@ -47,48 +47,7 @@
 				</div>
 			</div>
 
-			<!-- javascript exchange-rate start -->
 			<div class="panel-group col-md-4">
-				<div class="panel panel-primary">
-					<div class="panel-heading">CryptoCurrency Exchange Rate</div>
-					<div class="panel-body" id="cryptocurrency_exchange_rate">
-
-						<!--<div id="btc-usdt">Loading</div>
-						<div id="eth-usdt">Loading</div>
-						<div id="ens-usdt">Loading</div>
-						<div id="matic-usdt">Loading</div>
-						<div id="etc-usdt">Loading</div>
-						<div id="xmr-usdt">Loading</div>
-						<div id="qrl-usdt">Loading</div>
-						<div id="doge-usdt">Loading</div>
-						<div id="rvn-usdt">Loading</div>
-						<div id="beam-usdt">Loading</div>
-						<div id="xch-usdt">Loading</div>
-						<div id="bch-usdt">Loading</div>-->
-
-					</div>
-				</div>
-			</div>
-			<script>
-				var api_link = 'https://ggbrcsnwqc.execute-api.ap-southeast-1.amazonaws.com/quote';
-
-				$.get(api_link, function (data) {
-					console.log(data);//test
-					data = JSON.parse(data);
-					return_text = '';
-					for (var id = 0; id < data.result.length; id++) {
-						return_text += data['result'][id]['coin'].toUpperCase() + ' 1 = ' + data['base'].toUpperCase() + ' ' + data['result'][id]['price'] + '<br />';
-					}
-
-					$("#cryptocurrency_exchange_rate").html(return_text);
-				}).fail(function () {
-					return_text = "Error: cannot get price information";
-					$("#cryptocurrency_exchange_rate").html(return_text);
-				});
-			</script>
-			<!-- javascript exchange-rate end -->
-
-			<div class="panel-group col-md-12">
 				<div class="panel panel-primary">
 					<div class="panel-heading">你知道嗎...</div>
 					<div class="panel-body">
@@ -118,6 +77,34 @@
 				});
 
 			</script>
+
+			<!-- javascript exchange-rate start -->
+			<div class="panel-group col-md-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading">CryptoCurrency Exchange Rate</div>
+					<div class="panel-body row" id="cryptocurrency_exchange_rate">
+
+					</div>
+				</div>
+			</div>
+			<script>
+				var api_link = 'https://ggbrcsnwqc.execute-api.ap-southeast-1.amazonaws.com/quote';
+
+				$.get(api_link, function (data) {
+					console.log(data);//test
+					data = JSON.parse(data);
+					return_text = '';
+					for (var id = 0; id < data.result.length; id++) {
+						return_text += '<div class="col-md-3">' + data['result'][id]['coin'].toUpperCase() + ' 1 = ' + data['base'].toUpperCase() + ' ' + data['result'][id]['price'] + '</div>';
+					}
+
+					$("#cryptocurrency_exchange_rate").html(return_text);
+				}).fail(function () {
+					return_text = "Error: cannot get price information";
+					$("#cryptocurrency_exchange_rate").html(return_text);
+				});
+			</script>
+			<!-- javascript exchange-rate end -->
 
 		</div><!-- end of .row -->
 
