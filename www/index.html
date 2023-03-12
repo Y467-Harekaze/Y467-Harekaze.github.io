@@ -83,7 +83,7 @@
 				<div class="panel panel-primary">
 					<div class="panel-heading">CryptoCurrency Exchange Rate</div>
 					<div class="panel-body row" id="cryptocurrency_exchange_rate">
-
+						<div class="col-md-12">Loading ...</div>
 					</div>
 				</div>
 			</div>
@@ -94,13 +94,22 @@
 					console.log(data);//test
 					data = JSON.parse(data);
 					return_text = '';
+					var price_change_percent_string = '';
 					for (var id = 0; id < data.result.length; id++) {
-						return_text += '<div class="col-md-3">' + data['result'][id]['coin'].toUpperCase() + ' 1 = ' + data['base'].toUpperCase() + ' ' + data['result'][id]['price'] + '</div>';
+						if (parseFloat(data['result'][id]['price_change_percent']) > 0) {
+							price_change_percent_string = ' <span style="background-color: #66ff33;">+' + data['result'][id]['price_change_percent'] + ' %</span>';
+						} else if (parseFloat(data['result'][id]['price_change_percent']) === 0) {
+							price_change_percent_string = ' <span></span>';
+						} else {
+							price_change_percent_string = ' <span style="background-color: #ff5050;">-' + data['result'][id]['price_change_percent'] + ' %</span>';
+						}
+
+						return_text += '<div class="col-md-3">' + data['result'][id]['coin'].toUpperCase() + ' 1 = ' + data['base'].toUpperCase() + ' ' + data['result'][id]['price'] + price_change_percent_string + '</div>';
 					}
 
 					$("#cryptocurrency_exchange_rate").html(return_text);
 				}).fail(function () {
-					return_text = "Error: cannot get price information";
+					return_text = '<div class="col-md-12">Error: cannot get price information</div>';
 					$("#cryptocurrency_exchange_rate").html(return_text);
 				});
 			</script>
