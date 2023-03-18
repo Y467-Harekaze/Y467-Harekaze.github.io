@@ -99,9 +99,9 @@
 						if (parseFloat(data['result'][id]['price_change_percent']) > 0) {
 							price_change_percent_string = ' <span style="background-color: #66ff33;">+' + data['result'][id]['price_change_percent'] + ' %</span>';
 						} else if (parseFloat(data['result'][id]['price_change_percent']) === 0) {
-							price_change_percent_string = ' <span></span>';
+							price_change_percent_string = ' <span style="background-color: #f2f2f2;">0 %</span>';
 						} else {
-							price_change_percent_string = ' <span style="background-color: #ff5050;">-' + data['result'][id]['price_change_percent'] + ' %</span>';
+							price_change_percent_string = ' <span style="background-color: #ff5050;">' + data['result'][id]['price_change_percent'] + ' %</span>';
 						}
 
 						return_text += '<div class="col-md-3">' + data['result'][id]['coin'].toUpperCase() + ' 1 = ' + data['base'].toUpperCase() + ' ' + data['result'][id]['price'] + price_change_percent_string + '</div>';
