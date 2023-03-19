@@ -10,8 +10,9 @@
 					<div class="col-md-6">
 						Bitcoin (XBT)
 						<div class="input-group">
-							<span class="input-group-addon" onclick="copyFunction('xbt_addr')"><i
-									class="glyphicon glyphicon-copy"></i></span>
+							<span class="input-group-addon" onclick="copyFunction('xbt_addr')">
+								<i class="glyphicon glyphicon-copy"></i>
+							</span>
 							<input id="xbt_addr" type="text" class="form-control" name="xbt_addr" value="" readonly />
 						</div>
 
@@ -19,8 +20,9 @@
 					<div class="col-md-6">
 						Ether (ETH), Polygon (MATIC) or any ERC 20 token
 						<div class="input-group">
-							<span class="input-group-addon" onclick="copyFunction('eth_addr')"><i
-									class="glyphicon glyphicon-copy"></i></span>
+							<span class="input-group-addon" onclick="copyFunction('eth_addr')">
+								<i class="glyphicon glyphicon-copy"></i>
+							</span>
 							<input id="eth_addr" type="text" class="form-control" name="eth_addr" value="" readonly />
 						</div>
 					</div>
@@ -29,8 +31,9 @@
 					<!--<div class="col-md-12">
 						Monero (XMR)
 						<div class="input-group">
-							<span class="input-group-addon" onclick="copyFunction('xmr_addr')"><i
-									class="glyphicon glyphicon-copy"></i></span>
+							<span class="input-group-addon" onclick="copyFunction('xmr_addr')">
+								<i class="glyphicon glyphicon-copy"></i>
+							</span>
 							<input id="xmr_addr" type="text" class="form-control" name="xmr_addr" value="" readonly />
 						</div>
 					</div>-->
@@ -42,7 +45,9 @@
 
 				<div class="row">
 					<div class="col-md-12 text-center">
-						<button class="connect_metamask_btn btn">連接 Metamask 以捐贈加密貨幣</button>
+						<button class="connect_metamask_btn btn">
+							連接 Metamask 以捐贈加密貨幣
+						</button>
 						<button class="send_token_button btn" style="display: none;">
 							使用 Metamask 捐贈 HKD 50 的 Ether
 						</button>
@@ -142,19 +147,19 @@
 	}
 
 	async function get_eth_price() {
-		var api_link = 'https://ggbrcsnwqc.execute-api.ap-southeast-1.amazonaws.com/quote';
 
 		$.ajax({
 			async: false,
 			type: 'get',
-			url: api_link,
+			url: 'https://ggbrcsnwqc.execute-api.ap-southeast-1.amazonaws.com/quote',
 			data: {
 				'base': 'USDT',
 				'target': 'ETH'
 			},
 			success: function (data) {
+				//console.log(data);//test
 				data = JSON.parse(data);
-				console.log(data);
+				//console.log(data);//test
 
 				eth_price = data['result'][0]['price'];
 				console.log('set eth_price to: ' + eth_price);//test
