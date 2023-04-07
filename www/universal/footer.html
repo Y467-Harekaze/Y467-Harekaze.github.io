@@ -162,7 +162,7 @@
 				//console.log(data);//test
 
 				eth_price = data['result'][0]['price'];
-				console.log('set eth_price to: ' + eth_price);//test
+				console.log('set eth_price to:', eth_price);//test
 			}
 		});
 	}
@@ -220,7 +220,12 @@
 			// This error code indicates that the chain has not been added to MetaMask.
 			if (switchError.code === 4902) {
 				try {
-					if (target_chain_id == 137) {
+					if (target_chain_id == 1) {
+						await ethereum.request({
+							method: 'wallet_addEthereumChain',
+							params: [{ chainId: ('0x' + (target_chain_id.toString(16))), chainName: 'Ethereum', nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 }, rpcUrls: ['https://endpoints.omniatech.io/v1/eth/sepolia/public'], blockExplorerUrls: ['https://etherscan.io/'] }],
+						});
+					} else if (target_chain_id == 137) {
 						await ethereum.request({
 							method: 'wallet_addEthereumChain',
 							params: [{ chainId: ('0x' + (target_chain_id.toString(16))), chainName: 'Polygon', nativeCurrency: { name: 'Polygon', symbol: 'MATIC', decimals: 18 }, rpcUrls: ['https://rpc-mainnet.maticvigil.com/'], blockExplorerUrls: ['https://polygonscan.com/'] }],
