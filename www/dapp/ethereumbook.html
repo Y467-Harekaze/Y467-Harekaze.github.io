@@ -83,7 +83,7 @@
                         </li>
 
                         <li>
-                            Please do not hurt the others, even you are enjoying the speech of freedom.
+                            Please do not hurt the others, even you are enjoying the freedom of speech.
                         </li>
                         <li>
                             EthereumBook offers you a pay-as-you-go approach for pricing for our Dapp. When you use it,
@@ -401,7 +401,7 @@
                     if (typeof addresses !== 'undefined') {
                         if (addresses.length > 0) {
                             var owner_list = await get_owner();
-                            console.log('owner_list:', owner_list);
+                            //console.log('owner_list:', owner_list);//test
                             if (owner_list.find(await check_owner)/*owner_list.indexOf(addresses[0]) != -1*/) {
                                 $('#upload_area_read_only').css('display', 'none');
                                 $('#upload_area').css('display', 'block');//enable #upload_area here
