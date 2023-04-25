@@ -391,7 +391,7 @@
                 await validate_network_id(11155111);
 
                 //get smart contract abi
-                abi = await call_ajax('get', 'ethereumbook_abi.json');
+                abi = await call_ajax('get', 'abi/ethereumbook_abi.json');
                 //console.log('abi:', abi); //test
                 contract = new web3.eth.Contract(abi, '0x4c54E3FdB93d74DA475270f46c8D6857c409375e');
 
