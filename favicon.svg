@@ -1,0 +1,12 @@
+<svg width="128" height="128" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="64" cy="64" r="60" stroke="#1e517e" stroke-width="3" fill="#9bc1e8" />
+    <polyline points="53,20 53,108 53,65 77,65 77,108"
+        style="fill: none; stroke: #66666b; stroke-width: 6;" />
+    <g fill="none">
+        <path style="fill: #66666b; stroke: #66666b; stroke-width: 6;"
+            d="M28 90 L102 90 L87 115 L43 115 Z" />
+    </g>
+    <polyline points="40,90 25,75" style="fill: none; stroke: #66666b; stroke-width: 4;" />
+    <polyline points="82,90 97,75" style="fill: none; stroke: #66666b; stroke-width: 4;" />
+    <polyline points="92,90 107,75" style="fill: none; stroke: #66666b; stroke-width: 4;" />
+</svg>

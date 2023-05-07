@@ -81,6 +81,14 @@
 		//alert("Copied the text: " + copyText.value);
 	}
 
+	//set favicon
+	if (!document.querySelector("link[rel~='icon']")) {
+		link = document.createElement('link');
+		link.rel = 'icon';
+		document.head.appendChild(link);
+	}
+	link.href = '/favicon.svg';
+	
 
 	//donate
 	//MetaMask
