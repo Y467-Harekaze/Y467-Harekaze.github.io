@@ -4,7 +4,7 @@
 <head>
 	<meta name="robots" content="noindex,nofollow" />
 
-	<script src="/www/universal/setting.js"></script>
+	<script src="universal/setting.js"></script>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -19,13 +19,13 @@
 
 	<title></title>
 
-	<link rel=stylesheet type="text/css" href="/www/css/main.css" />
+	<link rel=stylesheet type="text/css" href="css/main.css" />
 
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK&display=swap" rel="stylesheet" />
 
-	<link rel="manifest" href="/www/manifest.json" />
-	<script src="/www/service-worker_register.js"></script>
-	<script src="/www/service-worker.js"></script>
+	<link rel="manifest" href="manifest.json" />
+	<script src="service-worker_register.js"></script>
+	<script src="service-worker.js"></script>
 
 
 </head>
@@ -145,10 +145,10 @@
 	<script>
 		$('title').html(setting['title']);
 
-		$('#prepend_to_body').append($('<div>').load('/www/universal/header.html'));
-		$('#prepend_to_body').append($('<div>').load('/www/universal/nav.html'));
+		$('#prepend_to_body').append($('<div>').load('universal/header.html'));
+		$('#prepend_to_body').append($('<div>').load('universal/nav.html'));
 
-		$('#append_to_body').append($('<div>').load('/www/universal/footer.html'));
+		$('#append_to_body').append($('<div>').load('universal/footer.html'));
 
 //$('#navbar-brand').html(setting['service_code']);
 	</script>

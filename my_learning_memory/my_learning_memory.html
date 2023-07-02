@@ -4,7 +4,7 @@
 <head>
 	<meta name="robots" content="noindex,nofollow" />
 
-	<script src="/www/universal/setting.js"></script>
+	<script src="universal/setting.js"></script>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -19,13 +19,13 @@
 
 	<title></title>
 
-	<link rel=stylesheet type="text/css" href="/www/css/main.css" />
+	<link rel=stylesheet type="text/css" href="css/main.css" />
 
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK&display=swap" rel="stylesheet" />
 
-	<link rel="manifest" href="/www/manifest.json" />
-	<script src="/www/service-worker_register.js"></script>
-	<script src="/www/service-worker.js"></script>
+	<link rel="manifest" href="manifest.json" />
+	<script src="service-worker_register.js"></script>
+	<script src="service-worker.js"></script>
 
 
 </head>
@@ -57,7 +57,8 @@
 										<div class="panel panel-primary">
 											<div class="panel-heading">標題: 非對稱的加密 / 最後更新: 2019-12-30 00:25:00<br />TAG:
 												encrypt, encryption</div>
-											<div class="panel-body">對於加密（encryption）來說，主要可分為對稱加密（symmetric
+											<div class="panel-body">
+												對於加密（encryption）來說，主要可分為對稱加密（symmetric
 												encryption，例如AES）和非對稱加密（asymmetric
 												encryption，例如RSA）。對稱加密，即是用同1個密碼即可完成加解密這2個步驟。<br />
 												<br />
@@ -100,8 +101,7 @@
 												<br />
 												<b>題外話</b><br />
 												至於登入戶口這行為，屬於（好像）較不安全的對稱加密嗎？<br />不，登入戶口只是認證，跟加密無關。<br />
-												至於建立網上服務的密碼是否安全，跟服務提供者有沒有以hash
-												value貯存用戶密碼有關。
+												至於建立網上服務的密碼是否安全，跟服務提供者有沒有以hash value貯存用戶密碼有關。
 											</div>
 										</div>
 									</div>
@@ -225,8 +225,10 @@
 											<div class="panel-body">
 												不少的Linux教學都會經常用CLI來<code>cd</code>到某1目錄，但對新手而言根本不知道那個目錄有甚麼，所以我建議新手<code>cd</code>到另1目錄時，立即<code>ls -al</code>看看所在目錄有什麼。<br />
 												<br />
-												另外就是千萬不要下達1些其他平台的指令。以<code>ping</code>為例，在M$ Windows平台預設只會<code>ping</code>
-												4次，但在Linux平台預設是會1直<code>ping</code>到使用者結束他為止的，所以千萬別亂來。</div>
+												另外就是千萬不要下達1些其他平台的指令。以<code>ping</code>為例，在M$
+												Windows平台預設只會<code>ping</code>
+												4次，但在Linux平台預設是會1直<code>ping</code>到使用者結束他為止的，所以千萬別亂來。
+											</div>
 										</div>
 									</div>
 								</div>
@@ -244,8 +246,7 @@
 											<div class="panel-body">
 												對於網站來說，如果要把變量由1頁傳送到另1頁，通常會用get和post；但這方法真的只適合由1頁傳送到另1頁，如果不能肯定使用者會按照開發者預期的順序使用網站，無論用get還是post都不適合（面對至高無上的user…放棄吧）。<br />
 												<br />
-												為了把變量在同1
-												domain下共享，通常會用session和cookie。<br />
+												為了把變量在同1 domain下共享，通常會用session和cookie。<br />
 												<br />
 												對開發者來說，session不需要使用者同意都可以使用，但browser被關掉時就會失效；cookie則幾乎相反，它需要使用者同意才能讓網站使用，雖然browser被關掉時都不會失效，但可能會被使用者手動刪除，開發者亦必須設定失效時間。
 											</div>
@@ -254,7 +255,7 @@
 								</div>
 							</div>
 						</div>
-						<!--<div class="panel-group">
+						<div class="panel-group">
 							<div class="panel panel-primary">
 								<div class="panel-heading">日期: 2020-05-24</div>
 								<div class="panel-body">
@@ -264,7 +265,7 @@
 												世界人權宣言, 備份
 											</div>
 											<div class="panel-body">
-												眼見香港的言論自由愈來愈少，為免連人權都失去，特此備份聯合國的世界人權宣言，捍衞免於恐懼的自由。<br /><br />備份自：<br />https://www.un.org/zh/universal-declaration-human-rights/<br /><br />內容全文：<br />世界人權宣言<br />《世界人權宣言》是人權史上具有里程碑意義的文件。它由來自世界各個地區不同法律和文化背景的代表起草，於1948年12月10日在巴黎召開的大會會議上以第217A(III)號決議通過。
+												https://www.un.org/zh/universal-declaration-human-rights/<br /><br />內容全文：<br />世界人權宣言<br />《世界人權宣言》是人權史上具有里程碑意義的文件。它由來自世界各個地區不同法律和文化背景的代表起草，於1948年12月10日在巴黎召開的大會會議上以第217A(III)號決議通過。
 												《世界人權宣言》作為所有國家和所有人民的共同成就，第一次規定了基本人權應得到普遍保護。
 												《世界人權宣言》已被翻譯成近500種語言。<br /><br /><br />
 												<br /><br />序言<br />鑑於對人類家庭所有成員的固有尊嚴及其平等的和不移的權利的承認，乃是世界自由、正義與和平的基礎，<br /><br />鑑於對人權的無視和侮蔑已發展為野蠻暴行，這些暴行玷污了人類的良心，而一個人人享有言論和信仰自由並免予恐懼和匱乏的世界的來臨，已被宣佈為普通人民的最高願望，<br /><br />鑑於為使人類不致迫不得已鋌而走險對暴政和壓迫進行反叛，有必要使人權受法治的保護，<br /><br />鑑於有必要促進各國間友好關係的發展，<br /><br />鑑於各聯合國國家的人民已在聯合國憲章中重申他們對基本人權、人格尊嚴和價值以及男女平等權利的信念，並決心促成較大自由中的社會進步和生活水平的改善，<br /><br />鑑於各會員國業已誓願同聯合國合作以促進對人權和基本自由的普遍尊重和遵行，<br /><br />鑑於對這些權利和自由的普遍了解對於這個誓願的充分實現具有很大的重要性，<br /><br />因此現在，<br /><br />大會，<br /><br />發布這一世界人權宣言，作為所有人民和所有國家努力實現的共同標準，以期每一個人和社會機構經常銘念本宣言，努力通過教誨和教育促進對權利和自由的尊重，並通過國家的和國際的漸進措施，使這些權利和自由在各會員國本身人民及在其管轄下領土的人民中得到普遍和有效的承認和遵行；<br /><br />第一條<br />人人生而自由，在尊嚴和權利上一律平等。他們賦有理性和良心，並應以兄弟關係的精神相對待。<br /><br />第二條<br />人人有資格享有本宣言所載的一切權利和自由，不分種族、膚色、性別、語言、宗教、政治或其他見解、國籍或社會出身、財產、出生或其他身分等任何區別。並且不得因一人所屬的國家或領土的政治的、行政的或者國際的地位之不同而有所區別，無論該領土是獨立領土、託管領土、非自治領土或者處於其他任何主權受限制的情況之下。<br /><br />第三條<br />人人有權享有生命、自由和人身安全。<br /><br />第四條<br />任何人不得使為奴隸或奴役；一切形式的奴隸制度和奴隸買賣，均應予以禁止。<br /><br />第五條<br />任何人不得加以酷刑，或施以殘忍的、不人道的或侮辱性的待遇或刑罰。<br /><br />第六條<br />人人在任何地方有權被承認在法律前的人格。<br /><br />第七條<br />法律之前人人平等，並有權享受法律的平等保護，不受任何歧視。人人有權享受平等保護，以免受違反本宣言的任何歧視行為以及煽動這種歧視的任何行為之害。<br /><br />第八條<br />任何人當憲法或法律所賦予他的基本權利遭受侵害時，有權由合格的國家法庭對這種侵害行為作有效的補救。<br /><br />第九條<br />任何人不得加以任意逮捕、拘禁或放逐。<br /><br />第十條<br />人人完全平等地有權由一個獨立而無偏倚的法庭進行公正的和公開的審訊，以確定他的權利和義務並判定對他提出的任何刑事指控。<br /><br />第十一條<br />凡受刑事控告者，在未經獲得辯護上所需的一切保證的公開審判而依法證實有罪以前，有權被視為無罪。<br />任何人的任何行為或不行為，在其發生時依國家法或國際法均不構成刑事罪者，不得被判為犯有刑事罪。刑罰不得重於犯罪時適用的法律規定。<br /><br /><mark>第十二條<br />任何人的私生活、家庭、住宅和通信不得任意干涉，他的榮譽和名譽不得加以攻擊。人人有權享受法律保護，以免受這種干涉或攻擊。</mark><br /><br />第十三條<br />人人在各國境內有權自由遷徙和居住。<br />人人有權離開任何國家，包括其本國在內，並有權返回他的國家。<br /><br />第十四條<br />人人有權在其他國家尋求和享受庇護以避免迫害。<br />在真正由於非政治性的罪行或違背聯合國的宗旨和原則的行為而被起訴的情況下，不得援用此種權利。<br /><br />第十五條<br />人人有權享有國籍。<br />任何人的國籍不得任意剝奪，亦不得否認其改變國籍的權利。<br /><br />第十六條<br />成年男女，不受種族、國籍或宗教的任何限制有權婚嫁和成立家庭。他們在婚姻方面，在結婚期間和在解除婚約時，應有平等的權利。<br />只有經男女雙方的自由和完全的同意，才能締婚。<br />家庭是天然的和基本的社會單元，並應受社會和國家的保護。<br /><br />第十七條<br />
@@ -275,7 +276,7 @@
 									</div>
 								</div>
 							</div>
-						</div>-->
+						</div>
 						<div class="panel-group">
 							<div class="panel panel-primary">
 								<div class="panel-heading">日期: 2020-05-26</div>
@@ -368,12 +369,12 @@
 	<script>
 		$('title').html(setting['title']);
 
-		$('#prepend_to_body').append($('<div>').load('/www/universal/header.html'));
-		$('#prepend_to_body').append($('<div>').load('/www/universal/nav.html'));
+		$('#prepend_to_body').append($('<div>').load('universal/header.html'));
+		$('#prepend_to_body').append($('<div>').load('universal/nav.html'));
 
-		$('#append_to_body').append($('<div>').load('/www/universal/footer.html'));
+		$('#append_to_body').append($('<div>').load('universal/footer.html'));
 
-//$('#navbar-brand').html(setting['service_code']);
+		//$('#navbar-brand').html(setting['service_code']);
 	</script>
 
 </body>
