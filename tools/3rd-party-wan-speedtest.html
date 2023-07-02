@@ -2,30 +2,33 @@
 <html>
 
 <head>
-    <meta name="robots" content="noindex,nofollow" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <script src="universal/setting.js"></script>
+    <script src="/universal/setting.js"></script>
+
+    <title></title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.5.1.js"></script>-->
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
-    <meta charset='utf-8' />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
 
-    <title></title>
 
-    <link rel=stylesheet type="text/css" href="css/main.css" />
+    <link rel=stylesheet type="text/css" href="/css/main.css" />
 
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK&display=swap" rel="stylesheet" />
 
-    <link rel="manifest" href="manifest.json" />
-    <script src="service-worker_register.js"></script>
-    <script src="service-worker.js"></script>
+    <link rel="manifest" href="/manifest.json" />
+    <script src="/service-worker_register.js"></script>
+    <script src="/service-worker.js"></script>
 
 
 </head>
@@ -56,10 +59,10 @@
     <script>
         $('title').html(setting['title']);
 
-        $('#prepend_to_body').append($('<div>').load('universal/header.html'));
-        $('#prepend_to_body').append($('<div>').load('universal/nav.html'));
+        $('#prepend_to_body').append($('<div>').load('/universal/header.html'));
+        $('#prepend_to_body').append($('<div>').load('/universal/nav.html'));
 
-        $('#append_to_body').append($('<div>').load('universal/footer.html'));
+        $('#append_to_body').append($('<div>').load('/universal/footer.html'));
 
 //$('#navbar-brand').html(setting['service_code']);
     </script>
