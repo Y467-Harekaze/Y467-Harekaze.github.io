@@ -201,7 +201,8 @@
                 console.log('MetaMask extensions detected.');
                 try {
                     // Request account access if needed
-                    window.ethereum.enable();
+                    //window.ethereum.enable();
+                    window.eth_requestAccounts;
                     // Acccounts now exposed
 
                     return web3;
@@ -232,7 +233,7 @@
         }
         async function validate_network_id(network_id) {
             try {
-                if (window.ethereum.networkVersion != network_id) {
+                if (window.net_version != network_id) {
                     console.log('requesting to change network_id to ' + network_id);
                     await window.ethereum.request({
                         method: 'wallet_switchEthereumChain',
@@ -251,7 +252,7 @@
                                 //https://chainlist.org/
                                 //https://rpc.info/
                                 chainName: 'Sepolia Testnet',
-                                chainId: web3.utils.toHex(11155111),
+                                chainId: web3.utils.toHex(network_id),
                                 nativeCurrency: { name: 'sepETH', decimals: 18, symbol: 'sETH' },
                                 rpcUrls: ['https://endpoints.omniatech.io/v1/eth/sepolia/public', 'https://rpc.sepolia.org']
                             }
@@ -371,10 +372,10 @@
         }
 
         function metamask_connection_check(chain_id) {
-            if (window.ethereum.networkVersion !== '11155111') {
+            if (window.net_version !== chain_id) {
                 validate_network_id(chain_id);
             } else {
-                console.log('chain_id:', window.ethereum.networkVersion);
+                console.log('chain_id:', window.net_version);
             }
         }
 
@@ -478,7 +479,7 @@
         if (typeof ethereum !== 'undefined') {
             //check MetaMask Chain id
             ethereum.on('chainChanged', (chainId) => {
-                console.log('MetaNask chainId:', parseInt(chainId, 16));
+                console.log('MetaMask chainId:', parseInt(chainId, 16));
 
                 metamask_connection_check(11155111);
             });
