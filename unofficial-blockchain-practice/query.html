@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta name="robots" content="noindex,nofollow">
+
+    <script src="/universal/setting.js"></script>
+    <!-- <script src="jquery/jquery-3.5.1.min.js"></script> -->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title></title>
+
+    <link rel=stylesheet type="text/css" href="/css/main.css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK&display=swap" rel="stylesheet" />
+
+    <link rel="manifest" href="/manifest.json" />
+    <script src="/service-worker_register.js"></script>
+    <script src="/service-worker.js"></script>
+
+
+    <style>
+        .center {
+            text-align: center;
+        }
+
+        .btn {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="prepend_to_body"></div>
+
+        <div class="row">
+
+            <div class="col-md-12">
+                <h1 class="center">非官方練習賽 得獎資格查詢</h1>
+            </div>
+
+            <div class="panel-group col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">查詢得獎資格</div>
+                    <div class="panel-body">
+
+                        <input type="text" class="form-control" id="whatsapp_phone_input_box"
+                            placeholder="Whatsapp電話號碼" />
+                        <button class="btn btn-primary btn-lg"
+                            onclick="query('whatsapp_phone_input_box', 'whatsapp_phone_output');">查詢</button>
+                        <span class="result col-lg" id="whatsapp_phone_output"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-group col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">查詢已提交的Tron地址</div>
+                    <div class="panel-body">
+
+                        <input type="text" id="submitted_tron_address_input_box" class="form-control" size="34"
+                            placeholder="Tron地址" />
+                        <button class="btn btn-primary btn-lg"
+                            onclick="query('submitted_tron_address_input_box', 'submitted_tron_address_output');">查詢</button>
+                        <span class="result col-lg" id="submitted_tron_address_output"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- javascript exchange-rate start -->
+            <div class="panel-group col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Cryptocurrency Exchange Rate</div>
+                    <div class="panel-body row" id="cryptocurrency_exchange_rate">
+                        <div class="col-md-12">Loading ...</div>
+                    </div>
+                </div>
+            </div>
+            <!-- javascript exchange-rate end -->
+
+        </div><!-- end of .row -->
+
+        <div id="append_to_body"></div>
+
+    </div><!-- close .container -->
+
+    <script>
+        function query(query_element_id, output_element_id) {
+
+            return_text = [];
+            if (query_element_id == 'whatsapp_phone_input_box') {
+
+                if ($('#' + query_element_id).val().length < 8) {
+                    $("#" + output_element_id).text('請輸入Whatsapp電話號碼');
+                    return;
+                }
+
+                query_type = 'whatsapp_phone';
+                value = $('#' + query_element_id).val();
+
+                return_text['true'] = '符合得獎資格';
+                return_text['false'] = '未符合得獎資格';
+
+                $('#' + output_element_id).text('Loading ...');
+            } else if (query_element_id == 'submitted_tron_address_input_box') {
+
+                if ($('#' + query_element_id).val().length != 34 || $('#' + query_element_id).val().charAt(0) != 'T') {
+                    $("#" + output_element_id).text('請輸入Tron地址');
+                    return;
+                }
+
+                query_type = 'submitted_tron_address';
+                value = $('#' + query_element_id).val();
+
+                return_text['true'] = '已成功登記';
+                return_text['false'] = '未成功登記';
+
+                $('#' + output_element_id).text('Loading ...');
+            }
+
+            $.ajax({
+                type: 'get',
+                url: 'https://ggbrcsnwqc.execute-api.ap-southeast-1.amazonaws.com/quote',
+                data: {
+                    action: 'unofficial-blockchain-practice',
+                    query_type: query_type,
+                    value: value
+                },
+                success: function (data) {
+                    //console.log(data);//test
+                    //data = JSON.parse(data);
+                    //console.log(data);//test
+
+                    if (data == 'true' || data == 'false') {
+                        $("#" + output_element_id).text(return_text[data]);
+                    } else {
+                        $("#" + output_element_id).text('Error');
+                    }
+                }, error: function (err) {
+                    console.log('Error:', err);
+                    $("#" + output_element_id).text('Error');
+                }
+            });
+        }
+        function get_quote() {
+            $.ajax({
+                async: false,
+                type: 'get',
+                url: 'https://ggbrcsnwqc.execute-api.ap-southeast-1.amazonaws.com/quote',
+                data: {
+                    'base': 'USDT',
+                    'target': []
+                },
+                success: function (data) {
+                    //console.log(data);//test
+                    data = JSON.parse(data);
+                    //console.log(data);//test
+                    return_text = '';
+                    var price_change_percent_string = '';
+                    for (var id = 0; id < data.result.length; id++) {
+                        if (parseFloat(data['result'][id]['price_change_percent']) > 0) {
+                            price_change_percent_string = ' <span style="background-color: #66ff33;">+' + data['result'][id]['price_change_percent'] + ' %</span>';
+                        } else if (parseFloat(data['result'][id]['price_change_percent']) === 0) {
+                            price_change_percent_string = ' <span style="background-color: #f2f2f2;">0 %</span>';
+                        } else {
+                            price_change_percent_string = ' <span style="background-color: #ff5050;">' + data['result'][id]['price_change_percent'] + ' %</span>';
+                        }
+
+                        return_text += '<div class="col-md-3">' + data['result'][id]['coin'].toUpperCase() + ' 1 = ' + data['base'].toUpperCase() + ' ' + parseFloat(data['result'][id]['price']).toFixed(3) + price_change_percent_string + '</div>';
+                    }
+
+                    $("#cryptocurrency_exchange_rate").html(return_text);
+                }, error: function (err) {
+                    console.log('Error:', err);
+                    $("#cryptocurrency_exchange_rate").html('<div class="col-md-12">Error: cannot get price information</div>');
+                }
+            });
+        }
+        $('title').html(setting['title']);
+
+        $('#prepend_to_body').append($('<div>').load('/universal/header.html'));
+        $('#prepend_to_body').append($('<div>').load('/universal/nav.html'));
+
+        $('#append_to_body').append($('<div>').load('/universal/footer.html'));
+
+        //$('#navbar-brand').html(setting['service_code']);
+
+        get_quote();
+    </script>
+
+</body>
+
+</html>
