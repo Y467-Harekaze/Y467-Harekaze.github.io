@@ -144,7 +144,7 @@
 
                     if (data == 'true' || data == 'false') {
                         $("#" + output_element_id).text(return_text[data]);
-                    } else if (Number(data) === data) {
+                    } else if (Number(data) == data) {
                         if (query_element_id == 'whatsapp_phone_input_box') {
                             $("#" + output_element_id).text(return_text['true'] + ', 得獎數量：' + data);
                         } else {
