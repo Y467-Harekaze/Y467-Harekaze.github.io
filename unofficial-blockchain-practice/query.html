@@ -146,7 +146,11 @@
                         $("#" + output_element_id).text(return_text[data]);
                     } else if (Number(data) == data) {
                         if (query_element_id == 'whatsapp_phone_input_box') {
-                            $("#" + output_element_id).text(return_text['true'] + ', 得獎數量：' + data);
+                            if (Number(data) >= 0) {
+                                $("#" + output_element_id).text(return_text['true'] + ', 得獎數量：' + data);
+                            } else {
+                                $("#" + output_element_id).text(return_text['true'] + ', 後補名單');
+                            }
                         } else {
                             $("#" + output_element_id).text('Error');
                         }
