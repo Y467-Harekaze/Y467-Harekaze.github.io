@@ -26,6 +26,12 @@
 	<script src="/service-worker_register.js"></script>
 	<script src="/service-worker.js"></script>
 
+	<style>
+		.hidden_text {
+			visibility: hidden;
+		}
+	</style>
+
 	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2508788034463703"
 		crossorigin="anonymous"></script>
 </head>
@@ -51,8 +57,8 @@
 					<div class="panel-heading">你知道嗎...</div>
 					<div class="panel-body">
 
-						<span id="question"></span>
-						<span id="answer"></span>
+						<div id="question"></div>
+						<div id="answer"></div>
 
 					</div>
 				</div>
@@ -60,17 +66,25 @@
 			<script>
 				$(document).ready(function () {
 					var knowage_pair = [
-						["Bitcoin的簡稱是什麼？", "XBT或者BTC"],
-						["單位最細的美金是美分，單位最細的bitcoin應如何稱呼？", "聰，sat或者satoshi"],
-						["對bitcoin而言，面額可以有小數點後多少位？", "8位"],
-						["對Ethereum網絡的Ether（ETH）而言，面額最細的ETH單位是？", "wei"],
+						["bitcoin（比特幣）的簡稱是什麼？", "XBT或者BTC"],
+						["單位最細的美金是美分，單位最細的 bitcoin 應如何稱呼？", "聰，sat 或者 satoshi"],
+						["對 bitcoin 而言，面額可以有小數點後多少位？", "8位"],
+						["對 Ethereum 網絡的 Ether（ETH）而言，面額最細的單位是？", "wei"],
 						["對加密貨幣（Cryptocurrency）而言，其價值的波幅必定大嗎？", "不是，因為加密貨幣有穩定幣，其波幅是0。"],
-						["對Ethereum的智能合約（Smart Contract）而言，必定是開源嗎？", "不一定，開發者可以自由選擇。"]
+						["對 Ethereum 的智能合約（Smart Contract）而言，必定是開源嗎？", "不一定，開發者可以自由選擇。"],
+
+						["ERC-20代幣轉帳，金額會影響Gas fee嗎？", "不會"],
+						["EIP-4844，是一個降低 Layer 2 Gas fee 的 Ethereum 改良計畫，Polygon 有沒有受惠？", "沒有"],
+						["中文「接受比特幣支付」，英文是？", "bitcoin accepted here."],
+						["中文「比特幣網絡」的英文是？", "Bitcoin"],
+						["以下這串助記詞是否有效？<br />abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about<br />", "有效"],
+						["ERC20、ERC 20和ERC-20，以上何者為正確寫法？", "ERC-20 <a href='https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1.md#eip-numbers'>官方說法</a>"]
 					];
 					var selected_knowage = Math.floor(Math.random() * knowage_pair.length);
-					$('#question').html(knowage_pair[selected_knowage][0]);
+					$('#question').html(knowage_pair[selected_knowage][0] + '<div class="hidden_text">答案：' + knowage_pair[selected_knowage][1] + '</div>');
 
 					$("#answer").fadeOut(3000).queue(function (n) {
+						$('.hidden_text').css('display', 'none');
 						$(this).html('答案：' + knowage_pair[selected_knowage][1]);
 						n();
 					}).fadeIn(500);
