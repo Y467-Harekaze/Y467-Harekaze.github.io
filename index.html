@@ -112,7 +112,7 @@
 								price_change_percent_string = ' <span style="background-color: #ff5050;">' + data['result'][id]['price_change_percent'] + ' %</span>';
 							}
 
-							return_text += '<div class="col-md-3">' + data['result'][id]['coin'].toUpperCase() + ' 1 = ' + data['base'].toUpperCase() + ' ' + parseFloat(data['result'][id]['price']).toFixed(3) + price_change_percent_string + '</div>';
+							return_text += '<div class="col-lg-3 col-md-4 col-sm-4">' + data['result'][id]['coin'].toUpperCase() + ' 1 = ' + data['base'].toUpperCase() + ' ' + parseFloat(data['result'][id]['price']).toFixed(3) + price_change_percent_string + '</div>';
 						}
 
 						$("#cryptocurrency_exchange_rate").html(return_text);
