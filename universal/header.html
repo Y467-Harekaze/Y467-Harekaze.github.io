@@ -20,7 +20,8 @@
                 '我對認證技術沒有特別要求，能讓使用者隨意改變就足夠了。'
 
             ];
-            var i = Math.round(Math.floor(new Date().getTime() / 1000) / (30 * 60) % (slogan.length - 1));//round((1597846155 / 1800) % 14, 0)
+            let seconds_interval = 60;
+            var i = Math.round(Math.floor(new Date().getTime() / 1000) / (seconds_interval) % (slogan.length - 1));
             var selected_slogan = slogan[i];// set variable equal to which random filename was chosen
 
             $('#slogan').html(selected_slogan);
