@@ -81,24 +81,13 @@
 		//alert("Copied the text: " + copyText.value);
 	}
 
-	//set favicon
-	/*if (!document.querySelector("link[rel~='icon']")) {
-		link = document.createElement('link');
-		link.rel = 'icon';
-		document.head.appendChild(link);
-	}
-	link.href = '/favicon.svg';*/
-
-
 	//donate
 	//MetaMask
+	/*
 	if (typeof window.ethereum !== 'undefined') {
 
 		eth_price = 0;
 		get_eth_price();
-		/*if (window.ethereum.networkVersion !== '1') {
-			switch_chain(1);
-		}*/
 		setInterval(function () { get_eth_price(); }, 30000);
 
 		metamask_connection_check();
@@ -122,17 +111,13 @@
 		//eth_price = 0;
 		getAccount().then(
 			function () {
-				//console.log(eth_price);
-				/*if (window.ethereum.networkVersion !== '1') {
-					switch_chain(1);
-				}*/
-				if (eth_price > 0) {
-					value = (50 / 7.8 / eth_price);
-					console.log('value:', value);//test
-					send_eth(value);
-				} else {
-					console.log('eth_price:', eth_price);//test
-				}
+	if (eth_price > 0) {
+		value = (50 / 7.8 / eth_price);
+		console.log('value:', value);//test
+		send_eth(value);
+	} else {
+		console.log('eth_price:', eth_price);//test
+	}
 			}
 		);
 	});
@@ -143,6 +128,7 @@
 
 		metamask_connection_check();
 	});
+	*/
 
 	function metamask_connection_check() {
 		if (window.ethereum.networkVersion !== '1') {
