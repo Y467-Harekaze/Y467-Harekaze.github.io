@@ -1,0 +1,281 @@
+<!doctype html>
+<html>
+
+<head>
+    <script src="/universal/setting.js"></script>
+    <!-- <script src="jquery/jquery-3.5.1.min.js"></script> -->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Harekaze</title>
+
+    <link rel=stylesheet type="text/css" href="/css/main.css" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK&display=swap" rel="stylesheet" />
+
+    <link rel="manifest" href="/manifest.json" />
+    <script src="/service-worker_register.js"></script>
+    <script src="/service-worker.js"></script>
+
+    <style>
+        button {
+            margin: 2px;
+        }
+    </style>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2508788034463703"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div id="prepend_to_body"></div>
+
+        <div class="row">
+
+            <div class="panel-group col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">消委會砌機模擬器</div>
+                    <div class="panel-body">
+                        <div class="start_game page">
+                            自從有不肖商家強行以律師信提高自己的評級，消委會的公正性已蕩然無存。<br />
+                            <br />
+                            2025年3月17日，各媒體開始報道消委會的新戰績。<br />
+                            據報道，消委會以包含共7個伏位的3條自創砌機清單，向10間砌機公司「挑戰」。<br />
+                            <br />
+                            你將會化身砌機公司職員，為公司擋災。<br /><br />
+                            <button class="btn btn-primary" onclick="start_game();">開始</button>
+                        </div>
+
+                        <div class="in_game page" style="display: none;">
+                            <div id="mission_msg" style="display: none;">
+
+                            </div>
+                            <div id="mission" style="display: none;">
+                                <span id="question"></span>（你的分數：<span class="score">0</span>/<span
+                                    class="total_question"></span>）
+                                <div id="hardware_list"></div>
+                                <br />
+                                <div id="answer"></div>
+                                <div id="explain"></div>
+                            </div>
+                        </div>
+
+                        <div class="end_game page" style="display: none;">
+                            模擬結束<br />
+                            你的分數：<span class="score">0</span>/<span class="total_question"></span><br /><br />
+                            <button class="btn btn-primary" onclick="reset_game();">重新開始</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                /*
+                中央處理器類型與主機板的晶片組不符
+                電腦機箱過細
+                記憶體規格與主機板的插槽不符
+                電源供應器的瓦數不足且規格與機箱不符
+                中央處理器無內置顯示且配置亦無獨立顯示卡
+                主機板不支援2個或以上的M.2固態硬碟
+                中央處理器欠散熱風扇
+                */
+                let questions = [
+                    {
+                        "question": "以下零件能相容嗎？",
+                        "hardware_list": ["i7 8700K", "B350"],
+                        "answer": [{ "display_name": "相容", "required": false }, { "display_name": "不相容", "required": true }],
+                        "explain": "中央處理器類型與主機板的晶片組不符"
+                    },
+                    {
+                        "question": "以下零件能相容嗎？",
+                        "hardware_list": ["i7 8700K", "B860"],
+                        "answer": [{ "display_name": "相容", "required": false }, { "display_name": "不相容", "required": true }],
+                        "explain": "中央處理器類型與主機板的晶片組不符"
+                    },
+                    {
+                        "question": "以下零件能相容嗎？",
+                        "hardware_list": ["i9 14900K", "Z790"],
+                        "answer": [{ "display_name": "相容", "required": true }, { "display_name": "不相容", "required": false }],
+                        "explain": ""
+                    },
+                    {
+                        "question": "以下零件能相容嗎？",
+                        "hardware_list": ["DDR4", "B860"],
+                        "answer": [{ "display_name": "相容", "required": false }, { "display_name": "不相容", "required": true }],
+                        "explain": "記憶體規格與主機板的插槽不符"
+                    },
+                    {
+                        "question": "以下零件能相容嗎？",
+                        "hardware_list": ["DDR4", "Z790"],
+                        "answer": [{ "display_name": "可能相容", "required": true }, { "display_name": "不可能相容", "required": false }],
+                        "explain": ""
+                    },
+                    {
+                        "question": "以下零件能相容嗎？",
+                        "hardware_list": ["Z790 Riptide Wifi", "Sugo 16"],
+                        "answer": [{ "display_name": "相容", "required": false }, { "display_name": "不相容", "required": true }],
+                        "explain": "電腦機箱過細"
+                    },
+                    {
+                        "question": "以下零件能相容嗎？",
+                        "hardware_list": ["RTX 5070 Gaming Pro", "Type-Z 350W", "Terra 機箱"],
+                        "answer": [{ "display_name": "相容", "required": false }, { "display_name": "不相容", "required": true }],
+                        "explain": "電源供應器的瓦數不足且規格與機箱不符"
+                    },
+                    {
+                        "question": "以下零件能相容嗎？",
+                        "hardware_list": ["Ryzen 9 5900X", "X570 Pro", "DDR4 16GB 3600", "980 Pro 1TB", "U12S", "PC-O11 Dynamic Air Mini Mesh", "CX750"],
+                        "answer": [{ "display_name": "相容", "required": false }, { "display_name": "不相容", "required": true }],
+                        "explain": "中央處理器無內置顯示且配置亦無獨立顯示卡"
+                    },
+                    {
+                        "question": "以下零件能相容嗎？",
+                        "hardware_list": ["H110I-Plus", "SN550 1TB", "SN580 1TB"],
+                        "answer": [{ "display_name": "相容", "required": false }, { "display_name": "不相容", "required": true }],
+                        "explain": "主機板不支援2個或以上的M.2固態硬碟"
+                    },
+                    {
+                        "question": "以下零件能相容嗎？",
+                        "hardware_list": ["Ryzen 9 5900X", "X570 Pro", "DDR4 16GB 3600", "980 Pro 1TB", "RTX 4080 Super 16G OC", "PC-O11 Dynamic Air Mini Mesh", "CX750"],
+                        "answer": [{ "display_name": "相容", "required": false }, { "display_name": "不相容", "required": true }],
+                        "explain": "中央處理器欠散熱風扇"
+                    },
+                    {
+                        "question": "以下零件能相容嗎？",
+                        "hardware_list": ["Ryzen 9 5900X", "NH-P1", "X570 Pro", "DDR4 16GB 3600", "980 Pro 1TB", "RTX 4080 Super 16G OC", "PC-O11 Dynamic Air Mini Mesh", "CX750"],
+                        "answer": [{ "display_name": "相容", "required": true }, { "display_name": "不相容", "required": false }],
+                        "explain": ""
+                    }
+                ];
+                shuffle(questions);
+
+                let score = 0;
+                $('.score').text(score);
+                $('.total_question').text(questions.length);
+                let round_id = 0;
+
+
+                function start_game() {
+
+                    $('.start_game').css('display', 'none');
+                    $('.in_game').css('display', 'block');
+                    load_new_round(0);
+                }
+
+                function pre_load_new_round(round_id = 0) {
+
+                    $('#explain').text('');
+                    /*$('#mission').css('display', 'none');
+                    $('#mission_msg').text('第' + (round_id + 1) + '題');
+                    $('#mission_msg').css('display', 'block');
+
+                    setTimeout(function () { $('#mission_msg').css('display', 'none'); $('#mission').css('display', 'block'); }, 1000);*/
+                    //or
+                    $('#mission').css('display', 'block');
+                }
+                function load_new_round(round_id = 0) {
+
+                    if (round_id >= questions.length) {
+                        game_end();
+                        return;
+                    }
+
+                    pre_load_new_round(round_id);
+
+                    let question = questions[round_id]['question'];
+                    let hardwares = questions[round_id]['hardware_list'];
+                    let answers = questions[round_id]['answer'];
+
+                    $('#question').text((round_id + 1) + '. ' + question);
+
+                    $('#hardware_list').html('');
+                    for (var i = 0; i < hardwares.length; i++) {
+                        $('#hardware_list').html($('#hardware_list').html() + '<br />' + hardwares[i]);
+                    }
+
+                    $('#answer').html('');
+                    let additional_class = '';
+                    for (var i = 0; i < answers.length; i++) {
+                        if (answers[i]['required'] === true) {
+                            additional_class = 'correct';
+                        } else {
+                            additional_class = 'incorrect';
+                        }
+
+                        $('#answer').html($('#answer').html() + ' ' + '<button class="btn btn-primary ' + additional_class + '" onclick="check_answer(' + round_id + ', ' + i + '); ">' + answers[i]['display_name'] + '</button>');
+                    }
+                }
+
+                function check_answer(round_id, answer_id) {
+                    $('.correct, .incorrect').attr('disabled', true);
+                    $('#explain').html('<button class="btn btn-primary" onclick="load_new_round(' + (round_id + 1) + ');">下一題</button> ' + questions[round_id]['explain']);
+
+                    if (questions[round_id]['answer'][answer_id]['required'] === true) {
+                        score += 1;
+                        $('.correct').removeClass('btn-primary');
+                        $('.correct').addClass('btn-success');
+                    } else {
+                        $('.incorrect').removeClass('btn-primary');
+                        $('.incorrect').addClass('btn-danger');
+                    }
+
+                    $('.score').text(score);
+                }
+
+
+                function game_end() {
+                    $('.in_game').css('display', 'none');
+                    $('.end_game').css('display', 'block');
+                }
+
+                function reset_game() {
+                    score = 0;
+                    $('.score').text(score);
+
+                    $('.start_game').css('display', 'block');
+                    $('.in_game, .end_game').css('display', 'none');
+                }
+
+                function shuffle(array) {
+                    let currentIndex = array.length;
+
+                    while (currentIndex != 0) {
+
+                        let randomIndex = Math.floor(Math.random() * currentIndex);
+                        currentIndex--;
+
+                        [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+                    }
+                }
+            </script>
+
+        </div><!-- end of .row -->
+
+        <div id="append_to_body"></div>
+
+    </div><!-- close .container -->
+
+    <script>
+        //$('title').html(setting['title']);
+
+        $('#prepend_to_body').append($('<div>').load('/universal/header.html'));
+        $('#prepend_to_body').append($('<div>').load('/universal/nav.html'));
+
+        $('#append_to_body').append($('<div>').load('/universal/footer.html'));
+
+        //$('#navbar-brand').html(setting['service_code']);
+    </script>
+
+</body>
+
+</html>
