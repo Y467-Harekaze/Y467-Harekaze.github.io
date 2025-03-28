@@ -7,7 +7,7 @@
 
 	<script src="/universal/setting.js"></script>
 
-	<title>Random Mark Six | Harekaze</title>
+	<title>六合彩隨機號碼 | Harekaze</title>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -43,34 +43,43 @@
 			<div class="panel panel-primary">
 				<div class="panel-heading">Random Mark Six</div>
 				<div class="panel-body">
-					第 一 個選出的號碼是 <span id="1"></span><br>
-					第 二 個選出的號碼是 <span id="2"></span><br>
-					第 三 個選出的號碼是 <span id="3"></span><br>
-					第 四 個選出的號碼是 <span id="4"></span><br>
-					第 五 個選出的號碼是 <span id="5"></span><br>
-					第 六 個選出的號碼是 <span id="6"></span><br>
+					第 一 個選出的號碼是 <span id="1"></span><br />
+					第 二 個選出的號碼是 <span id="2"></span><br />
+					第 三 個選出的號碼是 <span id="3"></span><br />
+					第 四 個選出的號碼是 <span id="4"></span><br />
+					第 五 個選出的號碼是 <span id="5"></span><br />
+					第 六 個選出的號碼是 <span id="6"></span><br />
 					而 最後 的特別號碼是 <span id="7"></span>
 
+					<button onclick="run();">重新選擇</button>
+
 					<script>
-						var number = [];
-						for (var num = 1; num <= 49; num++) {
-							number[num] = num;
-						}
+						function run() {
+							let number = [];
+							for (var num = 1; num <= 49; num++) {
+								number[num] = num;
+							}
 
-						var randomA;
-						var randomB;
-						var temp;
-						for (var count = 1; count <= 200000; count++) {
-							randomA = Math.floor(Math.random() * 49) + 1;
-							randomB = Math.floor(Math.random() * 49) + 1;
-							temp = number[randomA];
-							number[randomA] = number[randomB];
-							number[randomB] = temp;
-						}
+							let randomA;
+							let randomB;
+							let temp;
+							for (let count = 1; count <= 200000; count++) {
+								randomA = Math.floor(Math.random() * 49) + 1;
+								randomB = Math.floor(Math.random() * 49) + 1;
 
-						for (var num = 1; num <= 7; num++) {
-							$('#' + num).html(number[num]);
+								//swap
+								/*temp = number[randomA];
+								number[randomA] = number[randomB];
+								number[randomB] = temp;*/
+								//or
+								[number[randomB], number[randomA]] = [number[randomA], number[randomB]];
+							}
+
+							for (let num = 1; num <= 7; num++) {
+								$('#' + num).html(number[num]);
+							}
 						}
+						run();
 					</script>
 				</div>
 			</div>
