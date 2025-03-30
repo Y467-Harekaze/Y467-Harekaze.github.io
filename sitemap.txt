@@ -1,5 +1,6 @@
 https://harekaze.link/index.html
 https://harekaze.link/about_us.html
+https://harekaze.link/tools/hkcas.html
 https://harekaze.link/tools/3rd-party-wan-speedtest.html
 https://harekaze.link/tools/aes-crypto.html
 https://harekaze.link/tools/bmi-calculator.html
