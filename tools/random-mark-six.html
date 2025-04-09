@@ -43,8 +43,9 @@
 
 		<div class="panel-group">
 			<div class="panel panel-primary">
-				<div class="panel-heading">Random Mark Six</div>
+				<div class="panel-heading">六合彩隨機號碼</div>
 				<div class="panel-body">
+					<button class="btn btn-primary" onclick="run();">重新選擇</button><br />
 					第 一 個選出的號碼是 <span id="1"></span><br />
 					第 二 個選出的號碼是 <span id="2"></span><br />
 					第 三 個選出的號碼是 <span id="3"></span><br />
@@ -52,8 +53,6 @@
 					第 五 個選出的號碼是 <span id="5"></span><br />
 					第 六 個選出的號碼是 <span id="6"></span><br />
 					而 最後 的特別號碼是 <span id="7"></span>
-
-					<button onclick="run();">重新選擇</button>
 
 					<script>
 						function run() {
@@ -70,10 +69,6 @@
 								randomB = Math.floor(Math.random() * 49) + 1;
 
 								//swap
-								/*temp = number[randomA];
-								number[randomA] = number[randomB];
-								number[randomB] = temp;*/
-								//or
 								[number[randomB], number[randomA]] = [number[randomA], number[randomB]];
 							}
 
