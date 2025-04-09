@@ -58,28 +58,39 @@
 							value="Calculate" />
 					</div>
 					<div id="message"></div>
-
-
 				</div>
 			</div>
 		</div>
 		<script>
+			function round(number, decimal_places) {
+				const factor = 10 ** decimal_places;
+				return Math.round(number * factor) / factor;
+			}
 			$("#submit").click(function () {
-				var weight = $("#weight").val();
-				var height = $("#height").val();
+				let weight = $("#weight").val();
+				let height = $("#height").val();
 
-				var bmi_index = weight / height / height;
+				let bmi_index = round(weight / height / height, 1);
 
-				var extra_result;
-				if (bmi_index > 0 && bmi_index < 18.5) {
-					extra_result = 'You are too slim.';
-				} else if (bmi_index >= 18.5 && bmi_index <= 22.9) {
-					extra_result = 'You are healthy.';
-				} else if (bmi_index > 22.9) {
-					extra_result = 'You are too fat.';
+				let extra_result = '';
+				let is_error = false;
+				if (bmi_index <= 0 || weight < 0 || height < 0) {
+					is_error = true;
+				} else if (bmi_index < 18.5) {
+					extra_result = '過輕';
+				} else if (bmi_index >= 18.5 && bmi_index < 24) {
+					extra_result = '正常體重';
+				} else if (bmi_index >= 24 && bmi_index < 27) {
+					extra_result = '過重';
+				} else if (bmi_index >= 27) {
+					extra_result = '肥胖';
 				}
 
-				$("#message").html("你的BMI指數是 " + bmi_index + "<br />" + extra_result + "");
+				if (!is_error) {
+					$("#message").html("你的BMI指數是 " + bmi_index + "<br />屬於" + extra_result);
+				} else {
+					$("#message").html("請輸入有效數值");
+				}
 			});
 		</script>
 
