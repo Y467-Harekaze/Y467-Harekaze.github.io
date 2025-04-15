@@ -3,3 +3,11 @@
 	font-family: 'Noto Sans HK', sans-serif;
 	/*margin-bottom: 120px;*/
 }
+
+.back_btn{
+	margin: 5px;
+}
+
+.link{
+	font-size: large;
+}
