@@ -1,5 +1,5 @@
 <noscript>
-    You must enable Javascript to use this site.
+    You must enable Javascript to visit this site.
 </noscript>
 
 <header>
@@ -12,17 +12,17 @@
         </div>
         <script>
             var slogan = [
-                '換電腦的理由：<br>初期規劃不善，中期管理不善，晚期補救不善，最終換機。',
+                '換電腦的理由：<br />初期規劃不善，中期管理不善，晚期補救不善，最終換機。',
                 '更新未開始，備份要行先。',
                 'RAID絕對不能取代備份。',
-                '備份 備份 備份<br>很重要，所以要說三次。',
+                '備份 備份 備份<br />很重要，所以要說三次。',
                 '存放再多的相片，安裝再多的程式，都不會令電腦大爆炸。',
                 '我對認證技術沒有特別要求，能讓使用者隨意改變就足夠了。'
 
             ];
             let seconds_interval = 60;
             var i = Math.round(Math.floor(new Date().getTime() / 1000) / (seconds_interval) % (slogan.length - 1));
-            var selected_slogan = slogan[i];// set variable equal to which random filename was chosen
+            var selected_slogan = slogan[i];
 
             $('#slogan').html(selected_slogan);
         </script>
