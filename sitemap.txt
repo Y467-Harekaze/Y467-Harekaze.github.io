@@ -9,6 +9,8 @@ https://harekaze.link/tools/random-mark-six.html
 https://harekaze.link/my_learning_memory/learn_ethereum_from_zero.html
 http://harekaze.local/my_learning_memory/articles/blockchain/way_to_start_using_blockchain.html
 http://harekaze.local/my_learning_memory/articles/blockchain/how_to_prevent_scam.html
+http://harekaze.local/my_learning_memory/articles/blockchain/different_of_Bitcoin_and_bitcoin.html
+http://harekaze.local/my_learning_memory/articles/blockchain/way_to_prevent_brute_force.html
 https://harekaze.link/my_learning_memory/my_learning_memory.html
 https://harekaze.link/game/cc_simulator.html
 https://harekaze.link/dapp/ethereumbook.html

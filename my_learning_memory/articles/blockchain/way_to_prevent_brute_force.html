@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="提防Blockchain的Private key爆破攻擊" />
+    <meta name="keywords" content="提防,Private key爆破攻擊,建議,Ethereum,Blockchain" />
+
+    <script src="/universal/setting.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <title>提防 Blockchain 的 Private key 爆破攻擊之建議 | Harekaze</title>
+
+    <link rel=stylesheet type="text/css" href="/css/main.css" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK&display=swap" rel="stylesheet" />
+
+    <link rel="manifest" href="/manifest.json" />
+    <script src="/service-worker_register.js"></script>
+    <script src="/service-worker.js"></script>
+
+
+    <style>
+        div.panel-body>ul>li {
+            margin: 10px;
+        }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2508788034463703"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div id="prepend_to_body"></div>
+
+        <div class="panel-group">
+            <div class="panel panel-primary">
+                <div class="panel-heading">由0開始用Ethereum</div>
+                <div class="panel-body">
+
+                    <a href="/my_learning_memory/learn_ethereum_from_zero.html"><button
+                            class="btn btn-primary back_btn">返回</button></a>
+
+                    <div class="panel-group col-md-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">提防 Blockchain 的 Private key 爆破攻擊之建議</div>
+                            <div class="panel-body">
+                                <ul>
+                                    <li>
+                                        基礎
+                                        <ol>
+                                            <li>必須備份助記詞。</li>
+                                            <li>助記詞之載體不應連上網絡。</li>
+                                        </ol>
+                                    </li>
+
+                                    <li>新手
+                                        <ol>
+                                            <li>承上所有。</li>
+                                            <li>使用硬件錢包。</li>
+                                        </ol>
+                                    </li>
+
+                                    <li>
+                                        中級
+                                        <ol>
+                                            <li>承上所有。</li>
+                                            <li>備份 Derivation Path。</li>
+                                            <li>不要將所有區塊鏈資產都放到同一 Address。</li>
+                                            <li>使用多簽錢包。</li>
+                                            <li>多簽錢包的最少有一個簽名者屬於硬件錢包。</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        高手
+                                        <ol>
+                                            <li>承上所有。</li>
+                                            <li>多簽錢包的最少一個簽名者之任何資訊皆不公開，包括助記詞、Private
+                                                key 及 Address都不可公開，不能用作收發加密貨幣，亦不能用作任何鏈上操作。</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        超高手：
+                                        <ol>
+                                            <li>承上所有。</li>
+                                            <li>不要使用助記詞，改用 Private key。</li>
+                                        </ol>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="append_to_body"></div>
+
+    </div><!-- close .container -->
+
+    <script>
+        //$('title').html(setting['title']);
+
+        $('#prepend_to_body').append($('<div>').load('/universal/header.html'));
+        $('#prepend_to_body').append($('<div>').load('/universal/nav.html'));
+
+        $('#append_to_body').append($('<div>').load('/universal/footer.html'));
+
+        //$('#navbar-brand').html(setting['service_code']);
+    </script>
+
+</body>
+
+</html>
