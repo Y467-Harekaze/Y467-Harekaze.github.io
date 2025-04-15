@@ -30,8 +30,9 @@
 
 
     <style>
-        div.panel-body>ul>li {
-            margin: 10px;
+        div.panel-body>table.table tr th,
+        div.panel-body>table.table tr td {
+            width: 50%;
         }
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2508788034463703"
@@ -50,52 +51,145 @@
                     <a href="/my_learning_memory/learn_ethereum_from_zero.html"><button
                             class="btn btn-primary back_btn">返回</button></a>
 
-                    <div class="panel-group col-md-12">
+                    <div class="panel-group ctable-md-12">
                         <div class="panel panel-primary">
                             <div class="panel-heading">提防 Blockchain 的 Private key 爆破攻擊之建議</div>
                             <div class="panel-body">
-                                <ul>
-                                    <li>
-                                        基礎
-                                        <ol>
-                                            <li>必須備份助記詞。</li>
-                                            <li>助記詞之載體不應連上網絡。</li>
-                                        </ol>
-                                    </li>
 
-                                    <li>新手
-                                        <ol>
-                                            <li>承上所有。</li>
-                                            <li>使用硬件錢包。</li>
-                                        </ol>
-                                    </li>
+                                <table class="table table-hover table-bordered">
+                                    <tr>
+                                        <th colspan="2">基礎</th>
+                                    </tr>
+                                    <tr>
+                                        <th>建議</th>
+                                        <th>原因</th>
+                                    </tr>
+                                    <tr>
+                                        <td>必須備份助記詞。</td>
+                                        <td>如果你沒有備份助記詞，一旦你的 wallet 故障就會失去其控制權及裏面的區塊鏈資產。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>助記詞之載體不應連上網絡。</td>
+                                        <td>一般人都是用明文備份助記詞，如果該載體連上網絡，而且被駭客入侵，攻擊者就有能力輕易盜取你的區塊鏈資產。
+                                        </td>
+                                    </tr>
+                                </table>
 
-                                    <li>
-                                        中級
-                                        <ol>
-                                            <li>承上所有。</li>
-                                            <li>備份 Derivation Path。</li>
-                                            <li>不要將所有區塊鏈資產都放到同一 Address。</li>
-                                            <li>使用多簽錢包。</li>
-                                            <li>多簽錢包的最少有一個簽名者屬於硬件錢包。</li>
-                                        </ol>
-                                    </li>
-                                    <li>
-                                        高手
-                                        <ol>
-                                            <li>承上所有。</li>
-                                            <li>多簽錢包的最少一個簽名者之任何資訊皆不公開，包括助記詞、Private
-                                                key 及 Address 都不可公開，不能用作收發加密貨幣，亦不能用作任何鏈上操作。</li>
-                                        </ol>
-                                    </li>
-                                    <li>
-                                        超高手：
-                                        <ol>
-                                            <li>承上所有。</li>
-                                            <li>不要使用助記詞，改用 Private key。</li>
-                                        </ol>
-                                    </li>
-                                </ul>
+                                <hr />
+
+                                <table class="table table-hover table-bordered">
+                                    <tr>
+                                        <th colspan="2">新手</th>
+                                    </tr>
+                                    <tr>
+                                        <th>建議</th>
+                                        <th>原因</th>
+                                    </tr>
+                                    <tr>
+                                        <td>承上所有。</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>使用最少24字的助記詞。</td>
+                                        <td>Private key 能夠提供 256-bit 的安全性，如果要以助記詞提供同級之安全性就需要使用24字助記詞。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>使用硬件錢包。</td>
+                                        <td>相較軟件錢包，硬件錢包之助記詞在任何時間都不連網，大大減低區塊鏈資產被盜的機會。</td>
+                                    </tr>
+                                </table>
+
+                                <hr />
+
+                                <table class="table table-hover table-bordered">
+                                    <tr>
+                                        <th colspan="2">中級</th>
+                                    </tr>
+                                    <tr>
+                                        <th>建議</th>
+                                        <th>原因</th>
+                                    </tr>
+                                    <tr>
+                                        <td>承上所有。</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>備份 Derivation Path。</td>
+                                        <td>
+                                            一般加密貨幣用戶都不知道單憑助記詞並不能做到備份 Wallet 之效果，到現在都未有災情純粹是因為大部分 Wallet
+                                            都使用預設值，但預設值會因應情況改變。
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>不要將所有區塊鏈資產都放到同一 Address。</td>
+                                        <td>任何 Address 都可能已被破解，也可能在任何時候被破解。這樣做能夠減少每次不幸被破解時的損失。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>使用多簽錢包。</td>
+                                        <td>EVM鏈的多簽錢包屬於智能合約。如果攻擊者破解出的 Address 屬於智能合約，就無法控制該 Wallet。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>多簽錢包的最少有一個簽名者屬於硬件錢包。</td>
+                                        <td>雖然多簽錢包比較安全，但同時亦比較麻煩。保留最少一個簽名者屬硬件錢包是為了在安全和方便取得平衡。</td>
+                                    </tr>
+                                </table>
+
+                                <hr />
+
+                                <table class="table table-hover table-bordered">
+                                    <tr>
+                                        <th colspan="2">高手</th>
+                                    </tr>
+                                    <tr>
+                                        <th>建議</th>
+                                        <th>原因</th>
+                                    </tr>
+                                    <tr>
+                                        <td>承上所有。</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            多簽錢包的最少一個簽名者之任何資訊皆不公開，包括助記詞、Private
+                                            key 及 Address 都不可公開，不能用作收發加密貨幣，亦不能用作任何鏈上操作。但可以用作簽名。
+                                        </td>
+                                        <td>任何曾經收發區塊鏈資產的 Address 都可能成為攻擊者的目標，因此請不要暴露所有 Address 到區塊鏈。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>適用於Bitcoin，不適用於EVM</code><br />每條 Address 都只使用一次，只要該 Address
+                                            曾經發起轉帳或任何鏈上操作就必須廢棄。
+                                        </td>
+                                        <td>
+                                            基於 Bitcoin 的機制，任何 Address 發起鏈上操作時都會暴露其 Public key，暴露的 Public key 可以縮減攻擊者破解該
+                                            Address 之時間。
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <hr />
+
+                                <table class="table table-hover table-bordered">
+                                    <tr>
+                                        <th colspan="2">超高手</th>
+                                    </tr>
+                                    <tr>
+                                        <th>建議</th>
+                                        <th>原因</th>
+                                    </tr>
+                                    <tr>
+                                        <td>承上所有。</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>不要使用助記詞，改用 Private key。</td>
+                                        <td>
+                                            Wallet 破解當中有2大流派：助記詞破解及 Private key 破解。如果攻擊者是破解助記詞就會有部份 Private key
+                                            位於盲區而避過一劫。
+                                        </td>
+                                    </tr>
+                                </table>
+
                             </div>
                         </div>
                     </div>
