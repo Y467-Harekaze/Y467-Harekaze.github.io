@@ -4,7 +4,7 @@
 <head>
     <meta charset='utf-8' />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="提防Blockchain的Private key爆破攻擊" />
+    <meta name="description" content="即將收到巨額加密貨幣，如何部署？本文將以攻方視角提供建議，協助你保護你的區塊鏈資產。" />
     <meta name="keywords" content="提防,Private key爆破攻擊,建議,Ethereum,Blockchain" />
 
     <script src="/universal/setting.js"></script>
@@ -55,6 +55,27 @@
                         <div class="panel panel-primary">
                             <div class="panel-heading">提防 Blockchain 的 Private key 爆破攻擊之建議</div>
                             <div class="panel-body">
+
+                                <p>
+                                <h2>你即將收到巨額加密貨幣，如何部署？</h2>
+                                先假設你已懂得 Wallet 和 Address 的基本知識，接下來就應該考慮如何保護它。</p>
+
+                                <p>當你作為守方，你要考慮的是攻方會如何令你損失資產。<br />
+                                    當你思考攻方如何令守方損失時，最好的方法就是考慮守方如何保護資產。<br />
+                                    （這就是「道高一尺，魔高一丈」）</p>
+
+                                <blockquote>發問：一般人（守方）是如何建立 Address？<br />
+                                    答案：先用 Wallet 建立助記詞，再由 Wallet 轉換成 Address。</blockquote>
+
+                                <p>有漏洞嗎？有。</p>
+                                <p>如果守方用的助記詞不多於21字，能提供的組合數量會少於 Private key。（即使是最熱門的Metamask
+                                    wallet，早期都只是預設用12字助記詞。）<br />
+                                    一般人認為每條助記詞只能產生一條地址。對有技術的攻方而言，這代表大多數人不懂得改變 Derivation Path。<br />
+                                    結論：能大幅減少需要破解的組合，最終能破解的 Address 數量亦不會減少太多。</p>
+
+                                <p>因此作為守方，我們最起碼應該使用不少於24字的助記詞。</p>
+
+                                <p>以下是一些支援守方保護區塊鏈資產的建議及其原因。</p>
 
                                 <table class="table table-hover table-bordered">
                                     <tr>
