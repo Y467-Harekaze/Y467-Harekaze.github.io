@@ -14,3 +14,5 @@ http://harekaze.local/my_learning_memory/articles/blockchain/way_to_prevent_brut
 https://harekaze.link/my_learning_memory/my_learning_memory.html
 https://harekaze.link/game/cc_simulator.html
 https://harekaze.link/dapp/ethereumbook.html
+https://harekaze.link/dapp/tronbook.html
+https://harekaze.link/dapp/tronbook_topic.html
