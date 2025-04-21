@@ -7,7 +7,7 @@
 
 				<div class="row">
 
-					<div class="col-md-6">
+					<div class="col-md-12">
 						Bitcoin (BTC)
 						<div class="input-group">
 							<span class="input-group-addon" onclick="copyFunction('xbt_addr')">
@@ -28,15 +28,15 @@
 					</div>
 
 
-					<!--<div class="col-md-12">
-						Monero (XMR)
+					<div class="col-md-6">
+						Tron (TRX) or any TRC-20 token
 						<div class="input-group">
-							<span class="input-group-addon" onclick="copyFunction('xmr_addr')">
+							<span class="input-group-addon" onclick="copyFunction('tron_addr')">
 								<i class="glyphicon glyphicon-copy"></i>
 							</span>
-							<input id="xmr_addr" type="text" class="form-control" name="xmr_addr" value="" readonly />
+							<input id="tron_addr" type="text" class="form-control" name="tron_addr" value="" readonly />
 						</div>
-					</div>-->
+					</div>
 
 
 				</div><!-- close .row-->
@@ -64,6 +64,7 @@
 
 	$('#xbt_addr').val('3MSNhVbXQeqBgoT5HngSDLuynNyMkMB2JN');
 	$('#eth_addr').val('0x72183156b4F427eFdA8b3ddED1939374e18Da77d');
+	$('#tron_addr').val('TLNV1sJ6VUqJL6EuHrqz55gpWxXc52q5Z2');
 	$('#xmr_addr').val('42mm8uEv9aPLwGz2cSXwCzRao4XBJFoBGNFYpkBsE8K1amWVEbNmjHfTjtBPVfvgp3KEzrK9T16KxiU8LKYjyvKrSSnsWEg');
 	$('.form-control').css('text-overflow', 'ellipsis');
 
