@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description"
+        content="2025年4月24日，Bitcoin 出現了一個編號為 BIP-177 的改進草案，名為「重新定義 Bitcoin 的基本單位」，當中會修改 bitcoin 單位的定義。是好是壞，讓我們一探究竟。" />
+    <meta name="keywords" content="BIP-177,Bitcoin,單位" />
+
+    <script src="/universal/setting.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <title>BIP-177，一粒 bitcoin 可能不再是一粒 bitcoin | Harekaze</title>
+
+    <link rel=stylesheet type="text/css" href="/css/main.css" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK&display=swap" rel="stylesheet" />
+
+    <link rel="manifest" href="/manifest.json" />
+    <script src="/service-worker_register.js"></script>
+    <script src="/service-worker.js"></script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2508788034463703"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div id="prepend_to_body"></div>
+
+        <div class="panel-group">
+            <div class="panel panel-primary">
+                <div class="panel-heading">由0開始用Ethereum</div>
+                <div class="panel-body">
+
+                    <a href="/my_learning_memory/learn_ethereum_from_zero.html"><button
+                            class="btn btn-primary back_btn">返回</button></a>
+
+                    <div class="panel-group col-md-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">BIP-177，一粒bitcoin可能不再是一粒bitcoin</div>
+                            <div class="panel-body">
+                                <p>
+                                    2025年4月24日，Bitcoin 出現了一個編號為 BIP-177 的改進草案，名為「重新定義 Bitcoin 的基本單位（Redefine Bitcoin's
+                                    Base
+                                    Unit）」，當中會修改 bitcoin 單位的定義。是好是壞，讓我們一探究竟。
+                                </p>
+
+                                <blockquote>
+                                    請注意<br />
+                                    目前 BIP-177 仍然處於 Draft 狀態，因此本文會以改進草案稱呼它。
+                                </blockquote>
+
+
+                                <p>
+                                <h3>背景</h3>
+                                根據該草案之作者 John Carvalho 所講，希望 BIP-177 能夠減少用戶混淆，並直接將鏈上所記錄的數值視為一般用戶能理解的數值，不需再經過轉換。
+                                </p>
+
+                                <p>
+                                <h3>講中文？</h3>
+                                對於傳統金融，我們通常能接觸到的貨幣單位包括「元」和「毫子」（暫不考慮「仙」）。<br />
+                                每10毫子就是1元，每1元都能分成10個1毫。<br />
+                                Bitcoin 區塊鏈的情況類似，但不是以 bitcoin 為中心計算其數量，而是以最細的 bitcoin 單位「聰（Sats）」來計算。<br />
+                                不過 bitcoin 與 Sats 之間的差距就不止是 10 倍了，是 100000000 倍，所以我們常說「最細的 bitcoin 可以是小數點後 8 個位」。<br />
+                                Bitcoin 區塊鏈在鏈上所記錄的數值，其實就是這個 聰，而不是 bitcoin，你平常看見 bitcoin 的數量其實都是電腦在顯示之前轉換成你能理解的單位。
+                                </p>
+
+
+                                <p>
+                                <h3>草案內容</h3>
+                                雖然 BIP-177 改進草案是一個改變 bitcoin 單位的定義，但並非把所有單位定義都改一次。例如：
+                                <ol>
+                                    <li>
+                                        在舊制，1 bitcoin 等於 100000000 Sats；在新制的 1 bitcoin 等於 舊制的 1 sats。
+                                    </li>
+                                    <li>
+                                        在新制不會再有「聰（Sats）」，這個單位會由「bitcoin」的新定義所取代。
+                                    </li>
+                                    <li>
+
+                                        舊制的「bitcoin」和「BTC」是相同單位，但在新制底下「BTC」的定義與舊制相同，2者只有「bitcoin」會改變定義。
+                                    </li>
+                                </ol>
+                                </p>
+
+                                <p>
+                                <h3>看不懂？</h3>
+                                沒關係，所以我們來看看改進草案的作者所提供的例子。
+                                <table class="table" style="word-break: break-all;">
+                                    <tr>
+                                        <th>舊制</th>
+                                        <th>新制</th>
+                                    </tr>
+                                    <tr>
+                                        <td>1 bitcoin</td>
+                                        <td>100000000 bitcoins 或 1 BTC</td>
+                                    </tr>
+                                    <tr>
+                                        <td>0.00010000 bitcoin</td>
+                                        <td>10000 bitcoins 或 0.0001 BTC</td>
+                                    </tr>
+                                    <tr>
+                                        <td>0.00500000 bitcoin</td>
+                                        <td>500000 bitcoins 或 0.005 BTC</td>
+                                    </tr>
+                                    <tr>
+                                        <td>0.005 BTC</td>
+                                        <td>500000 bitcoins 或 0.005 BTC</td>
+                                    </tr>
+                                </table>
+                                </p>
+
+                                <p>
+                                <h3>草案的推行時間表</h3>
+                                作者分成3個階段。<br />
+                                第一二階段的一年時間，是用作介紹和宣傳，以便一般使用者能夠適應。<br />
+                                第三階段（最快一年後）才是實行的時間。
+                                </p>
+
+
+                                <p>
+                                <h3>有甚麼值得擔心嗎？</h3>
+                                改變貨幣單位定義當然會有風險，接下來我會以先例、需要、風險和缺點加以分析，並提出減緩缺點的可行方法。
+                                </p>
+
+                                <p>
+                                <h3>先例</h3>
+                                3年前，Bitfinex 交易所推行「Bitcoin（Sats）模式」，屬於 Bitcoin 歷史上較早允許用戶以 Sats 顯示 bitcoin 數量並計價買賣
+                                bitcoin 的交易所。
+                                </p>
+
+                                <p>
+                                <h3>需要</h3>
+                                2021年，隨著 bitcoin 的單價愈升愈高，Web3 界開始有聲音認為：當某貨幣的最細單位都無法被基層民眾所負擔，它沒有資格普及。
+                                為此，Bitfinex交易所及AAX交易所（已 Rug-pull）啟用了以 Sats 計價的交易對，並降低最低交易額到0.1 美金。
+                                </p>
+
+                                <p>
+                                <h3>風險</h3>
+                                在 Bitcoin 區塊鏈一向都是以 bitcoin 作為 Transaction fee（交易手續費）的計算單位，萬一有用戶錯誤填寫單位，豈不是會對其造成嚴重損失？
+
+                                2020年，Ethereum 區塊鏈上出現了多次天價Gas fee的事件，雖然至今仍未能確定原因，但 Ethereum 基金會隨即在其節點軟件「Geth」的
+                                1.9.16
+                                版本更新加入了以 1 ETH 的 Gas fee 上限作為預設值，至今未再出現類似情況。
+                                </p>
+
+                                <p>
+                                <h3>缺點</h3>
+                                隨著區塊鏈資產日漸為人所認知，伴隨着的詐騙風險亦不能忽視。萬一雙方交易時詐騙方故意使用錯誤的單位定義，定必會成為新一輪詐騙手段。
+                                其實又不需要太擔心，只要雙方交易前指明用某個有公信力的區塊鏈瀏覽器（Blockchain Explorer）證明款項是否已到帳，問題即可迎刃而解。
+                                </p>
+
+
+                                <p>
+                                <h3>總結</h3>
+                                我並不認同需要為向前兼容性而放棄科技發展，因此我讚成 BIP-177 這個改進草案，但大前提是配套要做得好、而且廣泛用家接受，這樣的改進才是區塊鏈之道。
+                                </p>
+
+                                <hr />
+
+                                <p>
+                                    參考資料
+                                <ul>
+                                    <li>
+                                        <a
+                                            href="https://github.com/bitcoin/bips/blob/9a8326225e2d9fd5257a9f03abe407aea9c65af9/bip-0177.mediawiki">Redefine
+                                            Bitcoin's Base Unit (Status: Draft)</a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="https://support.bitfinex.com/hc/zh-tw/articles/4404659879833-Bitcoin-Satoshi-%E6%A8%A1%E5%BC%8F">Bitcoin
+                                            (Satoshi) 模式 @ Bitfinex</a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="https://www.zombit.info/bitfinex-bitcoin-trading-pairs-enable-satoshi-trading-mode/">比特幣太貴有壓力？Bitfinex
+                                            比特幣交易對啟用「聰」交易模式 (2021-08-09)</a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="https://blockcast.it/2021/08/26/aax-is-the-first-exchange-in-the-world-to-make-the-switch-to-satoshi-sats/">打破比特幣價格偏見！AAX
+                                            交易所採用「聰」作為計價單位 (2021-08-26)</a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="https://blockcast.it/2021/07/14/aax-would-you-rather-have-1-bitcoin-or-100-million-sats/">比特幣價格腰斬還是太貴？不如當個「SAT
+                                            百萬富翁」！ (2022-08-18)</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://github.com/ethereum/go-ethereum/releases/tag/v1.9.16">Geth
+                                            1.9.16</a>
+                                    </li>
+                                </ul>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="append_to_body"></div>
+
+    </div><!-- close .container -->
+
+    <script>
+        //$('title').html(setting['title']);
+
+        $('#prepend_to_body').append($('<div>').load('/universal/header.html'));
+        $('#prepend_to_body').append($('<div>').load('/universal/nav.html'));
+
+        $('#append_to_body').append($('<div>').load('/universal/footer.html'));
+
+        //$('#navbar-brand').html(setting['service_code']);
+    </script>
+
+</body>
+
+</html>
