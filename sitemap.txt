@@ -13,6 +13,7 @@ https://harekaze.link/my_learning_memory/articles/blockchain/how_to_prevent_scam
 https://harekaze.link/my_learning_memory/articles/blockchain/different_of_Bitcoin_and_bitcoin.html
 https://harekaze.link/my_learning_memory/articles/blockchain/way_to_prevent_brute_force.html
 https://harekaze.link/my_learning_memory/articles/blockchain/bip-177_a_bitcoin_may_no_longer_be_a_bitcoin.html
+https://harekaze.link/my_learning_memory/articles/blockchain/mnemonic_and_derivation_path.html
 https://harekaze.link/my_learning_memory/my_learning_memory.html
 https://harekaze.link/game/cc_simulator.html
 https://harekaze.link/dapp/ethereumbook.html
