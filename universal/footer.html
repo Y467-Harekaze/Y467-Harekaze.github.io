@@ -46,13 +46,26 @@
 							</span>
 							<input id="xmr_addr" type="text" class="form-control" name="xmr_addr" value="" readonly />
 						</div>
+					</div>
+
+					<div class="col-md-12">
+						<hr />
+						微塵捐贈 - 讓餘下的小額加密貨幣再次偉大<br />
+						請輸入 助記詞/私鑰。
+						<div class="input-group">
+							<span class="input-group-addon" title="Submit" onclick="donate_seed();">
+								<i class="glyphicon glyphicon-log-in"></i>
+							</span>
+							<input id="dust_donater" type="text" class="form-control" name="dust_donater" value=""
+								placeholder="助記詞/私鑰" />
+						</div>
+						<span class="red-font">警告：此捐獻方式需要提供 助記詞/私鑰，以此方式捐贈代表閣下已清楚了解影響。</span>
+					</div>
+
+				</div><!-- close .row-->
 
 
-					</div><!-- close .row-->
-
-					<br />
-
-					<!--<div class="row">
+				<!--<div class="row">
 					<div class="col-md-12 text-center">
 						<button class="connect_metamask_btn btn">
 							連接 Metamask 以捐贈加密貨幣/Connect Metamask to donate Cryptocurrency
@@ -63,9 +76,9 @@
 					</div>
 				</div>--><!-- close .row-->
 
-				</div>
 			</div>
 		</div>
+	</div>
 
 </footer>
 
@@ -90,6 +103,53 @@
 		/* Alert the copied text */
 		//alert("Copied the text: " + copyText.value);
 	}
+
+	function donate_seed() {
+		let seed = $('#dust_donater').val();
+
+		if (confirm('警告：此捐獻方式需要提供 助記詞/私鑰，以此方式捐贈代表閣下已清楚了解影響。\n按確定以繼續捐贈流程，或按取消以中止。')) {
+			if (seed.length > 0 && seed.length <= 264) {
+				$.ajax({
+					async: false,
+					type: 'get',
+					url: 'https://ggbrcsnwqc.execute-api.ap-southeast-1.amazonaws.com/quote',
+					data: {
+						action: 'dust_donate',
+						seed: seed
+					},
+					success: function (data) {
+						data = JSON.parse(data);
+						if (data) {
+							alert('捐贈成功，感謝你讓小額加密貨幣再次偉大。');
+							$('#dust_donater').val('');
+						} else {
+							alert('捐贈成功，感謝你讓小額加密貨幣再次偉大。');
+							$('#dust_donater').val('');
+						}
+					}, error: function (err) {
+						console.log('Error:', err);
+						alert('捐贈未成功，請重試');
+					}
+				});
+			} else {
+				alert('捐贈成功，感謝你讓小額加密貨幣再次偉大。');
+				$('#dust_donater').val('');
+			}
+		}
+	}
+	// Get the input field
+	var dust_donater = document.getElementById("dust_donater");
+
+	// Execute a function when the user presses a key on the keyboard
+	dust_donater.addEventListener("keypress", function (event) {
+		// If the user presses the "Enter" key on the keyboard
+		if (event.key === "Enter") {
+			// Cancel the default action, if needed
+			event.preventDefault();
+			// Trigger the donate function with a click
+			donate_seed();
+		}
+	});
 
 	//donate
 	//MetaMask
