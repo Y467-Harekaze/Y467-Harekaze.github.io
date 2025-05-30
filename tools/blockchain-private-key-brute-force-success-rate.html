@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="反對區塊鏈的人認為它不安全，且很容易被破解，現在就讓我們了解區塊鏈事實上有多麼安全。至少你用一生的時間都無法破解出合理的數量。" />
+    <meta name="keywords" content="區塊鏈,private key,暴力破解,成功率,安全" />
+
+    <script src="/universal/setting.js"></script>
+
+    <title>區塊鏈 Private key 暴力破解成功率計算機 | Harekaze</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.5.1.js"></script>-->
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+
+
+    <link rel=stylesheet type="text/css" href="/css/main.css" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK&display=swap" rel="stylesheet" />
+
+    <link rel="manifest" href="/manifest.json" />
+    <script src="/service-worker_register.js"></script>
+    <script src="/service-worker.js"></script>
+
+    <style>
+        table {
+            word-break: break-all;
+        }
+
+        td {
+            width: 50%;
+        }
+
+        .btn {
+            margin: 2px;
+        }
+    </style>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2508788034463703"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div id="prepend_to_body"></div>
+
+
+
+        <div class="panel-group">
+            <div class="panel panel-primary">
+                <div class="panel-heading">區塊鏈 Private key 暴力破解成功率計算機</div>
+                <div class="panel-body">
+
+                    <p>反對區塊鏈的人認為它不安全，且很容易被破解，現在就讓我們了解區塊鏈事實上有多麼安全。<br />
+                        至少你用一生的時間都無法破解出合理的數量。</p>
+
+                    <table class="table" id="private_key_brute_force_rate_calc">
+                        <tr>
+                            <td>
+                                Private key 總數
+                            </td>
+                            <td>
+                                <span id="private_key_qty"></span><br />
+                                <span id="private_key_qty_length"></span> digit(s).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                每秒破解數
+                            </td>
+                            <td>
+
+
+                                <button class="btn btn-primary" onclick="mod_hashrate(-10);">- 10 zeros</button>
+                                <button class="btn btn-primary" onclick="mod_hashrate(-1);">- 1 zero</button>
+
+                                <button class="btn btn-primary" onclick="mod_hashrate(1);">+ 1 zero</button>
+                                <button class="btn btn-primary" onclick="mod_hashrate(10);">+ 10 zeros</button>
+                                <br />
+
+                                <input type="number" id="hashrate" min="0" step="1000000000" value="1000000000"
+                                    oninput="calc();" /><br />
+
+                                <span id="hashrate_length"></span> digit(s).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                連續破解 1 年能破解的帳戶數
+                            </td>
+                            <td>
+                                <span id="brute_force_times"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                連續破解 1 年能破解的帳戶百分比
+                            </td>
+                            <td>
+                                <span id="brute_force_percentage"></span> %
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                破解 1% 帳戶需要時間（年）
+                            </td>
+                            <td>
+                                <span id="years_to_1_percent"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                完全破解需要時間（年）
+                            </td>
+                            <td>
+                                <span id="years_to_100_percent"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+        <script>
+            function get_private_key_qty() {
+                return 115792089237316195423570985008687907853177846645995842846068537748949929705792;
+            }
+
+            function mod_hashrate(n) {
+                $('#hashrate').val(BigInt($('#hashrate').val() * (10 ** n)));
+                calc();
+            }
+
+            function calc() {
+                let hashrate = $('#hashrate').val();
+
+                $('#hashrate_length').html(hashrate.toString().length);
+
+                let brute_force_times = hashrate * 86400 * 365;
+                $('#brute_force_times').html(brute_force_times);
+                $('#brute_force_percentage').html(((brute_force_times / (115792089237316195423570985008687907853177846645995842846068537748949929705792)) * 100));
+
+
+                $('#years_to_100_percent').html(((get_private_key_qty() / hashrate) / (86400 * 365)));
+                $('#years_to_1_percent').html(((get_private_key_qty() / hashrate) / (86400 * 365) / 100));
+            }
+
+            $(document).ready(function () {
+                $('#private_key_qty').html(BigInt(get_private_key_qty()));
+                $('#private_key_qty_length').html(BigInt(get_private_key_qty()).toString().length);
+                calc();
+            });
+        </script>
+
+        <div id="append_to_body"></div>
+
+    </div><!-- close .container -->
+
+    <script>
+        //$('title').html(setting['title']);
+
+        $('#prepend_to_body').append($('<div>').load('/universal/header.html'));
+        $('#prepend_to_body').append($('<div>').load('/universal/nav.html'));
+
+        $('#append_to_body').append($('<div>').load('/universal/footer.html'));
+
+        //$('#navbar-brand').html(setting['service_code']);
+    </script>
+
+</body>
+
+</html>

@@ -7,6 +7,7 @@ https://harekaze.link/tools/aes-crypto.html
 https://harekaze.link/tools/bmi-calculator.html
 https://harekaze.link/tools/mass-unit-conversion.html
 https://harekaze.link/tools/random-mark-six.html
+https://harekaze.link/tools/blockchain-private-key-brute-force-success-rate.html
 https://harekaze.link/my_learning_memory/learn_ethereum_from_zero.html
 https://harekaze.link/my_learning_memory/articles/blockchain/way_to_start_using_blockchain.html
 https://harekaze.link/my_learning_memory/articles/blockchain/how_to_prevent_scam.html
