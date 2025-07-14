@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-hk">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="即將收到巨額加密貨幣，如何部署？本文將以攻方視角提供建議，協助你保護你的區塊鏈資產。" />
+    <meta name="keywords" content="提防,Private key爆破攻擊,建議,Ethereum,Blockchain" />
+    <meta name="author" content="Harekaze" />
+    <title>提防 Blockchain 的 Private key 爆破攻擊之建議 | Harekaze</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.svg" />
+    <!-- Custom Google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/styles.css" rel="stylesheet" />
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2508788034463703"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="d-flex flex-column h-100 bg-light">
+    <main class="flex-shrink-0">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+            <div class="container px-5">
+                <a class="navbar-brand" href="/index.html"><span class="fw-bolder text-primary">Harekaze</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"><span
+                        class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                        <li class="nav-item"><a class="nav-link" href="/index.html">首頁</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/articles.html">文章</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/tools.html">工具</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/donate.html">捐款</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about_us.html">關於我們</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container px-5 my-5">
+            <a href="/articles.html">
+                <div class="small text-muted mb-5">Back</div>
+            </a>
+
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">提防 Blockchain 的 Private key
+                        爆破攻擊之建議</span></h1>
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-11 col-xl-9 col-xxl-8">
+                    <!-- Experience Section-->
+                    <section>
+                        <!-- Experience Card 1-->
+                        <div class="card shadow border-0 rounded-4 mb-5">
+                            <div class="card-body p-5">
+                                <div class="row align-items-center gx-5">
+                                    <div class="col-lg-12">
+                                        <div>
+                                            <p>
+                                            <h2>你即將收到巨額加密貨幣，如何部署？</h2>
+                                            先假設你已懂得 Wallet 和 Address 的基本知識，接下來就應該考慮如何保護它。</p>
+
+                                            <p>當你作為守方，你要考慮的是攻方會如何令你損失資產。<br />
+                                                當你思考攻方如何令守方損失時，最好的方法就是考慮守方如何保護資產。<br />
+                                                （這就是「道高一尺，魔高一丈」）</p>
+
+                                            <blockquote>發問：一般人（守方）是如何建立 Address？<br />
+                                                答案：先用 Wallet 建立助記詞，再由 Wallet 轉換成 Address。</blockquote>
+
+                                            <p>有漏洞嗎？有。</p>
+                                            <p>如果守方用的助記詞不多於21字，能提供的組合數量會少於 Private key。（即使是最熱門的Metamask
+                                                wallet，早期都只是預設用12字助記詞。）<br />
+                                                一般人認為每條助記詞只能產生一條地址。對有技術的攻方而言，這代表大多數人不懂得改變 Derivation Path。<br />
+                                                結論：能大幅減少需要破解的組合，最終能破解的 Address 數量亦不會減少太多。</p>
+
+                                            <p>因此作為守方，我們最起碼應該使用不少於24字的助記詞。</p>
+
+                                            <p>以下是一些支援守方保護區塊鏈資產的建議及其原因。</p>
+
+                                            <table class="table table-hover table-bordered">
+                                                <tr>
+                                                    <th colspan="2">基礎</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>建議</th>
+                                                    <th>原因</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>必須備份助記詞。</td>
+                                                    <td>如果你沒有備份助記詞，一旦你的 wallet 故障就會失去其控制權及裏面的區塊鏈資產。</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>助記詞之載體不應連上網絡。</td>
+                                                    <td>一般人都是用明文備份助記詞，如果該載體連上網絡，而且被駭客入侵，攻擊者就有能力輕易盜取你的區塊鏈資產。
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <hr />
+
+                                            <table class="table table-hover table-bordered">
+                                                <tr>
+                                                    <th colspan="2">新手</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>建議</th>
+                                                    <th>原因</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>承上所有。</td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>使用最少24字的助記詞。</td>
+                                                    <td>Private key 能夠提供 256-bit 的安全性，如果要以助記詞提供同級之安全性就需要使用24字助記詞。</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>使用硬件錢包。</td>
+                                                    <td>相較軟件錢包，硬件錢包之助記詞在任何時間都不連網，大大減低區塊鏈資產被盜的機會。</td>
+                                                </tr>
+                                            </table>
+
+                                            <hr />
+
+                                            <table class="table table-hover table-bordered">
+                                                <tr>
+                                                    <th colspan="2">中級</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>建議</th>
+                                                    <th>原因</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>承上所有。</td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>備份 Derivation Path。</td>
+                                                    <td>
+                                                        一般加密貨幣用戶都不知道單憑助記詞並不能做到備份 Wallet 之效果，到現在都未有災情純粹是因為大部分 Wallet
+                                                        都使用預設值，但預設值會因應情況改變。
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>不要將所有區塊鏈資產都放到同一 Address。</td>
+                                                    <td>任何 Address 都可能已被破解，也可能在任何時候被破解。這樣做能夠減少每次不幸被破解時的損失。</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>使用多簽錢包。</td>
+                                                    <td>EVM鏈的多簽錢包屬於智能合約。如果攻擊者破解出的 Address 屬於智能合約，就無法控制該 Wallet。</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>多簽錢包的最少有一個簽名者屬於硬件錢包。</td>
+                                                    <td>雖然多簽錢包比較安全，但同時亦比較麻煩。保留最少一個簽名者屬硬件錢包是為了在安全和方便取得平衡。</td>
+                                                </tr>
+                                            </table>
+
+                                            <hr />
+
+                                            <table class="table table-hover table-bordered">
+                                                <tr>
+                                                    <th colspan="2">高手</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>建議</th>
+                                                    <th>原因</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>承上所有。</td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        多簽錢包的最少一個簽名者之任何資訊皆不公開，包括助記詞、Private
+                                                        key 及 Address 都不可公開，不能用作收發加密貨幣，亦不能用作任何鏈上操作。但可以用作簽名。
+                                                    </td>
+                                                    <td>任何曾經收發區塊鏈資產的 Address 都可能成為攻擊者的目標，因此請不要暴露所有 Address 到區塊鏈。</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <code>適用於Bitcoin，不適用於EVM</code><br />每條 Address 都只使用一次，只要該
+                                                        Address
+                                                        曾經發起轉帳或任何鏈上操作就必須廢棄。
+                                                    </td>
+                                                    <td>
+                                                        基於 Bitcoin 的機制，任何 Address 發起鏈上操作時都會暴露其 Public key，暴露的 Public key
+                                                        可以縮減攻擊者破解該
+                                                        Address 之時間。
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <hr />
+
+                                            <table class="table table-hover table-bordered">
+                                                <tr>
+                                                    <th colspan="2">超高手</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>建議</th>
+                                                    <th>原因</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>承上所有。</td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>不要使用助記詞，改用 Private key。</td>
+                                                    <td>
+                                                        Wallet 破解當中有2大流派：助記詞破解及 Private key 破解。如果攻擊者是破解助記詞就會有部份 Private
+                                                        key
+                                                        位於盲區而避過一劫。
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer-->
+    <footer class="bg-white py-4 mt-auto">
+        <div class="container px-5">
+            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                <div class="col-auto">
+                    <div class="small m-0">Copyright &copy; Harekaze 2025</div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="/js/scripts.js"></script>
+</body>
+
+</html>

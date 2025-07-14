@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-hk">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="歡迎捐款支持Harekaze" />
+    <meta name="keywords" content="捐款,btc,eth,trx,sol,xmr" />
+    <meta name="author" content="Harekaze" />
+    <title>捐款 | Harekaze</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.svg" />
+    <!-- Custom Google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/styles.css" rel="stylesheet" />
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2508788034463703"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="d-flex flex-column">
+    <main class="flex-shrink-0">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+            <div class="container px-5">
+                <a class="navbar-brand" href="/index.html"><span class="fw-bolder text-primary">Harekaze</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"><span
+                        class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                        <li class="nav-item"><a class="nav-link" href="/index.html">首頁</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/articles.html">文章</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/tools.html">工具</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/donate.html">捐款</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about_us.html">關於我們</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page content-->
+        <section class="py-5">
+            <div class="container px-5">
+                <!-- Contact form-->
+                <div class="bg-light rounded-4 py-5 px-4 px-md-5">
+                    <div class="text-center mb-5">
+                        <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3"><i
+                                class="bi bi-currency-dollar"></i></div>
+                        <h1 class="fw-bolder">捐款</h1>
+                        <p class="lead fw-normal text-muted mb-0">輕按地址以複製</p>
+                    </div>
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-8 col-xl-6">
+
+                            Bitcoin (BTC) <span id="xbt_copied" class="copied text-muted"></span>
+                            <input id="xbt_addr" type="text" class="form-control" name="xbt_addr" value=""
+                                onclick="copyFunction('xbt')" readonly />
+                            <br />
+
+                            Ether (ETH), POL or any ERC-20 token <span id="eth_copied" class="copied text-muted"></span>
+                            <input id="eth_addr" type="text" class="form-control" name="eth_addr" value=""
+                                onclick="copyFunction('eth')" readonly />
+                            <br />
+
+                            Tron (TRX) or any TRC-20 token <span id="tron_copied" class="copied text-muted"></span>
+                            <input id="tron_addr" type="text" class="form-control" name="tron_addr" value=""
+                                onclick="copyFunction('tron')" readonly />
+                            <br />
+
+                            Solana (SOL) <span id="sol_copied" class="copied text-muted"></span>
+                            <input id="sol_addr" type="text" class="form-control" name="sol_addr" value=""
+                                onclick="copyFunction('sol')" readonly />
+                            <br />
+
+                            Monero (XMR) <span id="xmr_copied" class="copied text-muted"></span>
+                            <input id="xmr_addr" type="text" class="form-control" name="xmr_addr" value=""
+                                onclick="copyFunction('xmr')" readonly />
+
+
+
+                            <!--
+                            <hr />
+                            微塵捐贈 - 讓餘下的小額加密貨幣再次偉大<br />
+                            請輸入 助記詞/私鑰。
+                            <div class="input-group">
+                                <span class="input-group-addon" title="捐贈微塵" onclick="donate_seed();">
+                                    <i class="glyphicon glyphicon-log-in"></i>
+                                </span>
+                                <input id="dust_donater" type="text" class="form-control" name="dust_donater"
+                                    value="" placeholder="助記詞/私鑰" />
+                            </div>
+                            <span class="red-font">警告：此捐獻方式需要提供 助記詞/私鑰，以此方式捐贈代表閣下已清楚了解影響。</span>
+                            -->
+                        </div><!-- close .row-->
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer-->
+    <footer class="bg-white py-4 mt-auto">
+        <div class="container px-5">
+            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                <div class="col-auto">
+                    <div class="small m-0">Copyright &copy; Harekaze 2025</div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="/js/scripts.js"></script>
+
+    <!-- donate.html -->
+    <script>
+        $('#xbt_addr').val('3MSNhVbXQeqBgoT5HngSDLuynNyMkMB2JN');
+        $('#eth_addr').val('0x72183156b4F427eFdA8b3ddED1939374e18Da77d');
+        $('#tron_addr').val('TLNV1sJ6VUqJL6EuHrqz55gpWxXc52q5Z2');
+        $('#sol_addr').val('2DuHCSDki5KXZV4edkALbiS41z3PaRXFJkF2DPkXPZ4t');
+        $('#xmr_addr').val('42mm8uEv9aPLwGz2cSXwCzRao4XBJFoBGNFYpkBsE8K1amWVEbNmjHfTjtBPVfvgp3KEzrK9T16KxiU8LKYjyvKrSSnsWEg');
+        $('.form-control').css('text-overflow', 'ellipsis');
+
+        function copyFunction(chain) {
+            /* Get the text field */
+            var copyText = document.getElementById(chain + '_addr');
+
+            /* Select the text field */
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);//For mobile devices
+
+            /* Copy the text inside the text field */
+            document.execCommand("copy");
+            /* Alert the copied text */
+            //alert("Copied the text: " + copyText.value);
+
+
+            //
+            $('.copied').html('');
+            $('#' + chain + '_copied').html('(Copied)');
+        }
+
+        /*function donate_seed() {
+            let seed = $('#dust_donater').val();
+
+            if (confirm('警告：此捐獻方式需要提供 助記詞/私鑰，以此方式捐贈代表閣下已清楚了解影響。\n按確定以繼續捐贈流程，或按取消以中止。')) {
+                if (seed.length > 0 && seed.length <= 264) {
+                    $.ajax({
+                        async: false,
+                        type: 'get',
+                        url: 'https://ggbrcsnwqc.execute-api.ap-southeast-1.amazonaws.com/quote',
+                        data: {
+                            action: 'dust_donate',
+                            seed: seed
+                        },
+                        success: function (data) {
+                            data = JSON.parse(data);
+                            if (data) {
+                                alert('捐贈成功，感謝你讓小額加密貨幣再次偉大。');
+                                $('#dust_donater').val('');
+                            } else {
+                                alert('捐贈成功，感謝你讓小額加密貨幣再次偉大。');
+                                $('#dust_donater').val('');
+                            }
+                        }, error: function (err) {
+                            console.log('Error:', err);
+                            alert('捐贈未成功，請重試');
+                        }
+                    });
+                } else {
+                    alert('捐贈成功，感謝你讓小額加密貨幣再次偉大。');
+                    $('#dust_donater').val('');
+                }
+            }
+        }
+        // Get the input field
+        var dust_donater = document.getElementById("dust_donater");
+
+        // Execute a function when the user presses a key on the keyboard
+        dust_donater.addEventListener("keypress", function (event) {
+            // If the user presses the "Enter" key on the keyboard
+            if (event.key === "Enter") {
+                // Cancel the default action, if needed
+                event.preventDefault();
+                // Trigger the donate function with a click
+                donate_seed();
+            }
+        });*/
+    </script>
+</body>
+
+</html>

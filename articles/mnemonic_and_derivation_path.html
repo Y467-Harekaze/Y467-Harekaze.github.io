@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-hk">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="很多人以為助記詞是把 Private key 轉換成人類能理解的單字，但事實上並非如此，現在就讓我們一起探索助記詞與路徑的關係吧。" />
+    <meta name="keywords" content="助記詞,Derivation Path,Bitcoin,BIP-39,BIP-44" />
+    <meta name="author" content="Harekaze" />
+    <title>助記詞與路徑 | Harekaze</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.svg" />
+    <!-- Custom Google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/styles.css" rel="stylesheet" />
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2508788034463703"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="d-flex flex-column h-100 bg-light">
+    <main class="flex-shrink-0">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+            <div class="container px-5">
+                <a class="navbar-brand" href="/index.html"><span class="fw-bolder text-primary">Harekaze</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"><span
+                        class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                        <li class="nav-item"><a class="nav-link" href="/index.html">首頁</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/articles.html">文章</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/tools.html">工具</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/donate.html">捐款</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about_us.html">關於我們</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container px-5 my-5">
+            <a href="/articles.html">
+                <div class="small text-muted mb-5">Back</div>
+            </a>
+
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">助記詞與路徑</span></h1>
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-11 col-xl-9 col-xxl-8">
+                    <!-- Experience Section-->
+                    <section>
+                        <!-- Experience Card 1-->
+                        <div class="card shadow border-0 rounded-4 mb-5">
+                            <div class="card-body p-5">
+                                <div class="row align-items-center gx-5">
+                                    <div class="col-lg-12">
+                                        <div>
+                                            <p>
+                                                很多人以為助記詞是把 Private key 轉換成人類能理解的單字，但事實上並非如此，現在就讓我們一起探索助記詞與路徑的關係吧。
+                                            </p>
+
+                                            <p>
+                                            <h3>稱呼</h3>
+                                            助記詞，原文為 Mnemonic，後來 Metamask 因應 NFT 熱潮而在 2022 年改稱為 Seed-phrase。
+                                            </p>
+
+                                            <p>
+                                            <h3>技術歷史</h3>
+                                            在 Bitcoin 歷史上，並非由一開始就有助記詞這項技術。助記詞是基於 BIP-39、BIP-32 及 BIP-44 等多個 Bitcoin
+                                            改進計畫而成。
+                                            </p>
+
+                                            <p>
+                                            <h3>助記詞的功能</h3>
+                                            助記詞並不是把 Private key 轉換成人類能理解的單字，事實恰恰相反，是使用者先建立助記詞，然後再用軟件順序轉換成 Private key 和
+                                            address。
+                                            </p>
+
+                                            <p>
+                                            <h3>每條助記詞只能建立一條地址？</h3>
+                                            很多人以為每條助記詞只能建立一條地址，停用地址時必須連同助記詞一同放棄，但其實這是常見誤解。<br />
+                                            助記詞並非單獨使用，而是需要連同「路徑（Derivation Path）」一同使用才能做到助記詞本應有的效果。
+                                            </p>
+
+                                            <blockquote>因此，如果使用者面對助記詞外洩，情況會比 Private key 外洩更嚴重。</blockquote>
+
+                                            <p>
+                                            <h3>路徑</h3>
+                                            剛才提到每條助記詞可以建立不同的多條地址，這都歸功於路徑。<br />
+                                            <blockquote>路徑就像 <code>m/44'/60'/0'/0/0</code></blockquote>
+                                            以下是各數字的意思對照表：<br />
+                                            <table class="table table-hover">
+                                                <tr>
+                                                    <th>44</th>
+                                                    <th>60</th>
+                                                    <th>0</th>
+                                                    <th>0</th>
+                                                    <th>0</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>purpose<br />用途<br />（44 代表 BIP-44）</td>
+                                                    <td>coin_type<br />網絡編號<br />例如 60 代表 Ethereum（以太坊）<br />0 代表
+                                                        Bitcoin</td>
+                                                    <td>account<br />戶口</td>
+                                                    <td>change<br />衍生戶口</td>
+                                                    <td>index<br />編號</td>
+                                                </tr>
+                                            </table>
+                                            </p>
+
+                                            <p>
+                                            <h3>覺得太複雜？<br />不要緊，高手都不會把全部意思都背誦起來，高手會背誦的只有網絡編號。</h3>
+                                            這是因為當中的 purpose 在絕大部分情況下都是 44 不會變，account、change 和 index 可以完全由用戶自由選擇。<br />
+                                            網絡編號則需要由 Satoshilabs
+                                            注冊並寫入列表，從而讓所有人跟隨，以統一的做法達至助記的效果，不會令使用者因為忘記自己的路徑導致遺失資產。<br />
+                                            （網絡編號之列表可參考注1）<br />
+                                            （注意這個網絡編號是設計予助記詞使用，與其他區塊鏈的編號並無絕對關係，特別是 EVM 的 chain ID）
+                                            </p>
+
+                                            <p>
+                                            <h3></h3>
+                                            <table class="table table-hover">
+                                                <tr>
+                                                    <th colspan="4">
+                                                        示範相同助記詞能產生不同 address
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        Mnemonic / 助記詞
+                                                    </th>
+                                                    <th colspan="3">
+                                                        abandon abandon abandon abandon abandon abandon abandon abandon
+                                                        abandon
+                                                        abandon abandon about
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        coin_type / 網絡編號
+                                                    </td>
+                                                    <td>
+                                                        路徑
+                                                    </td>
+                                                    <td>
+                                                        Private key / 私鑰
+                                                    </td>
+                                                    <td>
+                                                        Address / 地址
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Ethereum (60)
+                                                    </td>
+                                                    <td>
+                                                        m/44'/60'/0'/0/0
+                                                    </td>
+                                                    <td>
+                                                        1ab42cc412b618bdea3a599e3c9bae199ebf030895b039e9db1e30dafb12b727
+                                                    </td>
+                                                    <td>
+                                                        <a href="https://etherscan.io/address/0x9858EfFD232B4033E47d90003D41EC34EcaEda94"
+                                                            target="_blank">
+                                                            0x9858EfFD232B4033E47d90003D41EC34EcaEda94 <span
+                                                                class="glyphicon glyphicon-new-window"></span>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Tron (195)
+                                                    </td>
+                                                    <td>
+                                                        m/44'/195'/0'/0/0
+                                                    </td>
+                                                    <td>
+                                                        b5a4cea271ff424d7c31dc12a3e43e401df7a40d7412a15750f3f0b6b5449a28
+                                                    </td>
+                                                    <td>
+                                                        <a href="https://tronscan.org/#/address/TUEZSdKsoDHQMeZwihtdoBiN46zxhGWYdH"
+                                                            target="_blank">TUEZSdKsoDHQMeZwihtdoBiN46zxhGWYdH（以
+                                                            Base58_check 預設編碼顯示）
+                                                            <span
+                                                                class="glyphicon glyphicon-new-window"></span></a><br />
+                                                        0xC8599111F29c1e1E061265b4AF93eA1F274aD78A（以 Hex（16進數）編碼顯示）
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            </p>
+
+                                            <p>
+                                            <h3>可以先產生自己喜歡的 address，再轉換成 Private key 或助記詞嗎？</h3>
+                                            不可能。<br />
+                                            以上3者的產生順序，必須是 助記詞 => Private key => Address，這個順序不能逆轉。只不過助記詞並非產生 address
+                                            前的必須步驟，因此可以省略。<br />
+                                            因此之故，如果使用者沒有由一開始就產生助記詞，之後亦無方法取得它。<br />
+                                            不過有一種名為虛榮地址（Vanity address）的做法，是先產生自己喜歡的格式，然後再用暴力破解找出符合要求的助記詞或 Private
+                                            key。<br />
+                                            虛榮地址沒有絕對的識別方法，廣義上只要該 address 的任何部分對任何一個人有特別意思，那就是虛榮地址。（例如以「1Bitcoin」開首的
+                                            Bitcoin address）
+                                            </p>
+
+                                            <p>
+                                                注
+                                            <ol>
+                                                <li>
+                                                    <a href="https://github.com/satoshilabs/slips/blob/master/slip-0044.md#registered-coin-types"
+                                                        target="_blank">
+                                                        Registered coin types (SLIP-44) <span
+                                                            class="glyphicon glyphicon-new-window"></span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://tronscan.org/#/tools/code-converter/tron-ethereum-address"
+                                                        target="_blank">Tron的Base58_check及Hex地址轉換器
+                                                        <span class="glyphicon glyphicon-new-window"></span></a>
+                                                </li>
+                                            </ol>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer-->
+    <footer class="bg-white py-4 mt-auto">
+        <div class="container px-5">
+            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                <div class="col-auto">
+                    <div class="small m-0">Copyright &copy; Harekaze 2025</div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="/js/scripts.js"></script>
+</body>
+
+</html>
