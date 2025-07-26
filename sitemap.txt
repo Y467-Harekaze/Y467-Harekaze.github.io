@@ -6,6 +6,7 @@ https://harekaze.link/articles/way_to_prevent_brute_force.html
 https://harekaze.link/articles/different_of_Bitcoin_and_bitcoin.html
 https://harekaze.link/articles/how_to_prevent_scam.html
 https://harekaze.link/articles/different_of_ethereum_and_eth.html
+https://harekaze.link/articles/fiat_stablecoin_basic_usdt_usdc_dai.html
 https://harekaze.link/tools.html
 https://harekaze.link/tools/hkcas.html
 https://harekaze.link/tools/aes-crypto.html
