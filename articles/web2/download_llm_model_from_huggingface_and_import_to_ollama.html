@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-hk">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description"
+        content="近日 Ollama 提供的新模型裏面，參數量較大的版本都只提供 cloud 版本。其實當初用 Ollama 都是想在本地裝置使用 AI LLM，用 cloud 的話倒不如用其他網上服務。有甚麼辦法可以繼續在 Ollama 使用「大」模型呢？" />
+    <meta name="keywords" content="llm,ollama,huggingface,self-host" />
+    <meta name="author" content="Harekaze" />
+    <title>Ollama似乎不再提供200b以上新模型下載，如何部署？ | Harekaze</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.svg" />
+    <!-- Custom Google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/styles.css" rel="stylesheet" />
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2508788034463703"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="d-flex flex-column h-100 bg-light">
+    <main class="flex-shrink-0">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+            <div class="container px-5">
+                <a class="navbar-brand" href="/index.html"><span class="fw-bolder text-primary">Harekaze</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"><span
+                        class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                        <li class="nav-item"><a class="nav-link" href="/index.html">首頁</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/blockchain_articles.html">區塊鏈文章</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/web2_articles.html">Web2文章</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/tools.html">工具</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/donate.html">捐款</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about_us.html">關於我們</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container px-5 my-5">
+            <a href="/web2_articles.html">
+                <div class="small text-muted mb-5">Back</div>
+            </a>
+
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bolder mb-0"><span
+                        class="text-gradient d-inline">Ollama似乎不再提供200b以上新模型下載，如何部署？</span></h1>
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-11 col-xl-9 col-xxl-8">
+                    <!-- Experience Section-->
+                    <section>
+                        <!-- Experience Card 1-->
+                        <div class="card shadow border-0 rounded-4 mb-5">
+                            <div class="card-body p-5">
+                                <div class="row align-items-center gx-5">
+                                    <div class="col-lg-12">
+                                        <p>近日 Ollama 提供的新模型裏面，參數量較大的版本都只提供 cloud 版本。其實當初用 Ollama 都是想在本地裝置使用 AI
+                                            LLM，用 cloud 的話倒不如用其他網上服務。有甚麼辦法可以繼續在 Ollama 使用「大」模型呢？</p>
+
+                                        <p>Huggingface 是 AI 研究員的集散地，其重要性絕對不亞於開發者的 Github 。在 Hugging
+                                            face，用戶可以下載到其他開放模型。接下來，我會以 <a
+                                                href="https://huggingface.co/google/gemma-3-1b-it"
+                                                target="_blank">google/gemma-3-1b-it <span
+                                                    class="glyphicon glyphicon-new-window"></span></a> 為例教大家如何從 Hugging
+                                            face 下載所需檔案並在 Ollama 使用。
+                                        </p>
+
+                                        <h2>1. 找到你想運行的「大」模型</h2>
+
+                                        <p>雖然 Ollama 官方已把 200b 以上的模型限制在 cloud，實際上你仍可以把它們從 <strong>Hugging Face</strong>
+                                            下載下來再手動載入。<br />
+                                            - 進入 <a href="https://huggingface.co" target="_blank">Hugging Face <span
+                                                    class="glyphicon glyphicon-new-window"></span></a>
+                                            搜尋你需要的模型（例如
+                                            <a href="https://huggingface.co/google/gemma-3-1b-it"
+                                                target="_blank">google/gemma-3-1b-it <span
+                                                    class="glyphicon glyphicon-new-window"></span></a>）。<br />
+                                            - 完成下載後，將檔案放在本機可以存取的資料夾（例如 <code>~/gemma-3-1b-it/</code>）。
+                                        </p>
+
+                                        <p>如果你想更快速地下載多個模型檔，可以使用 Hugging Face CLI：<br />
+                                            <code>huggingface-cli download google/gemma-3-1b-it --local-dir ~/gemma-3-1b-it/</code>
+                                            <br />
+                                            （需要安裝 <a href="https://pypi.org/project/huggingface-hub/"
+                                                target="_blank">huggingface_hub <span
+                                                    class="glyphicon glyphicon-new-window"></span></a> 套件）
+                                        </p>
+
+                                        <h2>2. 轉換為 gguf 文件</h2>
+
+                                        <p>你需要先把模型做 <strong>fp16 量化</strong> 以便導入到 Ollama。<br />
+                                            <strong>轉換</strong>：使用 <a href="https://github.com/ggml-org/llama.cpp"
+                                                target="_blank">llama.cpp <span
+                                                    class="glyphicon glyphicon-new-window"></span></a> 的
+                                            convert_hf_to_gguf.py 工具<br />
+                                            <code>
+                                                git clone https://github.com/ggml-org/llama.cpp.git<br /><br />
+                                                python3 llama.cpp/convert_hf_to_gguf.py ~/gemma-3-1b-it/ --outfile ~/gemma-3-1b-it.gguf --outtype f16 --model-name gemma-3-1b-it
+                                            </code>
+                                        </p>
+
+                                        <p>這些步驟會顯著降低模型大小，讓它能在 4 GB 的 GPU 或 CPU 上順利載入。</p>
+
+                                        <h2>3. 用 Ollama 將模型載入本地服務</h2>
+
+                                        <p>一旦你得到 <code>.gguf</code> 檔案，就可以直接用 Ollama 的 <code>create</code> 指令。
+                                        </p>
+
+                                        <ol>
+                                            <li>
+                                                <strong>編寫 Modelfile</strong><br />
+                                                <code>FROM ./gemma-3-1b-it.gguf</code><br />
+                                                並儲存到 <code>~/Modelfile</code>。
+                                            </li>
+                                            <li><strong>導入模型</strong><br />
+                                                <code>ollama create gemma3-it:1b -f ~/Modelfile --quantize q4_K_M</code><br />
+                                                這會把模型轉換成 Ollama 能夠識別的格式，並進一步量化成 Q4_K_M ，再放在內部資料夾。
+                                            </li>
+
+                                            <li><strong>使用模型</strong><br />
+                                                <code>ollama run --verbose gemma3-it:1b</code><br />
+                                                你就可以直接在命令列或 API 呼叫中使用這個「大」模型。
+                                            </li>
+                                        </ol>
+
+                                        <h2>4. 小結</h2>
+
+                                        <ul>
+                                            <li><strong>Hugging Face</strong> 是下載「大」模型的首選平台；</li>
+                                            <li>透過 <strong>量化</strong>，可以把 200b 以上模型縮小到在本地上運行；</li>
+                                            <li>使用 <code>ollama create</code> 將模型載入，並用 <code>ollama run</code>
+                                                進行本地推論。</li>
+                                        </ul>
+
+                                        <p>
+                                            雖然官方已將這些模型鎖定於 cloud，但只要你願意花點時間手動處理模型檔案，Ollama
+                                            仍能讓你在本地享受超大模型的力量。祝你部署順利，模型用得愉快！
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer-->
+    <footer class="bg-white py-4 mt-auto">
+        <div class="container px-5">
+            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                <div class="col-auto">
+                    <div class="small m-0">Copyright &copy; Harekaze 2025</div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="/js/scripts.js"></script>
+</body>
+
+</html>

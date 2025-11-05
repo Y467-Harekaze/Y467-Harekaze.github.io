@@ -10,6 +10,7 @@ https://harekaze.link/articles/blockchain/fiat_stablecoin_basic_usdt_usdc_dai.ht
 https://harekaze.link/articles/blockchain/different_of_blockchain_and_cryptocurrency.html
 https://harekaze.link/web2_articles.html
 https://harekaze.link/articles/web2/apple_macbook_pro_m5_is_out_tomorrow_will_i_buy_one.html
+https://harekaze.link/articles/web2/download_llm_model_from_huggingface_and_import_to_ollama.html
 https://harekaze.link/tools.html
 https://harekaze.link/tools/hkcas.html
 https://harekaze.link/tools/aes-crypto.html
