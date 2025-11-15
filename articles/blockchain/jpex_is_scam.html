@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-hk">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Jpex 在加密貨幣圈內以交易所身份宣稱提供安全的存取功能。本文將依據鏈上資料與社群發佈的說明，對上述疑點進行分析。" />
+    <meta name="keywords" content="scam,jpex" />
+    <meta name="author" content="Harekaze" />
+    <title>Jpex：從鏈上資料檢視一段「資金流轉」的疑雲 | Harekaze</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.svg" />
+    <!-- Custom Google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/styles.css" rel="stylesheet" />
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2508788034463703"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="d-flex flex-column h-100 bg-light">
+    <main class="flex-shrink-0">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+            <div class="container px-5">
+                <a class="navbar-brand" href="/index.html"><span class="fw-bolder text-primary">Harekaze</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"><span
+                        class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                        <li class="nav-item"><a class="nav-link" href="/index.html">首頁</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/blockchain_articles.html">區塊鏈文章</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/web2_articles.html">Web2文章</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/tools.html">工具</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/donate.html">捐款</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about_us.html">關於我們</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container px-5 my-5">
+            <a href="/blockchain_articles.html">
+                <div class="small text-muted mb-5">Back</div>
+            </a>
+
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Jpex：從鏈上資料檢視一段「資金流轉」的疑雲</span>
+                </h1>
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-11 col-xl-9 col-xxl-8">
+                    <!-- Experience Section-->
+                    <section>
+                        <!-- Experience Card 1-->
+                        <div class="card shadow border-0 rounded-4 mb-5">
+                            <div class="card-body p-5">
+                                <div class="row align-items-center gx-5">
+                                    <div class="col-lg-12">
+                                        <div>
+                                            <h2>1. 背景簡介</h2>
+                                            <p>Jpex 在加密貨幣圈內以交易所身份宣稱提供安全的存取功能。近來，平台的錢包地址與交易記錄被公眾關注，主要疑問集中在：</p>
+                                            <ul>
+                                                <li>用戶資金是否真的獨立存放？</li>
+                                                <li>平台是否將用戶資金混入自有資金中（混幣）？</li>
+                                                <li>是否符合香港證監會「用戶資產與營運者資產分離」的要求？</li>
+                                            </ul>
+                                            <p>以下將依據鏈上資料與社群發佈的說明，對上述疑點進行分析。</p>
+
+                                            <h2>2. 鏈上交易資料概覽</h2>
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>事件</th>
+                                                        <th>金額</th>
+                                                        <th>交易對象</th>
+                                                        <th>主要疑問</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>「Jpex 存款收集錢包」 => 「Jpex 用戶出金錢包」</td>
+                                                        <td>1,750 萬 USDT</td>
+                                                        <td>用戶</td>
+                                                        <td>資金是否被轉入自有錢包？</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>「Jpex 用戶出金錢包」 => 「鍾培生收款錢包」</td>
+                                                        <td>39 萬 USDT</td>
+                                                        <td>服務方</td>
+                                                        <td>轉出是否是用戶提款？</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>兩筆其他金額<br />（342,551.9597 及 338,440.3671 USDT）</td>
+                                                        <td>同上</td>
+                                                        <td>同上</td>
+                                                        <td>仍屬於用戶提款或平台轉移？</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p>上述交易被摘錄於社群帖子，並附上鏈上瀏覽器連結。從單純的交易數據來看，<b>沒有明確標示「提款」或「用戶提款」的操作紀錄</b>，僅是資金在不同地址間的轉移。
+                                            </p>
+
+                                            <h2>3. Jpex 的官方說法與實際行為</h2>
+
+                                            <h3>3.1. 官方宣稱</h3>
+                                            <p>Jpex 主張「用戶資產 100% 存放在離線冷錢包」</p>
+                                            <ul>
+                                                <li>但在平台官方部落格並未顯示任何冷錢包地址或對應的交易紀錄。</li>
+                                                <li>這與實際鏈上「用戶資金被轉入平台出金錢包」的情況不符。</li>
+                                            </ul>
+
+                                            <h3>3.2. 用戶提款流程</h3>
+                                            <ul>
+                                                <li>社群內多次呼籲用戶截圖「帳戶 UID、USDT 充值/提幣紀錄」等資料，以備日後追索。</li>
+                                                <li>這暗示用戶需要自行確認帳戶內資金是否被正確轉出，而非由平台自動完成。</li>
+                                                <li>此外，平台被指出「以巨額提幣手續費」阻礙提款，表明有意阻止用戶資金流動。</li>
+                                            </ul>
+
+                                            <h2>4. 合規性檢查：香港證監會指引</h2>
+                                            <p>香港證監會明文要求：</p>
+                                            <ul>
+                                                <li>「用戶資產與營運者資產必須分隔」，以防止資金被挪用。</li>
+                                                <li>若未將用戶資金隔離，平台將面臨<b>牌照審查失敗</b>、<b>行政處罰</b>或<b>刑事責任</b>。
+                                                </li>
+                                            </ul>
+                                            <p>從上述鏈上交易與官方說明可見，Jpex
+                                                <b>未將用戶資金隔離於冷錢包</b>，而是將大額資金直接轉入「出金錢包」及其他平台相關地址。這違反了證監會的合規要求，並可能使平台失去申請香港牌照的資格。
+                                            </p>
+
+                                            <h2>5. 社群對 Jpex 的調查與揭露</h2>
+                                            <ul>
+                                                <li>鏈上監控工具（Mistrack、Bitquery、Arkham）被社群用於追蹤 Jpex 的資金流向，並公佈「錢包地址與餘額」清單。
+                                                </li>
+                                                <li>多名受害者在 Telegram / Whatsapp 群組內分享「提款失敗」經驗，並呼籲加入「Jpex 苦主關注組」尋求協助。</li>
+                                                <li>另外，有人指出 協同通信 與 Jpex
+                                                    的合作可能是詐騙圈的一部分，並提供地址以供追蹤。</li>
+                                            </ul>
+
+                                            <h2>6. 分析與結論</h2>
+                                            <ol>
+                                                <li>資金流向疑慮：從鏈上資料看，Jpex 已將大量用戶資金轉入非獨立錢包，並與平台自有資金混合，形成「混幣」的風險。
+                                                </li>
+                                                <li>官方說法與實際不符：平台宣稱 100% 冷錢包存放，卻未在鏈上呈現相應冷錢包地址，且提款被阻。</li>
+                                                <li>合規性缺失：未遵守香港證監會「資產分離」指引，這是獲得合法牌照的前提條件。</li>
+                                                <li>社群警告：多名用戶已經或正遭遇提款失敗，並在社群中分享證據，表明平台行為已引起監管與社群的高度關注。</li>
+                                            </ol>
+                                            <p>綜合上述可見，<b>Jpex
+                                                    的運作模式與行為存在高度可疑性</b>，並且符合「詐騙」或「不當操作」的特徵。雖然單靠鏈上交易難以完全證明「挪用」行為，但<b>資金流向與合規缺失</b>已足以讓用戶及監管機構保持警惕。
+                                            </p>
+                                            <blockquote>
+                                                <p>結論：從目前可查資料看，Jpex 很可能在進行或已進行了「資金混合」操作，且未能遵守香港證監會的資產分離規範。用戶若持有資金於
+                                                    Jpex，建議儘可能保留交易截圖、提交提款申請並考慮向警方舉報，防止資金進一步流失。
+                                                </p>
+                                            </blockquote>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer-->
+    <footer class="bg-white py-4 mt-auto">
+        <div class="container px-5">
+            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                <div class="col-auto">
+                    <div class="small m-0">Copyright &copy; Harekaze 2025</div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="/js/scripts.js"></script>
+</body>
+
+</html>
