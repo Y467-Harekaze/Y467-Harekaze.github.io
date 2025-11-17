@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-hk">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Harekaze" />
+    <title>在本地運行 Minimax M2
+        的完整指南 | Harekaze</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.svg" />
+    <!-- Custom Google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/styles.css" rel="stylesheet" />
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2508788034463703"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="d-flex flex-column h-100 bg-light">
+    <main class="flex-shrink-0">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+            <div class="container px-5">
+                <a class="navbar-brand" href="/index.html"><span class="fw-bolder text-primary">Harekaze</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"><span
+                        class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                        <li class="nav-item"><a class="nav-link" href="/index.html">首頁</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/blockchain_articles.html">區塊鏈文章</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/web2_articles.html">Web2文章</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/tools.html">工具</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/donate.html">捐款</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about_us.html">關於我們</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container px-5 my-5">
+            <a href="/web2_articles.html">
+                <div class="small text-muted mb-5">Back</div>
+            </a>
+
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">在本地運行 Minimax M2
+                        的完整指南</span></h1>
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-11 col-xl-9 col-xxl-8">
+                    <!-- Experience Section-->
+                    <section>
+                        <!-- Experience Card 1-->
+                        <div class="card shadow border-0 rounded-4 mb-5">
+                            <div class="card-body p-5">
+                                <div class="row align-items-center gx-5">
+                                    <div class="col-lg-12">
+                                        <div>
+                                            <h2>1. 為什麼要本地部署 Minimax M2？</h2>
+                                            <ul>
+                                                <li>隱私安全：所有資料都在本機處理，無需上傳到雲端。</li>
+                                                <li>延遲低：直接使用本地 GPU，響應時間遠低於雲端 API。</li>
+                                                <li>可控制成本：一次性購買硬體，長期使用不再產生 API 訂閱費。</li>
+                                                <li>可擴展性：可根據硬體配置自由調整批次大小、量化級別等。</li>
+                                            </ul>
+                                            <blockquote>
+                                                <p>Minimax M2 是一款 230 B 的 MoE 模型，激活參數約 10 B。</p>
+                                            </blockquote>
+
+                                            <h2>2. 系統與硬體需求</h2>
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>需求</th>
+                                                        <th>建議配置</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>GPU</td>
+                                                        <td>支援 CUDA 的 NVIDIA GPU，至少 100 GB VRAM<br />
+                                                            或者 支援 MLX 的 Apple MAC Studio，至少配備 128 GB 統一記憶體</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>儲存</td>
+                                                        <td>SSD（500 GB 以上）</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p>以上配置可確保在 Q4_K_M 量化模式下順暢推理，若使用更高品質量化（例如 Q8_K），請相應增加 VRAM。</p>
+
+                                            <h3>3. 下載與安裝前置工具</h3>
+
+                                            <h4>3.1 Hugging Face - 下載 Minimax M2</h4>
+                                            <ol>
+                                                <li>下載 huggingface-hub。<br />
+                                                    <code>pip install huggingface-hub</code>
+                                                </li>
+                                                <li>註冊或登入 Hugging Face 帳號。</li>
+                                                <li>從 huggingface-hub 下載原始模型檔案（<b>.safetensors</b> 檔）。<br />
+                                                    <code>huggingface-cli download MiniMaxAI/MiniMax-M2 --local-dir /path/to/Minimax-M2</code>
+                                                </li>
+                                            </ol>
+
+                                            <blockquote>
+                                                <p>提示：模型檔案大約 220 GB，請確保網速穩定且有足夠磁碟空間。</p>
+                                            </blockquote>
+
+                                            <h4>3.2 Github - 下載 <b>llama.cpp</b></h4>
+                                            <ol>
+                                                <li>打開終端（或 PowerShell），執行以下指令 clone repo：<br />
+                                                    <code>git clone https://github.com/ggml-org/llama.cpp && cd llama.cpp</code>
+                                                </li>
+
+                                                <li>建立編譯環境。<br />
+                                                    <code>cmake -B build<br />
+                                                    cmake --build build --config Release</code>
+                                                </li>
+                                            </ol>
+                                            <p><b>llama.cpp</b> 提供了將各種模型轉換為 <b>gguf</b> 格式、量化以及推理伺服器的工具。</p>
+
+                                            <h4>3.3 Github - 下載 Open WebUI</h4>
+                                            <ol>
+                                                <li>進入 Open WebUI 專案：<br />
+                                                    <code>git clone https://github.com/open-webui/open-webui.git && cd open-webui</code>
+                                                </li>
+
+                                                <li>按照官方說明安裝。</li>
+                                            </ol>
+                                            <p>Open WebUI 是一個前端 UI，允許你通過瀏覽器調用 <b>llama.cpp</b> 的本地 API。</p>
+
+                                            <h2>4. 模型轉換與量化</h2>
+                                            <ol>
+                                                <li>轉換為 <b>gguf</b></li>
+
+                                                <p>在 <b>llama.cpp</b> 目錄下執行：<br />
+                                                    <code>./convert_hf_to_gguf.py /path/to/Minimax-M2 --outfile /output/path/Minimax-M2.gguf --outtype f16</code>
+                                                </p>
+
+                                                <p>這一步會將原始模型轉為 <b>llama.cpp</b> 可讀的 <b>gguf</b> 格式。</p>
+
+                                                <li>量化（可選）</li>
+
+                                                <p>若想減少 VRAM 使用量，建議量化到 Q4_K_M（4-bit 量化，能保持較好效果）：<br />
+                                                    <code>./build/bin/llama-quantize /output/path/Minimax-M2.gguf /output/path/Minimax-M2-Q4_K_M.gguf Q4_K_M</code>
+                                                </p>
+                                            </ol>
+
+                                            <p>量化後的檔案大小大約 1/4~1/2 原始大小。</p>
+                                            <blockquote>
+                                                <p>注意：量化會略微降低推理品質，建議先測試在 8K/16K context 的樣本效果再決定是否量化。</p>
+                                            </blockquote>
+
+                                            <h2>5. 啟動 <b>llama.cpp</b> 伺服器</h2>
+                                            <ol>
+                                                <li>進入 <b>llama.cpp</b> 目錄，編譯 <b>llama-server</b>：<br />
+                                                    <code>cmake -B build && cmake --build build --config Release</code>
+                                                </li>
+
+                                                <li>啟動伺服器並掛載量化模型：<br />
+                                                    <code>
+                                                        ./llama-server -m /output/path/Minimax-M2-Q4_K_M.gguf --host 127.0.0.1 --port 8080 --n_ctx 32768
+                                                    </code>
+                                                </li>
+                                            </ol>
+
+                                            <p><b>--n_ctx</b>：上下文長度。</p>
+                                            <blockquote>
+                                                <p>伺服器啟動後，會在 <b>http://127.0.0.1:8080/v1/chat/completions</b> 提供
+                                                    OpenAI 風格 API。</p>
+                                            </blockquote>
+
+                                            <h2>6. 設定 Open WebUI 連線</h2>
+                                            <ol>
+                                                <li>開啟 Open WebUI 網頁（預設 <b>http://localhost:3000</b>）。</li>
+                                                <li>在「<b>OpenAI API</b> 設定」中輸入：</li>
+
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>參數</th>
+                                                            <th>值</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>API Base URL</td>
+                                                            <td><b>http://127.0.0.1:8080/v1</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>API Key</td>
+                                                            <td>空白</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <li>儲存設定後，即可在 UI 中使用 Minimax M2 進行對話、問答、寫作等。</li>
+                                            </ol>
+
+                                            <h2>7. 常見問題排查</h2>
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>問題</th>
+                                                        <th>可能原因</th>
+                                                        <th>解決方案</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>伺服器啟動失敗</td>
+                                                        <td>GPU 驅動程式未安裝或 CUDA 不匹配</td>
+                                                        <td>安裝對應 CUDA 版本，確認 <b>nvcc --version</b></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>回應過慢</td>
+                                                        <td>VRAM 容量過低</td>
+                                                        <td>將值調高，或使用更大 VRAM 容量的 GPU</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>模型不完整載入</td>
+                                                        <td>gguf 檔案損壞</td>
+                                                        <td>重新轉換或下載</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Open WebUI 連線失敗</td>
+                                                        <td>連接埠被佔用</td>
+                                                        <td>變更 <b>--port</b> 或關閉其他服務</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <h2>8. 小結</h2>
+                                            <ol>
+                                                <li>下載模型 => 下載工具 => 轉換 => 量化 => 啟動伺服器 => 連線 UI。</li>
+                                                <li>每一步都有官方文件作支援，若遇到困難可參考 <b>llama.cpp</b> 與 Open WebUI 的 Github
+                                                    issue。</li>
+                                                <li>本地部署不僅保障隱私，也讓你能自由調整模型參數，發掘 Minimax M2 的更多潛力。</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer-->
+    <footer class="bg-white py-4 mt-auto">
+        <div class="container px-5">
+            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                <div class="col-auto">
+                    <div class="small m-0">Copyright &copy; Harekaze 2025</div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="/js/scripts.js"></script>
+</body>
+
+</html>
