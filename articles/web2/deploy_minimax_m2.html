@@ -164,10 +164,6 @@
 
                                             <h2>5. 啟動 <b>llama.cpp</b> 伺服器</h2>
                                             <ol>
-                                                <li>進入 <b>llama.cpp</b> 目錄，編譯 <b>llama-server</b>：<br />
-                                                    <code>cmake -B build && cmake --build build --config Release</code>
-                                                </li>
-
                                                 <li>啟動伺服器並掛載量化模型：<br />
                                                     <code>
                                                         ./build/bin/llama-server -m /output/path/Minimax-M2-Q4_K_M.gguf --host 127.0.0.1 --port 8080 --n_ctx 32768
