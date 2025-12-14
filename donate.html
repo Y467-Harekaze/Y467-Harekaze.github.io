@@ -62,34 +62,34 @@
                         <p class="lead fw-normal text-muted mb-0">輕按地址以複製</p>
                     </div>
                     <div class="row gx-5 justify-content-center">
-                        <div class="col-lg-8 col-xl-6">
+                        <div class="col-lg-8 col-xl-6" style="word-break: break-all;">
 
                             Bitcoin (BTC) <span id="xbt_copied" class="copied text-muted"></span>
-                            <input id="xbt_addr" type="text" class="form-control" name="xbt_addr"
-                                value="3MSNhVbXQeqBgoT5HngSDLuynNyMkMB2JN" onclick="copyFunction('xbt')" readonly />
+                            <div id="xbt_addr" onclick="copyFunction('xbt')"><u>3MSNhVbXQeqBgoT5HngSDLuynNyMkMB2JN</u>
+                            </div>
                             <br />
 
                             Ether (ETH), POL or any ERC-20 token <span id="eth_copied" class="copied text-muted"></span>
-                            <input id="eth_addr" type="text" class="form-control" name="eth_addr"
-                                value="0x72183156b4F427eFdA8b3ddED1939374e18Da77d" onclick="copyFunction('eth')"
-                                readonly />
+                            <div id="eth_addr" onclick="copyFunction('eth')">
+                                <u>0x72183156b4F427eFdA8b3ddED1939374e18Da77d</u>
+                            </div>
                             <br />
 
                             Tron (TRX) or any TRC-20 token <span id="tron_copied" class="copied text-muted"></span>
-                            <input id="tron_addr" type="text" class="form-control" name="tron_addr"
-                                value="TLNV1sJ6VUqJL6EuHrqz55gpWxXc52q5Z2" onclick="copyFunction('tron')" readonly />
+                            <div id="tron_addr" onclick="copyFunction('tron')"><u>TLNV1sJ6VUqJL6EuHrqz55gpWxXc52q5Z2</u>
+                            </div>
                             <br />
 
                             Solana (SOL) <span id="sol_copied" class="copied text-muted"></span>
-                            <input id="sol_addr" type="text" class="form-control" name="sol_addr"
-                                value="2DuHCSDki5KXZV4edkALbiS41z3PaRXFJkF2DPkXPZ4t" onclick="copyFunction('sol')"
-                                readonly />
+                            <div id="sol_addr" onclick="copyFunction('sol')">
+                                <u>2DuHCSDki5KXZV4edkALbiS41z3PaRXFJkF2DPkXPZ4t</u>
+                            </div>
                             <br />
 
                             Monero (XMR) <span id="xmr_copied" class="copied text-muted"></span>
-                            <input id="xmr_addr" type="text" class="form-control" name="xmr_addr"
-                                value="42mm8uEv9aPLwGz2cSXwCzRao4XBJFoBGNFYpkBsE8K1amWVEbNmjHfTjtBPVfvgp3KEzrK9T16KxiU8LKYjyvKrSSnsWEg"
-                                onclick="copyFunction('xmr')" readonly />
+                            <div id="xmr_addr" onclick="copyFunction('xmr')">
+                                <u>42mm8uEv9aPLwGz2cSXwCzRao4XBJFoBGNFYpkBsE8K1amWVEbNmjHfTjtBPVfvgp3KEzrK9T16KxiU8LKYjyvKrSSnsWEg</u>
+                            </div>
 
                         </div><!-- close .row-->
                     </div>
@@ -122,12 +122,12 @@
             // Get the text field
             var copyText = document.getElementById(chain + '_addr');
 
-            // Select the text field
-            copyText.select();
-            copyText.setSelectionRange(0, 99999); // For mobile devices
+            // Select the text field (intput box only)
+            //copyText.select();
+            //copyText.setSelectionRange(0, 99999); // For mobile devices
 
             // Copy the text inside the text field
-            navigator.clipboard.writeText(copyText.value);
+            navigator.clipboard.writeText(copyText.innerText);
 
             $('.copied').html('');
             $('#' + chain + '_copied').html('(Copied)');
