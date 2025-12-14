@@ -65,27 +65,30 @@
                         <div class="col-lg-8 col-xl-6">
 
                             Bitcoin (BTC) <span id="xbt_copied" class="copied text-muted"></span>
-                            <input id="xbt_addr" type="text" class="form-control" name="xbt_addr" value=""
-                                onclick="copyFunction('xbt')" readonly />
+                            <input id="xbt_addr" type="text" class="form-control" name="xbt_addr"
+                                value="3MSNhVbXQeqBgoT5HngSDLuynNyMkMB2JN" onclick="copyFunction('xbt')" readonly />
                             <br />
 
                             Ether (ETH), POL or any ERC-20 token <span id="eth_copied" class="copied text-muted"></span>
-                            <input id="eth_addr" type="text" class="form-control" name="eth_addr" value=""
-                                onclick="copyFunction('eth')" readonly />
+                            <input id="eth_addr" type="text" class="form-control" name="eth_addr"
+                                value="0x72183156b4F427eFdA8b3ddED1939374e18Da77d" onclick="copyFunction('eth')"
+                                readonly />
                             <br />
 
                             Tron (TRX) or any TRC-20 token <span id="tron_copied" class="copied text-muted"></span>
-                            <input id="tron_addr" type="text" class="form-control" name="tron_addr" value=""
-                                onclick="copyFunction('tron')" readonly />
+                            <input id="tron_addr" type="text" class="form-control" name="tron_addr"
+                                value="TLNV1sJ6VUqJL6EuHrqz55gpWxXc52q5Z2" onclick="copyFunction('tron')" readonly />
                             <br />
 
                             Solana (SOL) <span id="sol_copied" class="copied text-muted"></span>
-                            <input id="sol_addr" type="text" class="form-control" name="sol_addr" value=""
-                                onclick="copyFunction('sol')" readonly />
+                            <input id="sol_addr" type="text" class="form-control" name="sol_addr"
+                                value="2DuHCSDki5KXZV4edkALbiS41z3PaRXFJkF2DPkXPZ4t" onclick="copyFunction('sol')"
+                                readonly />
                             <br />
 
                             Monero (XMR) <span id="xmr_copied" class="copied text-muted"></span>
-                            <input id="xmr_addr" type="text" class="form-control" name="xmr_addr" value=""
+                            <input id="xmr_addr" type="text" class="form-control" name="xmr_addr"
+                                value="42mm8uEv9aPLwGz2cSXwCzRao4XBJFoBGNFYpkBsE8K1amWVEbNmjHfTjtBPVfvgp3KEzrK9T16KxiU8LKYjyvKrSSnsWEg"
                                 onclick="copyFunction('xmr')" readonly />
 
 
@@ -128,29 +131,19 @@
 
     <!-- donate.html -->
     <script>
-        $('#xbt_addr').val('3MSNhVbXQeqBgoT5HngSDLuynNyMkMB2JN');
-        $('#eth_addr').val('0x72183156b4F427eFdA8b3ddED1939374e18Da77d');
-        $('#tron_addr').val('TLNV1sJ6VUqJL6EuHrqz55gpWxXc52q5Z2');
-        $('#sol_addr').val('2DuHCSDki5KXZV4edkALbiS41z3PaRXFJkF2DPkXPZ4t');
-        $('#xmr_addr').val('42mm8uEv9aPLwGz2cSXwCzRao4XBJFoBGNFYpkBsE8K1amWVEbNmjHfTjtBPVfvgp3KEzrK9T16KxiU8LKYjyvKrSSnsWEg');
         $('.form-control').css('text-overflow', 'ellipsis');
 
         function copyFunction(chain) {
-            /* Get the text field */
+            // Get the text field
             var copyText = document.getElementById(chain + '_addr');
 
-            /* Select the text field */
+            // Select the text field
             copyText.select();
-            copyText.setSelectionRange(0, 99999);//For mobile devices
+            copyText.setSelectionRange(0, 99999); // For mobile devices
 
-            /* Copy the text inside the text field */
-            document.execCommand("copy");
-            /* Alert the copied text */
-            //alert("Copied the text: " + copyText.value);
+            // Copy the text inside the text field
+            navigator.clipboard.writeText(copyText.value);
 
-
-            //
-            $('.copied').html('');
             $('#' + chain + '_copied').html('(Copied)');
         }
 
