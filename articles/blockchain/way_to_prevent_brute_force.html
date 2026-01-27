@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="即將收到巨額加密貨幣，如何部署？本文將以攻方視角提供建議，協助你保護你的區塊鏈資產。" />
-    <meta name="keywords" content="提防,Private key爆破攻擊,建議,Ethereum,Blockchain" />
+    <meta name="keywords" content="提防,Private key爆破攻擊,建議,Ethereum,Blockchain,加密貨幣安全,助記詞安全,硬件錢包,多簽錢包,區塊鏈安全" />
     <meta name="author" content="Harekaze" />
     <title>提防 Blockchain 的 Private key 爆破攻擊之建議 | Harekaze</title>
     <!-- Favicon-->
@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
@@ -59,180 +59,323 @@
             </div>
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-11 col-xl-9 col-xxl-8">
-                    <!-- Experience Section-->
-                    <section>
-                        <!-- Experience Card 1-->
+                    <!-- Introduction Section-->
+                    <section class="mb-5">
                         <div class="card shadow border-0 rounded-4 mb-5">
                             <div class="card-body">
                                 <div class="row align-items-center gx-5">
                                     <div class="col-lg-12">
-                                        <div>
-                                            <p>
+                                        <div class="mb-4">
                                             <h2>你即將收到巨額加密貨幣，如何部署？</h2>
-                                            先假設你已懂得 Wallet 和 Address 的基本知識，接下來就應該考慮如何保護它。</p>
+                                            <p>假設你已經了解了 Wallet 和 Address
+                                                的基本知識，接下來就應該考慮如何保護它們。本文將從攻方的角度出發，提供實用的建議，幫助你有效保護你的區塊鏈資產。</p>
+                                        </div>
 
-                                            <p>當你作為守方，你要考慮的是攻方會如何令你損失資產。<br />
-                                                當你思考攻方如何令守方損失時，最好的方法就是考慮守方如何保護資產。<br />
-                                                （這就是「道高一尺，魔高一丈」）</p>
+                                        <div class="alert alert-info mb-4">
+                                            <h5>關鍵概念：攻防思維</h5>
+                                            <p>當你作為守方，你要考慮的是攻方會如何令你損失資產。而思考攻方如何令守方損失的最佳方法，就是考慮守方如何保護資產。這就是「道高一尺，魔高一丈」的安全思維方式。
+                                            </p>
+                                        </div>
 
-                                            <blockquote>發問：一般人（守方）是如何建立 Address？<br />
-                                                答案：先用 Wallet 建立助記詞，再由 Wallet 轉換成 Address。</blockquote>
+                                        <div class="mb-4">
+                                            <h3>基本問題：一般人如何建立 Address？</h3>
+                                            <p>答案：先用 Wallet 建立助記詞（Mnemonic Phrase），再由 Wallet 轉換成
+                                                Address。這個過程看似簡單，但其中存在著安全漏洞。</p>
+                                        </div>
 
-                                            <p>有漏洞嗎？有。</p>
-                                            <p>如果守方用的助記詞不多於21字，能提供的組合數量會少於 Private key。（即使是最熱門的Metamask
-                                                wallet，早期都只是預設用12字助記詞。）<br />
-                                                一般人認為每條助記詞只能產生一條地址。對有技術的攻方而言，這代表大多數人不懂得改變 Derivation Path。<br />
-                                                結論：能大幅減少需要破解的組合，最終能破解的 Address 數量亦不會減少太多。</p>
-
-                                            <p>因此作為守方，我們最起碼應該使用不少於24字的助記詞。</p>
-
-                                            <p>以下是一些支援守方保護區塊鏈資產的建議及其原因。</p>
-
-                                            <table class="table table-hover table-bordered">
-                                                <tr>
-                                                    <th colspan="2">基礎</th>
-                                                </tr>
-                                                <tr>
-                                                    <th>建議</th>
-                                                    <th>原因</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>必須備份助記詞。</td>
-                                                    <td>如果你沒有備份助記詞，一旦你的 wallet 故障就會失去其控制權及裏面的區塊鏈資產。</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>助記詞之載體不應連上網絡。</td>
-                                                    <td>一般人都是用明文備份助記詞，如果該載體連上網絡，而且被駭客入侵，攻擊者就有能力輕易盜取你的區塊鏈資產。
-                                                    </td>
-                                                </tr>
-                                            </table>
-
-                                            <hr />
-
-                                            <table class="table table-hover table-bordered">
-                                                <tr>
-                                                    <th colspan="2">新手</th>
-                                                </tr>
-                                                <tr>
-                                                    <th>建議</th>
-                                                    <th>原因</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>承上所有。</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>使用最少24字的助記詞。</td>
-                                                    <td>Private key 能夠提供 256-bit 的安全性，如果要以助記詞提供同級之安全性就需要使用24字助記詞。</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>使用硬件錢包。</td>
-                                                    <td>相較軟件錢包，硬件錢包之助記詞在任何時間都不連網，大大減低區塊鏈資產被盜的機會。</td>
-                                                </tr>
-                                            </table>
-
-                                            <hr />
-
-                                            <table class="table table-hover table-bordered">
-                                                <tr>
-                                                    <th colspan="2">中級</th>
-                                                </tr>
-                                                <tr>
-                                                    <th>建議</th>
-                                                    <th>原因</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>承上所有。</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>備份 Derivation Path。</td>
-                                                    <td>
-                                                        一般加密貨幣用戶都不知道單憑助記詞並不能做到備份 Wallet 之效果，到現在都未有災情純粹是因為大部分 Wallet
-                                                        都使用預設值，但預設值會因應情況改變。
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>不要將所有區塊鏈資產都放到同一 Address。</td>
-                                                    <td>任何 Address 都可能已被破解，也可能在任何時候被破解。這樣做能夠減少每次不幸被破解時的損失。</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>使用多簽錢包。</td>
-                                                    <td>EVM鏈的多簽錢包屬於智能合約。如果攻擊者破解出的 Address 屬於智能合約，就無法控制該 Wallet。</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>多簽錢包的最少有一個簽名者屬於硬件錢包。</td>
-                                                    <td>雖然多簽錢包比較安全，但同時亦比較麻煩。保留最少一個簽名者屬硬件錢包是為了在安全和方便取得平衡。</td>
-                                                </tr>
-                                            </table>
-
-                                            <hr />
-
-                                            <table class="table table-hover table-bordered">
-                                                <tr>
-                                                    <th colspan="2">高手</th>
-                                                </tr>
-                                                <tr>
-                                                    <th>建議</th>
-                                                    <th>原因</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>承上所有。</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        多簽錢包的最少一個簽名者之任何資訊皆不公開，包括助記詞、Private
-                                                        key 及 Address 都不可公開，不能用作收發加密貨幣，亦不能用作任何鏈上操作。但可以用作簽名。
-                                                    </td>
-                                                    <td>任何曾經收發區塊鏈資產的 Address 都可能成為攻擊者的目標，因此請不要暴露所有 Address 到區塊鏈。</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <code>適用於Bitcoin，不適用於EVM</code><br />每條 Address 都只使用一次，只要該
-                                                        Address
-                                                        曾經發起轉帳或任何鏈上操作就必須廢棄。
-                                                    </td>
-                                                    <td>
-                                                        基於 Bitcoin 的機制，任何 Address 發起鏈上操作時都會暴露其 Public key，暴露的 Public key
-                                                        可以縮減攻擊者破解該
-                                                        Address 之時間。
-                                                    </td>
-                                                </tr>
-                                            </table>
-
-                                            <hr />
-
-                                            <table class="table table-hover table-bordered">
-                                                <tr>
-                                                    <th colspan="2">超高手</th>
-                                                </tr>
-                                                <tr>
-                                                    <th>建議</th>
-                                                    <th>原因</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>承上所有。</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>不要使用助記詞，改用 Private key。</td>
-                                                    <td>
-                                                        Wallet 破解當中有2大流派：助記詞破解及 Private key 破解。如果攻擊者是破解助記詞就會有部份 Private
-                                                        key
-                                                        位於盲區而避過一劫。
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                        <div class="alert alert-warning mb-4">
+                                            <h5>安全漏洞分析</h5>
+                                            <p>如果守方用的助記詞不多於21字，能提供的組合數量會少於 Private key。即使是最熱門的Metamask
+                                                wallet，早期也只是預設用12字助記詞。一般人認為每條助記詞只能產生一條地址，但對有技術的攻方而言，這代表大多數人不懂得改變
+                                                Derivation Path（導出路徑）。</p>
+                                            <p>結論：能大幅減少需要破解的組合，最終能破解的 Address 數量亦不會減少太多。因此作為守方，我們最起碼應該使用不少於24字的助記詞。</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </section>
 
+                    <!-- Security Recommendations Section-->
+                    <section class="mb-5">
+                        <div class="card shadow border-0 rounded-4 mb-5">
+                            <div class="card-body">
+                                <div class="row align-items-center gx-5">
+                                    <div class="col-lg-12">
+                                        <div class="mb-4">
+                                            <h2>保護區塊鏈資產的建議</h2>
+                                            <p>以下是根據不同技術水平的用戶，提供的具體建議及其原因。這些建議涵蓋了從基本到高級的安全措施，幫助你根據自己的技術水平選擇最合適的安全策略。</p>
+                                        </div>
 
+                                        <div class="mb-4">
+                                            <h3>基礎級別</h3>
+                                            <div class="row gx-4">
+                                                <div class="col-md-6">
+                                                    <div class="card h-100 border-left-primary">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">必須備份助記詞</h5>
+                                                            <p class="card-text">如果你沒有備份助記詞，一旦你的 wallet
+                                                                故障就會失去其控制權及裏面的區塊鏈資產。助記詞是恢復 wallet 的唯一途徑。</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card h-100 border-left-primary">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">助記詞之載體不應連上網絡</h5>
+                                                            <p class="card-text">
+                                                                一般人都是用明文備份助記詞，如果該載體連上網絡，而且被駭客入侵，攻擊者就有能力輕易盜取你的區塊鏈資產。建議使用離線儲存介質（如紙質備份）。
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <h3>新手級別</h3>
+                                            <div class="row gx-4">
+                                                <div class="col-md-6">
+                                                    <div class="card h-100 border-left-success">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">承上所有基礎建議</h5>
+                                                            <p class="card-text">這些建議是新手也應該遵循的</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card h-100 border-left-success">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">使用硬件錢包</h5>
+                                                            <p class="card-text">硬件錢包需要多個簽名才能進行交易，即使攻擊者獲得一個 Private
+                                                                key，也無法單獨控制資金。例如，你可以使用 Ledger 或 Trezor
+                                                                這樣的硬件錢包，並設置多個簽名者，包括硬件錢包和軟件錢包。</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card h-100 border-left-success">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">使用 24 字助記詞</h5>
+                                                            <p class="card-text">使用 24 字助記詞（BIP39
+                                                                標準）來備份你的錢包。這些助記詞可以用來恢復你的錢包，並確保你的資金安全。請妥善保管這些助記詞，並不要在網路上分享或存儲在線上。
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <h3>中級級別</h3>
+                                            <div class="row gx-4">
+                                                <div class="col-md-6">
+                                                    <div class="card h-100 border-left-info">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">承上所有新手建議</h5>
+                                                            <p class="card-text">這些建議是中級用戶也應該遵循的</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card h-100 border-left-info">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">備份 Derivation Path</h5>
+                                                            <p class="card-text">一般加密貨幣用戶都不知道單憑助記詞並不能做到備份 Wallet
+                                                                之效果，到現在都未有災情純粹是因為大部分 Wallet
+                                                                都使用預設值，但預設值會因應情況改變。例如，如果你使用的是非標準的 Derivation
+                                                                Path，你需要記錄這些信息以便恢復 Wallet。建議使用 m/44'/60'/0'/0/0
+                                                                這樣的標準路徑，並記錄你使用的任何自定義路徑。</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card h-100 border-left-info">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">不要將所有區塊鏈資產都放到同一 Address</h5>
+                                                            <p class="card-text">任何 Address
+                                                                都可能已被破解，也可能在任何時候被破解。這樣做能夠減少每次不幸被破解時的損失。建議使用多個
+                                                                Address，並定期輪換使用。例如，你可以為每筆交易使用不同的 Address，或者定期創建新的
+                                                                Address 來替換舊的 Address。</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card h-100 border-left-info">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">使用多簽錢包</h5>
+                                                            <p class="card-text">EVM鏈的多簽錢包屬於智能合約。如果攻擊者破解出的 Address
+                                                                屬於智能合約，就無法控制該
+                                                                Wallet。多簽錢包需要多個簽名才能進行交易，即使攻擊者獲得一個 Private
+                                                                key，也無法單獨控制資金。例如，你可以使用 Gnosis Safe
+                                                                這樣的多簽錢包，並設置多個簽名者，包括硬件錢包和軟件錢包。</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card h-100 border-left-info">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">多簽錢包的最少有一個簽名者屬於硬件錢包</h5>
+                                                            <p class="card-text">
+                                                                雖然多簽錢包比較安全，但同時亦比較麻煩。保留最少一個簽名者屬硬件錢包是為了在安全和方便取得平衡。這樣即使其他簽名者的軟件錢包被駭客入侵，你仍然可以使用硬件錢包來批准交易。例如，你可以設置一個
+                                                                2-of-3 多簽錢包，其中兩個簽名者是軟件錢包，一個簽名者是硬件錢包。</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <h3>高手級別</h3>
+                                            <div class="row gx-4">
+                                                <div class="col-md-6">
+                                                    <div class="card h-100 border-left-warning">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">承上所有中級建議</h5>
+                                                            <p class="card-text">這些建議是高級用戶也應該遵循的</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card h-100 border-left-warning">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">多簽錢包的最少一個簽名者之任何資訊皆不公開</h5>
+                                                            <p class="card-text">任何曾經收發區塊鏈資產的 Address
+                                                                都可能成為攻擊者的目標，因此請不要暴露所有 Address
+                                                                到區塊鏈。這個簽名者可以用於多簽錢包的簽名，但不需要公開任何資訊。例如，你可以使用一個離線的硬件簽名者，並將其
+                                                                Private key 存儲在完全離線的環境中，只在需要時連接到電腦進行簽名。
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card h-100 border-left-warning">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">每條 Address 都只使用一次</h5>
+                                                            <p class="card-text">基於 Bitcoin 的機制，任何 Address 發起鏈上操作時都會暴露其
+                                                                Public key，暴露的 Public key 可以縮減攻擊者破解該
+                                                                Address 之時間。在 Bitcoin 中，每次你使用一個新的 Address 來接收或發送交易時，該
+                                                                Address 的 Public key
+                                                                就會被公開到區塊鏈上。因此，建議每次使用新的 Address，並永遠不再使用舊的
+                                                                Address。這樣可以防止攻擊者通過分析你的交易歷史來推斷你的 Private
+                                                                key。注意：這種方法不適用於 EVM 鏈，因為 EVM 鏈的 Address 使用的是
+                                                                EOA（Externally Owned Account）機制，其 Public key
+                                                                不會直接公開到鏈上。</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <h3>超高手級別</h3>
+                                            <div class="row gx-4">
+                                                <div class="col-md-6">
+                                                    <div class="card h-100 border-left-danger">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">不要使用助記詞，改用 Private key</h5>
+                                                            <p class="card-text">Wallet 破解當中有2大流派：助記詞破解及 Private key
+                                                                破解。如果攻擊者是破解助記詞就會有部份 Private key
+                                                                位於盲區而避過一劫。注意：這種方法需要更高的安全意識和操作技巧。</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Additional Tips Section-->
+                    <section class="mb-5">
+                        <div class="card shadow border-0 rounded-4 mb-5">
+                            <div class="card-body">
+                                <div class="row align-items-center gx-5">
+                                    <div class="col-lg-12">
+                                        <div class="mb-4">
+                                            <h2>額外建議</h2>
+                                            <p>除了上述的安全建議，以下是一些額外的實用建議，幫助你進一步提升區塊鏈資產的安全性：</p>
+                                        </div>
+
+                                        <div class="card mb-4">
+                                            <div class="card-body">
+                                                <h5 class="card-title">定期更新軟件</h5>
+                                                <p>定期更新你的 Wallet
+                                                    軟件和操作系統，以確保你有最新的安全更新。許多安全漏洞可以通過更新來修復，這是保護你的系統免受攻擊的第一道防線。</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mb-4">
+                                            <div class="card-body">
+                                                <h5 class="card-title">使用強密碼</h5>
+                                                <p>如果你的 Wallet 軟件需要設置密碼（例如 Metamask
+                                                    的密碼保護），請使用強密碼。強密碼應該包含大小寫字母、數字和特殊字符，並至少8個字符長度。避免使用常見的單詞或短語作為密碼，這些容易被猜測或通過暴力破解攻擊。
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mb-4">
+                                            <div class="card-body">
+                                                <h5 class="card-title">啟用雙重認證</h5>
+                                                <p>如果你的加密貨幣交易所支援雙重認證（例如 Google
+                                                    驗證碼或電子郵件認證），請啟用它。雙重認證可以額外保護你的帳戶，即使攻擊者獲得了你的密碼，他們仍然需要通過雙重認證來訪問你的帳戶。
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mb-4">
+                                            <div class="card-body">
+                                                <h5 class="card-title">監控交易活動</h5>
+                                                <p>定期檢查你的 Wallet
+                                                    和交易歷史，確保沒有可疑的交易活動。如果你發現任何未經授權的交易，請立即採取行動，例如撤銷交易、更改密碼或聯繫客戶服務員。早期發現問題可以最大限度減少損失。
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mb-4">
+                                            <div class="card-body">
+                                                <h5 class="card-title">備份重要資料</h5>
+                                                <p>除了備份助記詞，還應該備份其他重要資料，例如 Wallet
+                                                    的配置文件、助記詞/私鑰的備份、交易記錄等。備份應該存儲在多個離線位置，以防止單一故障點導致資料丟失。例如，你可以將備份存儲在
+                                                    USB 驅動器、外接硬碟或紙質備份中。</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mb-4">
+                                            <div class="card-body">
+                                                <h5 class="card-title">教育和意識</h5>
+                                                <p>持續學習區塊鏈安全的最新趨勢。參加相關的社區討論、網絡研討會或課程，以提升你的安全意識。了解攻擊者的最新技術和工具，可以幫助你更好地保護你的資產。例如，你可以關注常見的攻擊類型，如釣魚攻擊、惡意軟件攻擊、社交工程攻擊等，並學習如何識別和防範這些攻擊。
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Conclusion Section-->
+                    <section class="mb-5">
+                        <div class="card shadow border-0 rounded-4 mb-5">
+                            <div class="card-body">
+                                <div class="row align-items-center gx-5">
+                                    <div class="col-lg-12">
+                                        <div class="mb-4">
+                                            <h2>結語</h2>
+                                            <p>保護你的區塊鏈資產需要綜合多種安全措施。從基本的助記詞備份到高級的多簽錢包和一次性地址，每一層安全措施都能夠增強你的整體安全性。根據你的技術水平和資產規模，選擇適合的安全策略，並定期審查和更新你的安全措施。
+                                            </p>
+                                            <p>安全不是一成不變的。隨著新的攻擊方法和技術的出現，你需要不斷地更新你的安全知識和實踐。通過持續學習和實踐，你可以更好地保護你的區塊鏈資產免受不斷演進的網絡威脅。
+                                            </p>
+                                            <p>最後，提醒你：在區塊鏈世界中，你的資產安全最終取決於你的知識和警覺。通過採用這些安全建議，你可以大大降低資產被盜的風險，並更加放心地參與區塊鏈經濟活動。
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
@@ -244,7 +387,6 @@
                 <div class="col-auto">
                     <div class="small m-0">Copyright &copy; Harekaze 2025</div>
                 </div>
-
             </div>
         </div>
     </footer>

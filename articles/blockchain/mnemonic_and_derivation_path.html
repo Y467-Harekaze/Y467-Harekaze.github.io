@@ -4,8 +4,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="很多人以為助記詞是把 Private key 轉換成人類能理解的單字，但事實上並非如此，現在就讓我們一起探索助記詞與路徑的關係吧。" />
-    <meta name="keywords" content="助記詞,Derivation Path,Bitcoin,BIP-39,BIP-44" />
+    <meta name="description"
+        content="助記詞與路徑的關係：助記詞並非將私鑰轉換為人類可理解的單字，而是使用者先建立助記詞，再由軟件轉換成私鑰和地址。本文將探索助記詞與路徑的關係，並解釋如何使用路徑創建多個地址。" />
+    <meta name="keywords"
+        content="助記詞,Mnemonic,Seed-phrase,Derivation Path,BIP-39,BIP-32,BIP-44,私鑰,地址,比特幣,以太坊,區塊鏈,加密貨幣" />
     <meta name="author" content="Harekaze" />
     <title>助記詞與路徑 | Harekaze</title>
     <!-- Favicon-->
@@ -14,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
@@ -58,186 +60,412 @@
             </div>
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-11 col-xl-9 col-xxl-8">
-                    <!-- Experience Section-->
-                    <section>
-                        <!-- Experience Card 1-->
+                    <!-- Table of Contents -->
+                    <div class="card shadow border-0 rounded-4 mb-5">
+                        <div class="card-body">
+                            <h3>目錄</h3>
+                            <ul class="list-unstyled">
+                                <li><a href="#introduction">介紹</a></li>
+                                <li><a href="#technical-background">技術背景</a></li>
+                                <li><a href="#how-mnemonic-works">助記詞的工作原理</a></li>
+                                <li><a href="#derivation-paths">路徑（Derivation Paths）</a></li>
+                                <li><a href="#practical-examples">實際例子</a></li>
+                                <li><a href="#security">安全考慮</a></li>
+                                <li><a href="#common-misconceptions">常見誤解</a></li>
+                                <li><a href="#advanced-topics">進階主題</a></li>
+                                <li><a href="#references">參考資料</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Introduction Section -->
+                    <section id="introduction">
                         <div class="card shadow border-0 rounded-4 mb-5">
                             <div class="card-body">
-                                <div class="row align-items-center gx-5">
-                                    <div class="col-lg-12">
-                                        <div>
-                                            <p>
-                                                很多人以為助記詞是把 Private key 轉換成人類能理解的單字，但事實上並非如此，現在就讓我們一起探索助記詞與路徑的關係吧。
-                                            </p>
+                                <h2>介紹</h2>
+                                <p>
+                                    很多人以為助記詞（Mnemonic）是將私鑰（Private
+                                    Key）轉換成人類能理解的單字，但事實上並非如此。助記詞是一種用於創建私鑰和地址的工具，它允許用戶安全地存儲和備份加密貨幣錢包的助記詞。助記詞與路徑（Derivation
+                                    Path）結合使用，可以創建多個地址，從而實現更靈活的錢包管理。
+                                </p>
+                                <p>
+                                    本文將探索助記詞與路徑的關係，並解釋如何使用路徑創建多個地址，以及助記詞在區塊鏈技術中的重要性。
+                                </p>
+                            </div>
+                        </div>
+                    </section>
 
-                                            <p>
-                                            <h3>稱呼</h3>
-                                            助記詞，原文為 Mnemonic，後來 Metamask 因應 NFT 熱潮而在 2022 年改稱為 Seed-phrase。
-                                            </p>
+                    <!-- Technical Background Section -->
+                    <section id="technical-background">
+                        <div class="card shadow border-0 rounded-4 mb-5">
+                            <div class="card-body">
+                                <h2>技術背景</h2>
+                                <p>
+                                    助記詞技術是基於以下幾個 Bitcoin 改進計畫（BIP）而發展出來的：
+                                </p>
+                                <ul>
+                                    <li>
+                                        <strong>BIP-39</strong>:
+                                        定義了助記詞的創建和使用規範。助記詞是一組單詞，可以用來創建私鑰。這些單詞來自一個標準化的詞彙表，確保助記詞的唯一性和可讀性。
+                                    </li>
+                                    <li>
+                                        <strong>BIP-32</strong>: 定義了層次確定性錢包（Hierarchical Deterministic Wallets, HD
+                                        Wallets）。HD 錢包允許用戶從一個種子創建多個私鑰和地址，並且可以通過路徑進行管理。
+                                    </li>
+                                    <li>
+                                        <strong>BIP-44</strong>: 定義了多帳戶層次確定性錢包的結構。BIP-44 規範了如何使用路徑來創建不同類型的地址（例如外部鏈和內部鏈）。
+                                    </li>
+                                </ul>
+                                <p>
+                                    這些 BIP 協議共同構建了現代加密貨幣錢包的基礎，使得用戶可以安全地管理多個地址和私鑰。
+                                </p>
+                            </div>
+                        </div>
+                    </section>
 
-                                            <p>
-                                            <h3>技術歷史</h3>
-                                            在 Bitcoin 歷史上，並非由一開始就有助記詞這項技術。助記詞是基於 BIP-39、BIP-32 及 BIP-44 等多個 Bitcoin
-                                            改進計畫而成。
-                                            </p>
+                    <!-- How Mnemonic Works Section -->
+                    <section id="how-mnemonic-works">
+                        <div class="card shadow border-0 rounded-4 mb-5">
+                            <div class="card-body">
+                                <h2>助記詞的工作原理</h2>
+                                <p>
+                                    助記詞並不是將私鑰轉換為人類可理解的單字，而是使用者先建立助記詞，然後由軟件（如錢包應用程式）將助記詞轉換為私鑰和地址。具體步驟如下：
+                                </p>
+                                <ol>
+                                    <li>
+                                        <strong>創建助記詞</strong>: 用戶使用錢包應用程式創建一組助記詞（例如 12 或 24 個單詞）。
+                                    </li>
+                                    <li>
+                                        <strong>助記詞轉換為種子</strong>: 助記詞被轉換為一個二進制數值。
+                                    </li>
+                                    <li>
+                                        <strong>以種子創建私鑰</strong>: 使用種子和路徑（Derivation Path）創建私鑰。私鑰是用於簽署交易的秘密數據。
+                                    </li>
+                                    <li>
+                                        <strong>以私鑰創建地址</strong>: 私鑰被用來創建公鑰，然後公鑰被哈希（例如使用 SHA-256 和 RIPEMD-160）創建地址。
+                                    </li>
+                                </ol>
+                                <p>
+                                    這個過程確保了助記詞可以安全地創建多個私鑰和地址，從而實現錢包的多地址管理。
+                                </p>
+                            </div>
+                        </div>
+                    </section>
 
-                                            <p>
-                                            <h3>助記詞的功能</h3>
-                                            助記詞並不是把 Private key 轉換成人類能理解的單字，事實恰恰相反，是使用者先建立助記詞，然後再用軟件順序轉換成 Private key 和
-                                            address。
-                                            </p>
+                    <!-- Derivation Paths Section -->
+                    <section id="derivation-paths">
+                        <div class="card shadow border-0 rounded-4 mb-5">
+                            <div class="card-body">
+                                <h2>路徑（Derivation Paths）</h2>
+                                <p>
+                                    路徑是一種用於創建不同私鑰和地址的方法。路徑通常表示為一個類似於 <code>m/44'/60'/0'/0/0</code> 的字符串。每個部分都有特定的含義：
+                                </p>
+                                <!---->
+                                <div class="mb-4">
+                                    <div class="row gx-4">
+                                        <div class="col-md-6">
+                                            <div class="card h-100 border-left-primary">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">m</h5>
+                                                    <p class="card-text">主路徑<br />表示這是一個主路徑（Master Path）。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card h-100 border-left-primary">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">44'</h5>
+                                                    <p class="card-text">
+                                                        用途（Purpose）<br />
+                                                        表示這是一個 BIP-44 兼容的錢包。<code>'</code> 表示這是一個硬分歧（Hardened
+                                                        Derivation），即不能從父路徑推導出私鑰。
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card h-100 border-left-primary">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">60'</h5>
+                                                    <p class="card-text">
+                                                        網絡編號（Coin Type）<br />表示這是以太坊（Ethereum）網絡。不同的網絡有不同的編號。<br />（例如
+                                                        Bitcoin
+                                                        是 0，以太坊是 60）
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card h-100 border-left-primary">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">0'</h5>
+                                                    <p class="card-text">
+                                                        帳戶（Account）<br />表示這是首個帳戶。用戶可以通過改變這個數字來管理多個帳戶。
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card h-100 border-left-primary">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">0</h5>
+                                                    <p class="card-text">
+                                                        變更（Change）<br />表示這是外部鏈（External
+                                                        Chain），用於接收資金。內部鏈（Change）用於存儲變更，通常用於交易的輸出。
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                            <p>
-                                            <h3>每條助記詞只能建立一條地址？</h3>
-                                            很多人以為每條助記詞只能建立一條地址，停用地址時必須連同助記詞一同放棄，但其實這是常見誤解。<br />
-                                            助記詞並非單獨使用，而是需要連同「路徑（Derivation Path）」一同使用才能做到助記詞本應有的效果。
-                                            </p>
-
-                                            <blockquote>因此，如果使用者面對助記詞外洩，情況會比 Private key 外洩更嚴重。</blockquote>
-
-                                            <p>
-                                            <h3>路徑</h3>
-                                            剛才提到每條助記詞可以建立不同的多條地址，這都歸功於路徑。<br />
-                                            <blockquote>路徑就像 <code>m/44'/60'/0'/0/0</code></blockquote>
-                                            以下是各數字的意思對照表：<br />
-                                            <table class="table table-hover">
-                                                <tr>
-                                                    <th>44</th>
-                                                    <th>60</th>
-                                                    <th>0</th>
-                                                    <th>0</th>
-                                                    <th>0</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>purpose<br />用途<br />（44 代表 BIP-44）</td>
-                                                    <td>coin_type<br />網絡編號<br />例如 60 代表 Ethereum（以太坊）<br />0 代表
-                                                        Bitcoin</td>
-                                                    <td>account<br />戶口</td>
-                                                    <td>change<br />衍生戶口</td>
-                                                    <td>index<br />編號</td>
-                                                </tr>
-                                            </table>
-                                            </p>
-
-                                            <p>
-                                            <h3>覺得太複雜？<br />不要緊，高手都不會把全部意思都背誦起來，高手會背誦的只有網絡編號。</h3>
-                                            這是因為當中的 purpose 在絕大部分情況下都是 44 不會變，account、change 和 index 可以完全由用戶自由選擇。<br />
-                                            網絡編號則需要由 Satoshilabs
-                                            注冊並寫入列表，從而讓所有人跟隨，以統一的做法達至助記的效果，不會令使用者因為忘記自己的路徑導致遺失資產。<br />
-                                            （網絡編號之列表可參考注1）<br />
-                                            （注意這個網絡編號是設計予助記詞使用，與其他區塊鏈的編號並無絕對關係，特別是 EVM 的 chain ID）
-                                            </p>
-
-                                            <p>
-                                            <h3></h3>
-                                            <table class="table table-hover">
-                                                <tr>
-                                                    <th colspan="4">
-                                                        示範相同助記詞能產生不同 address
-                                                    </th>
-                                                </tr>
-                                                <tr>
-                                                    <th>
-                                                        Mnemonic / 助記詞
-                                                    </th>
-                                                    <th colspan="3">
-                                                        abandon abandon abandon abandon abandon abandon abandon abandon
-                                                        abandon
-                                                        abandon abandon about
-                                                    </th>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        coin_type / 網絡編號
-                                                    </td>
-                                                    <td>
-                                                        路徑
-                                                    </td>
-                                                    <td>
-                                                        Private key / 私鑰
-                                                    </td>
-                                                    <td>
-                                                        Address / 地址
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Ethereum (60)
-                                                    </td>
-                                                    <td>
-                                                        m/44'/60'/0'/0/0
-                                                    </td>
-                                                    <td>
-                                                        1ab42cc412b618bdea3a599e3c9bae199ebf030895b039e9db1e30dafb12b727
-                                                    </td>
-                                                    <td>
-                                                        <a href="https://etherscan.io/address/0x9858EfFD232B4033E47d90003D41EC34EcaEda94"
-                                                            target="_blank">
-                                                            0x9858EfFD232B4033E47d90003D41EC34EcaEda94 <span
-                                                                class="glyphicon glyphicon-new-window"></span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Tron (195)
-                                                    </td>
-                                                    <td>
-                                                        m/44'/195'/0'/0/0
-                                                    </td>
-                                                    <td>
-                                                        b5a4cea271ff424d7c31dc12a3e43e401df7a40d7412a15750f3f0b6b5449a28
-                                                    </td>
-                                                    <td>
-                                                        <a href="https://tronscan.org/#/address/TUEZSdKsoDHQMeZwihtdoBiN46zxhGWYdH"
-                                                            target="_blank">TUEZSdKsoDHQMeZwihtdoBiN46zxhGWYdH（以
-                                                            Base58_check 預設編碼顯示）
-                                                            <span
-                                                                class="glyphicon glyphicon-new-window"></span></a><br />
-                                                        0xC8599111F29c1e1E061265b4AF93eA1F274aD78A（以 Hex（16進數）編碼顯示）
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            </p>
-
-                                            <p>
-                                            <h3>可以先產生自己喜歡的 address，再轉換成 Private key 或助記詞嗎？</h3>
-                                            不可能。<br />
-                                            以上3者的產生順序，必須是 助記詞 => Private key => Address，這個順序不能逆轉。只不過助記詞並非產生 address
-                                            前的必須步驟，因此可以省略。<br />
-                                            因此之故，如果使用者沒有由一開始就產生助記詞，之後亦無方法取得它。<br />
-                                            不過有一種名為虛榮地址（Vanity address）的做法，是先產生自己喜歡的格式，然後再用暴力破解找出符合要求的助記詞或 Private
-                                            key。<br />
-                                            虛榮地址沒有絕對的識別方法，廣義上只要該 address 的任何部分對任何一個人有特別意思，那就是虛榮地址。（例如以「1Bitcoin」開首的
-                                            Bitcoin address）
-                                            </p>
-
-                                            <p>
-                                                注
-                                            <ol>
-                                                <li>
-                                                    <a href="https://github.com/satoshilabs/slips/blob/master/slip-0044.md#registered-coin-types"
-                                                        target="_blank">
-                                                        Registered coin types (SLIP-44) <span
-                                                            class="glyphicon glyphicon-new-window"></span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="https://tronscan.org/#/tools/code-converter/tron-ethereum-address"
-                                                        target="_blank">Tron的Base58_check及Hex地址轉換器
-                                                        <span class="glyphicon glyphicon-new-window"></span></a>
-                                                </li>
-                                            </ol>
-                                            </p>
+                                        <div class="col-md-6">
+                                            <div class="card h-100 border-left-primary">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">0</h5>
+                                                    <p class="card-text">
+                                                        索引（Index）<br />表示這是首個地址。用戶可以通過改變這個數字來創建多個地址。
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <p>
+                                    通過改變路徑中的不同部分，可以創建不同的私鑰和地址。例如，改變索引（Index）可以創建多個地址，而改變帳戶（Account）可以管理多個帳戶。
+                                </p>
+                                <p>
+                                    <strong>注意：</strong>網絡編號（Coin Type）需要由 Satoshi Labs
+                                    注冊並寫入列表，以確保所有用戶使用統一的編號。這樣可以避免因為記憶錯誤導致的資產遺失。網絡編號的列表可以參考 <a
+                                        href="https://github.com/satoshilabs/slips/blob/master/slip-0044.md#registered-coin-types"
+                                        target="_blank">SLIP-44</a>。
+                                </p>
                             </div>
                         </div>
-
                     </section>
 
+                    <!-- Practical Examples Section -->
+                    <section id="practical-examples">
+                        <div class="card shadow border-0 rounded-4 mb-5">
+                            <div class="card-body">
+                                <h2>實際例子</h2>
+                                <p>
+                                    下面是一個示例，展示相同的助記詞如何創建不同網絡的地址：
+                                </p>
 
+                                <div class="mb-4">
+                                    助記詞：abandon abandon abandon abandon abandon abandon abandon abandon abandon
+                                    abandon abandon about
+                                    <div class="row gx-4">
+                                        <div class="col-md-6">
+                                            <div class="card h-100 border-left-primary">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">網絡編號</h5>
+                                                    <p class="card-text">Ethereum (60)<br />Tron (195)</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card h-100 border-left-primary">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">路徑</h5>
+                                                    <p class="card-text">
+                                                        Ethereum<br />
+                                                        <code>m/44'/60'/0'/0/0</code><br />
+                                                        Tron<br />
+                                                        <code>m/44'/195'/0'/0/0</code>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card h-100 border-left-primary">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">私鑰（Private Key）</h5>
+                                                    <p class="card-text">
+                                                        Ethereum<br />
+                                                        <code>1ab42cc412b618bdea3a599e3c9bae199ebf030895b039e9db1e30dafb12b727</code>
+                                                        <br /><br />
+                                                        Tron<br />
+                                                        <code>b5a4cea271ff424d7c31dc12a3e43e401df7a40d7412a15750f3f0b6b5449a28</code>
+
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="card h-100 border-left-primary">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">地址（Address）</h5>
+                                                    <p class="card-text">
+                                                        Ethereum
+                                                        <a href="https://etherscan.io/address/0x9858EfFD232B4033E47d90003D41EC34EcaEda94"
+                                                            target="_blank">
+                                                            0x9858EfFD232B4033E47d90003D41EC34EcaEda94
+                                                        </a><br /><br />
+                                                        Tron
+                                                        <a href="https://tronscan.org/#/address/TUEZSdKsoDHQMeZwihtdoBiN46zxhGWYdH"
+                                                            target="_blank">
+                                                            TUEZSdKsoDHQMeZwihtdoBiN46zxhGWYdH（以 Base58_check 預設編碼顯示）
+                                                        </a><br />
+                                                        <a href="https://etherscan.io/address/0xC8599111F29c1e1E061265b4AF93eA1F274aD78A"
+                                                            target="_blank">
+                                                            0xC8599111F29c1e1E061265b4AF93eA1F274aD78A（以 Hex（16進數）編碼顯示）
+                                                        </a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>
+                                    如上所述，相同的助記詞可以創建不同網絡的地址。這是通過改變路徑中的網絡編號（Coin Type）實現的。
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Security Section -->
+                    <section id="security">
+                        <div class="card shadow border-0 rounded-4 mb-5">
+                            <div class="card-body">
+                                <h2>安全考慮</h2>
+                                <p>
+                                    助記詞是創建私鑰和地址的種子。如果助記詞外洩，攻擊者可以完全控制用戶的錢包和所有資產。因此，安全存儲和備份助記詞至關重要。
+                                </p>
+                                <ul>
+                                    <li>
+                                        <strong>不與助記詞相關的軟件</strong>:
+                                        不要將助記詞存儲在任何軟件中，除了用於創建私鑰和地址的錢包應用程式。這些軟件可能會被黑客攻擊或竊取助記詞。
+                                    </li>
+                                    <li>
+                                        <strong>離線存儲</strong>: 最安全的方法是將助記詞寫在紙上，並存儲在安全的地方。這樣可以避免數位設備被黑客攻擊。
+                                    </li>
+                                    <li>
+                                        <strong>加密存儲</strong>: 如果必須在數位設備上存儲助記詞，請使用強大的加密工具（如 AES-256）進行加密。並確保密碼足夠複雜且安全。
+                                    </li>
+                                    <li>
+                                        <strong>多重備份</strong>: 為助記詞創建多個備份副本，並存儲在不同的位置。這樣可以防止單一備份被損壞或遺失。
+                                    </li>
+                                    <li>
+                                        <strong>定期檢查</strong>: 定期檢查助記詞的安全性，並確保沒有被竊取或泄露。
+                                    </li>
+                                </ul>
+                                <p>
+                                    如果助記詞外洩，請立即將所有相關的地址轉移到新的錢包中，並更換助記詞。這樣可以防止攻擊者竊取資產。
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Common Misconceptions Section -->
+                    <section id="common-misconceptions">
+                        <div class="card shadow border-0 rounded-4 mb-5">
+                            <div class="card-body">
+                                <h2>常見誤解</h2>
+                                <p>
+                                    有關助記詞和路徑，有一些常見的誤解。以下是一些常見的誤解及其解釋：
+                                </p>
+                                <ul>
+                                    <li>
+                                        <strong>助記詞只能創建一個地址</strong>:
+                                        <p>誤解：很多人以為每條助記詞只能創建一條地址，停用地址時必須連同助記詞一同放棄。</p>
+                                        <p>事實：助記詞並非單獨使用，而是需要連同「路徑（Derivation
+                                            Path）」一同使用才能做到助記詞本應有的效果。通過改變路徑中的不同部分，可以創建多個地址。</p>
+                                    </li>
+                                    <li>
+                                        <strong>助記詞可以逆向創建私鑰</strong>:
+                                        <p>誤解：有些人以為助記詞可以逆向創建私鑰，即從私鑰可以得到助記詞。</p>
+                                        <p>事實：助記詞和私鑰的創建順序是固定的：助記詞 → 私鑰 → 地址。這個順序不能逆轉。不過，有一種名為虛榮地址（Vanity
+                                            Address）的做法，是先產生自己喜歡的地址格式，然後通過暴力破解找出符合要求的助記詞或私鑰。</p>
+                                    </li>
+                                    <li>
+                                        <strong>所有助記詞都相同</strong>:
+                                        <p>誤解：有些人以為所有助記詞都是相同的，或者可以互換使用。</p>
+                                        <p>事實：助記詞是唯一的，每個助記詞創建的私鑰和地址都是不同的。助記詞的唯一性確保了每個錢包的獨特性。</p>
+                                    </li>
+                                    <li>
+                                        <strong>路徑不重要</strong>:
+                                        <p>誤解：有些人認為路徑不重要，或者可以隨意更改。</p>
+                                        <p>事實：路徑在助記詞創建地址的過程中起著關鍵作用。不同的路徑會創建不同的地址。如果路徑錯誤，可能會導致資產遺失或錯誤地址創建。因此，正確理解和使用路徑非常重要。
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Advanced Topics Section -->
+                    <section id="advanced-topics">
+                        <div class="card shadow border-0 rounded-4 mb-5">
+                            <div class="card-body">
+                                <h2>進階主題</h2>
+                                <p>
+                                    在了解助記詞和路徑的基本概念之後，以下是一些進階主題，可以幫助用戶更深入地理解和使用這些技術：
+                                </p>
+                                <ul>
+                                    <li>
+                                        <strong>虛榮地址（Vanity Address）</strong>:
+                                        <p>虛榮地址是指用戶自定義的地址格式，例如以「1Bitcoin」開首的 Bitcoin
+                                            地址。創建虛榮地址通常需要使用暴力破解的方法，即通過嘗試不同的助記詞或私鑰，直到找到符合要求的地址。這是一種高計算量的過程，通常需要專門的軟件和硬件支持。
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <strong>多簽錢包（Multi-Signature Wallets）</strong>:
+                                        <p>多簽名錢包需要多個私鑰的簽名才能進行交易。這種錢包可以提高安全性，因為即使一個私鑰被竊取，攻擊者仍然需要其他私鑰才能進行交易。多簽名錢包通常與助記詞結合使用，以便管理多個私鑰。
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <strong>層次確定性錢包（Hierarchical Deterministic Wallets, HD Wallets）</strong>:
+                                        <p>HD 錢包是一種錢包結構，允許用戶從一個種子創建多個私鑰和地址。HD 錢包通常與助記詞結合使用，以便管理多個地址。HD
+                                            錢包的結構使得用戶可以方便地管理多個帳戶和地址，並且可以通過路徑進行靈活的管理。</p>
+                                    </li>
+                                    <li>
+                                        <strong>第三方工具</strong>:
+                                        <p>有許多工具和庫可以幫助用戶創建、管理和使用助記詞和路徑。例如，<a href="https://iancoleman.io/bip39/"
+                                                target="_blank">BIP39 Generator</a>
+                                            可以幫助用戶創建助記詞，並顯示對應的私鑰和地址。其他工具還包括助記詞轉換器、路徑創建器等。使用這些工具可以幫助用戶更輕鬆地理解和使用助記詞和路徑技術。
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- References Section -->
+                    <section id="references">
+                        <div class="card shadow border-0 rounded-4 mb-5">
+                            <div class="card-body">
+                                <h2>參考資料</h2>
+                                <ul>
+                                    <li>
+                                        <a href="https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki"
+                                            target="_blank">BIP-39: Mnemonic code for generating deterministic keys <i
+                                                class="bi bi-plus-square"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki"
+                                            target="_blank">BIP-32: Hierarchical deterministic wallets <i
+                                                class="bi bi-plus-square"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki"
+                                            target="_blank">BIP-44: Multi-account hierarchical deterministic wallets <i
+                                                class="bi bi-plus-square"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://github.com/satoshilabs/slips/blob/master/slip-0044.md"
+                                            target="_blank">SLIP-44: Registered coin types <i
+                                                class="bi bi-plus-square"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://tronscan.org/#/tools/code-converter/tron-ethereum-address"
+                                            target="_blank">Tron Base58_check 和 Hex 地址轉換器 <i
+                                                class="bi bi-plus-square"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
@@ -249,7 +477,6 @@
                 <div class="col-auto">
                     <div class="small m-0">Copyright &copy; Harekaze 2025</div>
                 </div>
-
             </div>
         </div>
     </footer>
