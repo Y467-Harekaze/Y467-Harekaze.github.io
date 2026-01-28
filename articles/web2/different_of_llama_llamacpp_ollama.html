@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-hk">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Llama、Llama.cpp 與 Ollama 的差異解析" />
+    <meta name="keywords" content="llama,llama.cpp,ollama,差異解析" />
+    <meta name="author" content="Harekaze" />
+    <title>Llama、Llama.cpp 與 Ollama 的差異解析 | Harekaze</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.svg" />
+    <!-- Custom Google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/styles.css" rel="stylesheet" />
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2508788034463703"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="d-flex flex-column h-100 bg-light">
+    <main class="flex-shrink-0">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+            <div class="container px-5">
+                <a class="navbar-brand" href="/index.html"><span class="fw-bolder text-primary">Harekaze</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"><span
+                        class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                        <li class="nav-item"><a class="nav-link" href="/index.html">首頁</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/blockchain_articles.html">區塊鏈文章</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/web2_articles.html">Web2文章</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/tools.html">工具</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/donate.html">捐款</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about_us.html">關於我們</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container my-5">
+            <a href="/web2_articles.html">
+                <div class="small text-muted mb-5">Back</div>
+            </a>
+
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Llama、Llama.cpp 與 Ollama
+                        的差異解析</span></h1>
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-11 col-xl-9 col-xxl-8">
+                    <!-- Experience Section-->
+                    <section>
+                        <!-- Experience Card 1-->
+                        <div class="card shadow border-0 rounded-4 mb-5">
+                            <div class="card-body">
+                                <div class="row align-items-center gx-5">
+                                    <div class="col-lg-12">
+                                        <p>近年來，大型語言模型（LLM）的發展日新月異，其中以 Meta 的 <strong>Llama</strong>
+                                            系列最為知名。然而，在實際應用中，我們常會看到 <strong>Llama.cpp</strong> 和
+                                            <strong>Ollama</strong> 這兩個工具。<br />
+                                            這三者之間有什麼關係？<br />又有什麼不同呢？
+                                        </p>
+
+                                        <!-- Llama -->
+                                        <h2>1. Llama（Meta 的大語言模型）</h2>
+                                        <p><strong>Llama</strong> 是由 Meta（Facebook 母公司）開發的大型語言模型系列，於 2023
+                                            年首次公開。它採用先進的 Transformer 架構，並通過大規模訓練數據和強大的計算資源進行優化。Llama
+                                            的特點包括：</p>
+                                        <ul>
+                                            <li><strong>開源友善</strong>：Meta 將 Llama 的權重和模型架構公開，允許研究人員和開發者進行二次開發。</li>
+                                            <li><strong>多語言支持</strong>：除了英語，Llama 也支持多種語言，包括中文、日文等。</li>
+                                            <li><strong>多個版本</strong>：目前已公開 Llama 3.2（1B/3B）和 Llama
+                                                3.3（70B）等不同規模的模型。</li>
+                                            <li><strong>不提供完整工具鏈</strong>：Meta 並未提供完整的部署或推理工具，僅提供模型權重和相關文檔。</li>
+                                        </ul>
+                                        <p>Llama 是一個「模型」本身，而不是一個完整的應用程式或工具。要使用 Llama，通常需要結合其他工具（如 <code>Llama.cpp</code>
+                                            或 <code>Ollama</code>）來進行本地部署和推理。</p>
+
+                                        <!-- llama.cpp -->
+                                        <h2>2. Llama.cpp（本地推理工具）</h2>
+                                        <p><strong>Llama.cpp</strong> 是一個由 <a href="https://github.com/ggml-org"
+                                                target="_blank">Georgi Gerganov</a> 開發的 C/C++
+                                            程式庫，專門用於在本地運行大語言模型。它的主要特點包括：</p>
+                                        <ul>
+                                            <li><strong>輕量且高效</strong>：Llama.cpp 使用量化技術（如 4-bit 或 8-bit
+                                                量化）來減少模型大小和記憶體使用量，使得在普通電腦（如 Mac 或 PC）上也能運行大型模型（如 70B 的 Llama3.3）。</li>
+                                            <li><strong>跨平台支持</strong>：支援 Linux、macOS 和 Windows 等系統。</li>
+                                            <li><strong>命令列界面</strong>：提供簡單的命令列工具。</li>
+                                        </ul>
+                                        <ul>
+                                            <li><strong>社群活躍</strong>：Llama.cpp 的 GitHub repository 擁有超過 9
+                                                萬顆星，並有許多貢獻者優化其功能。</li>
+                                            <li><strong>不包含完整應用程式</strong>：Llama.cpp 主要是一個推理引擎，需要結合其他工具（如 Python
+                                                綁定）才能建立完整的應用程式。</li>
+                                        </ul>
+                                        <p>Llama.cpp 的優勢在於能夠將 Llama 模型帶到本地環境，無需依賴雲端服務。然而，它的使用門檻較高，需要一些編譯和命令列操作的經驗。</p>
+
+                                        <!-- Ollama -->
+                                        <h2>3. Ollama（本地模型管理工具）</h2>
+                                        <p><strong>Ollama</strong> 是一個由 <a href="https://github.com/jmorganca"
+                                                target="_blank">Jorge Morgado</a>
+                                            開發的開源工具，專門用於簡化本地大語言模型的下載、管理和運行。它的主要特點包括：</p>
+                                        <ul>
+                                            <li><strong>簡化本地部署</strong>：Ollama 內建了多個流行模型（如 Llama4、GPT-OSS、Ministral3
+                                                等）的下載和運行功能，只需一條命令即可完成。</li>
+                                        </ul>
+                                        <ul>
+                                            <li><strong>集成模型管理</strong>：支援模型的下載、更新、刪除和列表查看等操作。</li>
+                                            <li><strong>OpenAI API/Ollama API 支援</strong>：提供 API
+                                                介面，使得開發者可以輕鬆將模型整合到應用程式中。</li>
+                                            <li><strong>跨平台</strong>：支援 Linux、macOS 和 Windows（透過 WSL 或 Docker）。</li>
+                                            <li><strong>基於 Llama.cpp</strong>：Ollama 在內部使用 Llama.cpp
+                                                作為推理引擎，但提供了使用者友好的介面。</li>
+                                        </ul>
+                                        <p>Ollama 的設計目標是讓非技術人員也能輕鬆在本地運行大語言模型。</p>
+
+                                        <!-- 比較總結 -->
+                                        <h2>4. 三者之間的關係與比較</h2>
+                                        <p>總結來說，三者之間的關係如下：</p>
+                                        <ol>
+                                            <li><strong>Llama</strong> 是 Meta 開發的大語言模型，提供模型權重和架構。</li>
+                                            <li><strong>Llama.cpp</strong> 是一個用於本地運行 Llama 模型的高效推理工具，由社群開發維護。</li>
+                                            <li><strong>Ollama</strong> 是一個建立在 Llama.cpp 之上的工具，提供更簡單的模型管理和部署體驗。</li>
+                                        </ol>
+                                        <p>如果你想：</p>
+                                        <ul>
+                                            <li><strong>深入理解模型架構</strong>：研究 Llama 的論文和模型細節。</li>
+                                            <li><strong>在本地運行模型並進行優化</strong>：使用 <code>Llama.cpp</code> 編譯和運行模型。</li>
+                                            <li><strong>快速部署並管理多個模型</strong>：使用 <code>Ollama</code> 下載和運行。</li>
+                                        </ul>
+
+                                        <!-- 未來展望 -->
+                                        <h2>5. 未來發展</h2>
+                                        <p>隨著大語言模型的普及，本地部署工具（如 Llama.cpp 和 Ollama）將扮演越來越重要的角色。未來可能的發展方向包括：</p>
+                                        <ul>
+                                            <li>更輕量的模型量化技術，進一步降低硬體要求。</li>
+                                            <li>更友好的圖形化介面，讓非技術用戶也能輕鬆使用。</li>
+                                            <li>更強大的模型管理功能，例如自動更新、混合模型等。</li>
+                                            <li>與其他 AI 工具的整合，例如本地運行的多模態模型（文字+圖像）。</li>
+                                        </ul>
+
+                                        <p>
+                                            無論是 Llama、Llama.cpp 還是 Ollama，它們共同推動了大語言模型的本地化和普及化，讓更多人能夠在不依賴雲端服務的情況下，體驗強大的
+                                            AI 能力。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer-->
+    <footer class="bg-white py-4 mt-auto">
+        <div class="container px-5">
+            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                <div class="col-auto">
+                    <div class="small m-0">Copyright &copy; Harekaze 2025</div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="/js/scripts.js"></script>
+</body>
+
+</html>

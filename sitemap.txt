@@ -14,6 +14,7 @@ https://harekaze.link/articles/web2/apple_macbook_pro_m5_is_out_tomorrow_will_i_
 https://harekaze.link/articles/web2/download_llm_model_from_huggingface_and_import_to_ollama.html
 https://harekaze.link/articles/web2/deploy_minimax_m2.html
 https://harekaze.link/articles/web2/dont_buy_mac_device_for_clowdbot_only.html
+https://harekaze.link/articles/web2/different_of_llama_llamacpp_ollama.html
 https://harekaze.link/tools.html
 https://harekaze.link/tools/hkcas.html
 https://harekaze.link/tools/aes-crypto.html
