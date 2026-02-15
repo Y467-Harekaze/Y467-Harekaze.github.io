@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="民間反詐易是一個屬於香港人，而且對區塊鏈無偏見的反詐騙工具。" />
+    <meta name="description" content="民間反詐易（HKCAS）是一個屬於香港人，而且對區塊鏈無偏見的反詐騙工具。現已支援網頁版。" />
     <meta name="keywords" content="民間反詐易,hkcas,Defi,無偏見,反詐騙" />
     <meta name="author" content="Harekaze" />
     <title>民間反詐易（HKCAS） | Harekaze</title>
@@ -76,8 +76,41 @@
                                                 無論是釣魚網站、還是詐騙Defi，民間反詐易 都能提供多一層的安全保障，幫助你遠離詐騙風險，守護你的財產和個人資訊。<br /><br />
                                                 民間反詐易是一個屬於香港人，而且對區塊鏈無偏見的反詐騙工具。</p>
 
-                                            <a href="https://t.me/hkcas_bot" target="_blank">立即以 Telegram 開啟 民間反詐易 <span
-                                                    class="glyphicon glyphicon-new-window"></span></a>
+
+                                            <a href="https://t.me/hkcas_bot" target="_blank">立即以 Telegram 開啟 民間反詐易
+                                                <span class="glyphicon glyphicon-new-window"></span></a>
+
+                                            <hr />
+                                            你也可以在此使用 民間反詐易<br />
+                                            我們使用你的 Ethereum 帳戶簽名以防止服務被濫用，敬請注意。<br />
+                                            如果你沒有 Ethereum 錢包，也可以使用 Telegram 版本。
+
+                                            <div class="form-floating mb-3">
+                                                <!-- URL input-->
+                                                <input class="form-control" id="url" type="text"
+                                                    placeholder="Enter URL ..." />
+                                                <label for="url">輸入網址</label>
+                                                <!-- Submit Button-->
+                                                <div class="d-grid py-2">
+                                                    <button class="btn btn-primary btn-lg disabled" id="checking_button"
+                                                        type="submit">立即以 Metamask 登入使用
+                                                        民間反詐易</button>
+                                                </div>
+                                                <div id="hkcas_output"></div>
+
+
+                                                <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                                                    <div id="toast_msg" class="toast" role="alert" aria-live="assertive"
+                                                        aria-atomic="true">
+                                                        <div class="toast-body">
+                                                            已複製
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -106,6 +139,135 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="/js/scripts.js"></script>
+    <script>
+        //
+        function copyFunction(text) {
+            // Copy the text
+            navigator.clipboard.writeText(text);
+
+            const toast_msg = bootstrap.Toast.getOrCreateInstance(document.getElementById('toast_msg'));
+            toast_msg.show();
+        }
+
+        //
+        $('#url').on('input', function () {
+            if ($('#url').val().length > 0) {
+                console.log('unlock');
+                $('#checking_button').removeClass('disabled');
+            } else {
+                console.log('lock');
+                $('#checking_button').addClass('disabled');
+            }
+        });
+
+        //
+        $('#checking_button').click(async function () {
+            let addresses = await get_ethereum_address();
+
+            err_msg = '請先安裝 Web3 錢包。<br /><a href="https://metamask.io/" target="_blank">Metamask 插件下載 <span class="glyphicon glyphicon-new-window" ></span ></a>';
+            if (addresses == null) {
+                $('#hkcas_output').html(err_msg);
+                return null;
+            } else if (addresses.length == 0) {
+                $('#hkcas_output').html(err_msg);
+                return null;
+            }
+            let signed_data = await eip712_sign($('#url').val());
+
+            $('#hkcas_output').html('處理中 ...');
+
+            $.ajax({
+                url: 'https://hkcas.harekaze.link/web',
+                type: 'POST',
+                data: { "address": addresses[0], "signature": signed_data, "url_checking": $('#url').val() },
+                success: function (resultData) {
+                    $('#hkcas_output').html(resultData);
+                    $('#hkcas_output').html($('#hkcas_output').html().replaceAll('\n', '<br />') + '<br />' + "\n<button class='btn btn-primary' onclick='copyFunction(`" + $('#hkcas_output').text() + "`)'>複製全部</button>");
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $('#hkcas_output').html('系統故障，請稍後再試。');
+                }
+            });
+        });
+
+
+        //
+        async function get_ethereum_address() {
+            try {
+                return await window.ethereum.request({
+                    "method": "eth_requestAccounts",
+                    "params": [],
+                });
+            } catch (e) {
+                return null;
+            }
+        }
+
+        //
+        async function get_evm_chainid() {
+            return await window.ethereum.request({
+                "method": "eth_chainId",
+                "params": [],
+            });
+        }
+
+        //
+        async function eip712_sign(url_checking) {
+            let ethereum_addresses = await get_ethereum_address();
+            if (ethereum_addresses == null) {
+                //error
+                return null;
+            } else if (ethereum_addresses.length == 0) {
+                //error
+                return null;
+            }
+
+            return await window.ethereum.request({
+                "method": "eth_signTypedData_v4",
+                "params": [
+                    ethereum_addresses[0],
+                    {
+                        types: {
+                            EIP712Domain: [
+                                {
+                                    name: "name",
+                                    type: "string"
+                                },
+                                {
+                                    name: "version",
+                                    type: "string"
+                                },
+                                {
+                                    name: "chainId",
+                                    type: "uint256"
+                                }
+                            ],
+                            HKCAS_query: [
+                                {
+                                    name: "checking",
+                                    type: "string"
+                                },
+                                /*{
+                                    name: "contents",
+                                    type: "string"
+                                }*/
+                            ]
+                        },
+                        primaryType: "HKCAS_query",
+                        domain: {
+                            name: "HKCAS web",
+                            version: "1",
+                            chainId: 1,//await get_evm_chainid()
+                        },
+                        message: {
+                            checking: url_checking,
+                            //contents: "I accept the terms. (beta)"
+                        }
+                    }
+                ],
+            });
+        }
+    </script>
 </body>
 
 </html>
