@@ -81,9 +81,9 @@
                                                 <span class="glyphicon glyphicon-new-window"></span></a>
 
                                             <hr />
-                                            你也可以在此使用 民間反詐易<br />
-                                            我們使用你的 Ethereum 帳戶簽名以防止服務被濫用，敬請注意。<br />
-                                            如果你沒有 Ethereum 錢包，也可以使用 Telegram 版本。
+                                            你也可以在此使用 民間反詐易。<br />
+                                            <!--我們使用你的 Ethereum 帳戶簽名以防止服務被濫用，敬請注意。<br />
+                                            如果你沒有 Ethereum 錢包，也可以使用 Telegram 版本。-->
 
                                             <div class="form-floating mb-3">
                                                 <!-- URL input-->
@@ -92,9 +92,11 @@
                                                 <label for="url">輸入網址</label>
                                                 <!-- Submit Button-->
                                                 <div class="d-grid py-2">
-                                                    <button class="btn btn-primary btn-lg disabled" id="checking_button"
+                                                    <!--<button class="btn btn-primary btn-lg disabled" id="checking_button"
                                                         type="submit">立即以 Metamask 登入使用
-                                                        民間反詐易</button>
+                                                        民間反詐易</button>-->
+                                                    <button class="btn btn-primary btn-lg disabled" id="checking_button"
+                                                        type="submit">立即使用 民間反詐易</button>
                                                 </div>
                                                 <div id="hkcas_output"></div>
 
@@ -162,17 +164,23 @@
 
         //
         $('#checking_button').click(async function () {
-            let addresses = await get_ethereum_address();
+            required_web3 = false;
+            if (required_web3) {
+                let addresses = await get_ethereum_address();
 
-            err_msg = '請先安裝 Web3 錢包。<br /><a href="https://metamask.io/" target="_blank">Metamask 插件下載 <span class="glyphicon glyphicon-new-window" ></span ></a>';
-            if (addresses == null) {
-                $('#hkcas_output').html(err_msg);
-                return null;
-            } else if (addresses.length == 0) {
-                $('#hkcas_output').html(err_msg);
-                return null;
+                err_msg = '請先安裝 Web3 錢包。<br /><a href="https://metamask.io/" target="_blank">Metamask 插件下載 <span class="glyphicon glyphicon-new-window" ></span ></a>';
+                if (addresses == null) {
+                    $('#hkcas_output').html(err_msg);
+                    return null;
+                } else if (addresses.length == 0) {
+                    $('#hkcas_output').html(err_msg);
+                    return null;
+                }
+                let signed_data = await eip712_sign($('#url').val());
+            } else {
+                addresses = ['0x0000000000000000000000000000000000000000'];
+                signed_data = '0x';
             }
-            let signed_data = await eip712_sign($('#url').val());
 
             $('#hkcas_output').html('處理中 ...');
 
