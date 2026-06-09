@@ -15,6 +15,7 @@ https://harekaze.link/articles/web2/download_llm_model_from_huggingface_and_impo
 https://harekaze.link/articles/web2/deploy_minimax_m2.html
 https://harekaze.link/articles/web2/dont_buy_mac_device_for_openclaw_only.html
 https://harekaze.link/articles/web2/different_of_llama_llamacpp_ollama.html
+https://harekaze.link/articles/web2/wwdc26_keynote.html
 https://harekaze.link/tools.html
 https://harekaze.link/tools/hkcas.html
 https://harekaze.link/tools/aes-crypto.html
