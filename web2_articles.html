@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-hk">
 
 <head>
@@ -26,7 +26,25 @@
         crossorigin="anonymous"></script>
     <!-- Google adsense prevent ad blocking -->
     <script async src="https://fundingchoicesmessages.google.com/i/pub-2508788034463703?ers=1"></script>
-    <script>(function () { function signalGooglefcPresent() { if (!window.frames['googlefcPresent']) { if (document.body) { const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe); } else { setTimeout(signalGooglefcPresent, 0); } } } signalGooglefcPresent(); })();</script>
+    <script>
+        (function () {
+            function signalGooglefcPresent() {
+                if (!window.frames["googlefcPresent"]) {
+                    if (document.body) {
+                        const iframe = document.createElement("iframe");
+                        iframe.style =
+                            "width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;";
+                        iframe.style.display = "none";
+                        iframe.name = "googlefcPresent";
+                        document.body.appendChild(iframe);
+                    } else {
+                        setTimeout(signalGooglefcPresent, 0);
+                    }
+                }
+            }
+            signalGooglefcPresent();
+        })();
+    </script>
 </head>
 
 <body class="d-flex flex-column h-100 bg-light">
@@ -37,16 +55,29 @@
                 <a class="navbar-brand" href="/index.html"><span class="fw-bolder text-primary">Harekaze</span></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation"><span
-                        class="navbar-toggler-icon"></span></button>
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                        <li class="nav-item"><a class="nav-link" href="/index.html">首頁</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/blockchain_articles.html">區塊鏈文章</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/web2_articles.html">Web2文章</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/tools.html">工具</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/donate.html">捐款</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/about_us.html">關於我們</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/index.html">首頁</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/blockchain_articles.html">區塊鏈文章</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/web2_articles.html">Web2文章</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/tools.html">工具</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/donate.html">捐款</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about_us.html">關於我們</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -54,7 +85,9 @@
         <!-- Page Content-->
         <div class="container my-5">
             <div class="text-center mb-5">
-                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">文章（Web2）</span></h1>
+                <h1 class="display-5 fw-bolder mb-0">
+                    <span class="text-gradient d-inline">文章（Web2）</span>
+                </h1>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-11 col-xl-9 col-xxl-8">
@@ -66,7 +99,30 @@
                                 <div class="row align-items-center gx-5">
                                     <div class="col text-center text-lg-start mb-4 mb-lg-0">
                                         <div class="bg-light p-4 rounded-4">
-                                            <div class="text-primary fw-bolder mb-2">2026-06-09</div>
+                                            <div class="text-primary fw-bolder mb-2">
+                                                2026-09-10
+                                            </div>
+                                            <div class="small fw-bolder">Apple</div>
+                                            <div class="small text-muted">發佈會</div>
+                                            <div class="small text-muted">懶人包</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <a href="/essay/web2/apple_september_event_keynote.html">
+                                            <div>2026 Apple 發佈會懶人包</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card shadow border-0 rounded-4 mb-5">
+                            <div class="card-body p-5">
+                                <div class="row align-items-center gx-5">
+                                    <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                                        <div class="bg-light p-4 rounded-4">
+                                            <div class="text-primary fw-bolder mb-2">
+                                                2026-06-09
+                                            </div>
                                             <div class="small fw-bolder">Apple</div>
                                             <div class="small text-muted">WWDC26</div>
                                             <div class="small text-muted">懶人包</div>
@@ -85,10 +141,14 @@
                                 <div class="row align-items-center gx-5">
                                     <div class="col text-center text-lg-start mb-4 mb-lg-0">
                                         <div class="bg-light p-4 rounded-4">
-                                            <div class="text-primary fw-bolder mb-2">2026-01-28</div>
+                                            <div class="text-primary fw-bolder mb-2">
+                                                2026-01-28
+                                            </div>
                                             <div class="small fw-bolder">AI</div>
                                             <div class="small text-muted">差異解析</div>
-                                            <div class="small text-muted">Llama Llama.cpp Ollama</div>
+                                            <div class="small text-muted">
+                                                Llama Llama.cpp Ollama
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-8">
@@ -104,7 +164,9 @@
                                 <div class="row align-items-center gx-5">
                                     <div class="col text-center text-lg-start mb-4 mb-lg-0">
                                         <div class="bg-light p-4 rounded-4">
-                                            <div class="text-primary fw-bolder mb-2">2026-01-27</div>
+                                            <div class="text-primary fw-bolder mb-2">
+                                                2026-01-27
+                                            </div>
                                             <div class="small fw-bolder">LLM</div>
                                             <div class="small text-muted">AGI</div>
                                             <div class="small text-muted">Self-host</div>
@@ -123,7 +185,9 @@
                                 <div class="row align-items-center gx-5">
                                     <div class="col text-center text-lg-start mb-4 mb-lg-0">
                                         <div class="bg-light p-4 rounded-4">
-                                            <div class="text-primary fw-bolder mb-2">2025-11-17</div>
+                                            <div class="text-primary fw-bolder mb-2">
+                                                2025-11-17
+                                            </div>
                                             <div class="small fw-bolder">LLM</div>
                                             <div class="small text-muted">llama.cpp</div>
                                             <div class="small text-muted">Self-host</div>
@@ -142,7 +206,9 @@
                                 <div class="row align-items-center gx-5">
                                     <div class="col text-center text-lg-start mb-4 mb-lg-0">
                                         <div class="bg-light p-4 rounded-4">
-                                            <div class="text-primary fw-bolder mb-2">2025-11-05</div>
+                                            <div class="text-primary fw-bolder mb-2">
+                                                2025-11-05
+                                            </div>
                                             <div class="small fw-bolder">LLM</div>
                                             <div class="small text-muted">Ollama</div>
                                             <div class="small text-muted">Self-host</div>
@@ -151,7 +217,9 @@
                                     <div class="col-lg-8">
                                         <a
                                             href="/essay/web2/download_llm_model_from_huggingface_and_import_to_ollama.html">
-                                            <div>Ollama似乎不再提供200b以上新模型下載，如何處理？</div>
+                                            <div>
+                                                Ollama似乎不再提供200b以上新模型下載，如何處理？
+                                            </div>
                                         </a>
                                     </div>
                                 </div>
@@ -162,7 +230,9 @@
                                 <div class="row align-items-center gx-5">
                                     <div class="col text-center text-lg-start mb-4 mb-lg-0">
                                         <div class="bg-light p-4 rounded-4">
-                                            <div class="text-primary fw-bolder mb-2">2025-10-21</div>
+                                            <div class="text-primary fw-bolder mb-2">
+                                                2025-10-21
+                                            </div>
                                             <div class="small fw-bolder">Web2</div>
                                             <div class="small text-muted">閒聊</div>
                                             <div class="small text-muted">Apple</div>
@@ -180,7 +250,6 @@
 
                     <!-- Divider-->
                     <div class="pb-5"></div>
-
                 </div>
             </div>
         </div>
@@ -192,7 +261,6 @@
                 <div class="col-auto">
                     <div class="small m-0">Copyright &copy; Harekaze 2026</div>
                 </div>
-
             </div>
         </div>
     </footer>
