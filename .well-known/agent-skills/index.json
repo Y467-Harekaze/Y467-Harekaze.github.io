@@ -13,7 +13,7 @@
       "type": "manifest",
       "description": "Agentic Resource Discovery manifest listing all discoverable resources",
       "url": "https://harekaze.link/.well-known/ai-catalog.json",
-      "sha256": "1e3e0ad108cffbdb52a837f6fd3c09cf7d995dd5581c542a234d4a75f54a07b4"
+      "sha256": "90a0c66bc1d222b34dfad6b42c92e2d70e15172fec4999ce32fc6589200c50b2"
     },
     {
       "name": "api-catalog",
@@ -34,21 +34,21 @@
       "type": "tool",
       "description": "AES encryption and decryption tool supporting multiple modes",
       "url": "https://harekaze.link/tools/aes-crypto.html",
-      "sha256": "placeholder"
+      "sha256": "856f94d99e3a6175d58cffe284a9e609a4545f14584fe78f2eb2a5855c12dbea"
     },
     {
       "name": "bmi-calculator-tool",
       "type": "tool",
       "description": "BMI (Body Mass Index) calculator for health assessment",
       "url": "https://harekaze.link/tools/bmi-calculator.html",
-      "sha256": "placeholder"
+      "sha256": "f8d8943baa2ee43f84700a954c70e62cf8f5312c3ea23f79f1e6a1ebb43db53f"
     },
     {
       "name": "mass-conversion-tool",
       "type": "tool",
       "description": "Mass unit converter supporting multiple measurement systems",
       "url": "https://harekaze.link/tools/mass-unit-conversion.html",
-      "sha256": "placeholder"
+      "sha256": "be3eb80162b12cd554085f32687c941adcc8940068c81e4e7523d369b7f6ba9d"
     }
   ]
 }
