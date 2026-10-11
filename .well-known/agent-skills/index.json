@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cloudflare/agent-skills-discovery-rfc/main/draft-020/schemas/index.json",
+  "skills": [
+    {
+      "name": "content-signals",
+      "type": "directive",
+      "description": "Content-Signal directives declaring AI usage preferences for this site",
+      "url": "https://harekaze.link/robots.txt",
+      "sha256": "59e207fdbf61527620ddc13fd66972c55f25f12f8a0dc5481cc8d56468cd0865"
+    },
+    {
+      "name": "ard-catalog",
+      "type": "manifest",
+      "description": "Agentic Resource Discovery manifest listing all discoverable resources",
+      "url": "https://harekaze.link/.well-known/ai-catalog.json",
+      "sha256": "1e3e0ad108cffbdb52a837f6fd3c09cf7d995dd5581c542a234d4a75f54a07b4"
+    },
+    {
+      "name": "api-catalog",
+      "type": "catalog",
+      "description": "RFC 9727 API catalog with service-doc and service-desc relations",
+      "url": "https://harekaze.link/.well-known/api-catalog.json",
+      "sha256": "f6939102c275f4d75f2bbbfaa280132223363929a2bec2e896a23b354d1108aa"
+    },
+    {
+      "name": "auth-md",
+      "type": "metadata",
+      "description": "Agent registration instructions and authentication metadata",
+      "url": "https://harekaze.link/auth.md",
+      "sha256": "47c6df5ccb71ba2fc78d8f965860202748d66cf9aba564915deaa21bdd1ee1f6"
+    },
+    {
+      "name": "aes-crypto-tool",
+      "type": "tool",
+      "description": "AES encryption and decryption tool supporting multiple modes",
+      "url": "https://harekaze.link/tools/aes-crypto.html",
+      "sha256": "placeholder"
+    },
+    {
+      "name": "bmi-calculator-tool",
+      "type": "tool",
+      "description": "BMI (Body Mass Index) calculator for health assessment",
+      "url": "https://harekaze.link/tools/bmi-calculator.html",
+      "sha256": "placeholder"
+    },
+    {
+      "name": "mass-conversion-tool",
+      "type": "tool",
+      "description": "Mass unit converter supporting multiple measurement systems",
+      "url": "https://harekaze.link/tools/mass-unit-conversion.html",
+      "sha256": "placeholder"
+    }
+  ]
+}

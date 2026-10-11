@@ -1,0 +1,58 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://harekaze.link/",
+      "type": "text/html",
+      "rel": "service-doc",
+      "title": "Harekaze 首頁"
+    },
+    {
+      "anchor": "https://harekaze.link/blockchain_articles.html",
+      "type": "text/html",
+      "rel": "service-doc",
+      "title": "區塊鏈文章"
+    },
+    {
+      "anchor": "https://harekaze.link/web2_articles.html",
+      "type": "text/html",
+      "rel": "service-doc",
+      "title": "Web2 文章"
+    },
+    {
+      "anchor": "https://harekaze.link/tools.html",
+      "type": "text/html",
+      "rel": "service-doc",
+      "title": "工具"
+    },
+    {
+      "anchor": "https://harekaze.link/about_us.html",
+      "type": "text/html",
+      "rel": "service-doc",
+      "title": "關於我們"
+    },
+    {
+      "anchor": "https://harekaze.link/donate.html",
+      "type": "text/html",
+      "rel": "service-doc",
+      "title": "捐款"
+    },
+    {
+      "anchor": "https://harekaze.link/robots.txt",
+      "type": "text/plain",
+      "rel": "service-desc",
+      "title": "robots.txt — 爬取規則與 Content-Signals"
+    },
+    {
+      "anchor": "https://harekaze.link/.well-known/ai-catalog.json",
+      "type": "application/json",
+      "rel": "service-desc",
+      "title": "ARD 發現清單"
+    },
+    {
+      "anchor": "https://harekaze.link/.well-known/api-catalog.json",
+      "type": "application/linkset+json",
+      "rel": "service-desc",
+      "title": "API 目錄 (RFC 9727)"
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "$schema": "https://agenticresourcediscovery.org/schemas/ard-manifest/v1.json",
+  "specVersion": "1.0.0",
+  "host": {
+    "domain": "harekaze.link",
+    "origin": "https://harekaze.link"
+  },
+  "entries": [
+    {
+      "id": "urn:air:harekaze.link:content:home",
+      "displayName": "Harekaze 首頁",
+      "type": "text/html",
+      "url": "https://harekaze.link/",
+      "representativeQueries": [
+        "Harekaze 是什麼",
+        "Harekaze 網站首頁",
+        "Web3 和 AI 學習資源"
+      ]
+    },
+    {
+      "id": "urn:air:harekaze.link:content:blockchain-articles",
+      "displayName": "區塊鏈文章",
+      "type": "text/html",
+      "url": "https://harekaze.link/blockchain_articles.html",
+      "representativeQueries": [
+        "區塊鏈文章列表",
+        "Bitcoin 相關文章",
+        "Ethereum 入門知識",
+        "穩定幣基礎說明"
+      ]
+    },
+    {
+      "id": "urn:air:harekaze.link:content:web2-articles",
+      "displayName": "Web2 文章",
+      "type": "text/html",
+      "url": "https://harekaze.link/web2_articles.html",
+      "representativeQueries": [
+        "Web2 技術文章",
+        "LLM 和 Ollama 教學",
+        "Apple 產品評論",
+        "MacBook 購買建議"
+      ]
+    },
+    {
+      "id": "urn:air:harekaze.link:content:tools",
+      "displayName": "工具頁面",
+      "type": "text/html",
+      "url": "https://harekaze.link/tools.html",
+      "representativeQueries": [
+        "線上工具",
+        "AES 加密解密",
+        "BMI 計算器",
+        "重量單位轉換"
+      ]
+    },
+    {
+      "id": "urn:air:harekaze.link:tool:aes-crypto",
+      "displayName": "AES 加密解密工具",
+      "type": "text/html",
+      "url": "https://harekaze.link/tools/aes-crypto.html",
+      "representativeQueries": [
+        "AES 加密線上工具",
+        "AES 加密解密",
+        "線上密碼學工具"
+      ]
+    },
+    {
+      "id": "urn:air:harekaze.link:tool:bmi-calculator",
+      "displayName": "BMI 計算器",
+      "type": "text/html",
+      "url": "https://harekaze.link/tools/bmi-calculator.html",
+      "representativeQueries": [
+        "BMI 計算器",
+        "身體重量指數計算",
+        "體重健康評估"
+      ]
+    },
+    {
+      "id": "urn:air:harekaze.link:tool:blockchain-brute-force",
+      "displayName": "區塊鏈私鑰暴力破解成功率計算",
+      "type": "text/html",
+      "url": "https://harekaze.link/tools/blockchain-private-key-brute-force-success-rate.html",
+      "representativeQueries": [
+        "私鑰暴力破解",
+        "區塊鏈安全分析",
+        "私鑰強度評估"
+      ]
+    },
+    {
+      "id": "urn:air:harekaze.link:tool:mass-unit-conversion",
+      "displayName": "重量單位轉換器",
+      "type": "text/html",
+      "url": "https://harekaze.link/tools/mass-unit-conversion.html",
+      "representativeQueries": [
+        "重量單位轉換",
+        "公斤轉換盎司",
+        "重量單位換算"
+      ]
+    },
+    {
+      "id": "urn:air:harekaze.link:content:about",
+      "displayName": "關於我們",
+      "type": "text/html",
+      "url": "https://harekaze.link/about_us.html",
+      "representativeQueries": [
+        "Harekaze 關於",
+        "網站創立背景",
+        "Harekaze 團隊"
+      ]
+    },
+    {
+      "id": "urn:air:harekaze.link:content:donate",
+      "displayName": "捐款頁面",
+      "type": "text/html",
+      "url": "https://harekaze.link/donate.html",
+      "representativeQueries": [
+        "捐款支持",
+        "贊助 Harekaze",
+        "支持內容創作"
+      ]
+    }
+  ]
+}

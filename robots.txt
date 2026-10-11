@@ -4,3 +4,5 @@ Disallow: /css/
 Disallow: /foreverspirit-lite/
 Disallow: /logo/
 Disallow: /universal/
+
+Content-Signal: ai-train=no, search=yes, ai-input=yes
